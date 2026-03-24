@@ -170,8 +170,9 @@ ion-content {
           &.humidity { background: linear-gradient(135deg, #00c6ff, #0072ff); }
           &.wind { background: linear-gradient(135deg, #11998e, #38ef7d); }
           &.pressure { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
+          &.sun { background: linear-gradient(135deg, #f6d365, #fda085); }
+          &.clouds { background: linear-gradient(135deg, #89f7fe, #66a6ff); }
         }
-
         h3 { font-size: 1.1rem; font-weight: 600; color: #333; margin-bottom: 2px; }
         p { font-size: 0.85rem; color: #888; margin: 0; }
         .item-value { font-size: 1.1rem; font-weight: 700; color: var(--ion-color-primary); }

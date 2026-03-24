@@ -130,6 +130,32 @@
           </div>
         </ion-item>
 
+        <ion-item class="detail-item">
+          <div class="item-icon sun">
+            <ion-icon name="sunny"></ion-icon>
+          </div>
+          <ion-label>
+            <h3>Soleil</h3>
+            <p>Lever / Coucher</p>
+          </ion-label>
+          <div slot="end" class="item-value">
+            {{ formatTime(weatherData.sys.sunrise, weatherData.timezone) }} - {{ formatTime(weatherData.sys.sunset, weatherData.timezone) }}
+          </div>
+        </ion-item>
+
+        <ion-item class="detail-item">
+          <div class="item-icon clouds">
+            <ion-icon name="cloudy-outline"></ion-icon>
+          </div>
+          <ion-label>
+            <h3>Nuages</h3>
+            <p>Couverture nuageuse</p>
+          </ion-label>
+          <div slot="end" class="item-value">
+            {{ weatherData.clouds.all }}%
+          </div>
+        </ion-item>
+
       </ion-list>
 
       <div class="last-updated">

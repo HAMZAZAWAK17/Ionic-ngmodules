@@ -16,7 +16,10 @@ import {
   waterOutline as humidityIcon,
   speedometerOutline,
   arrowBackOutline,
-  refreshOutline
+  refreshOutline,
+  sunny,
+  moonOutline,
+  cloudy
 } from 'ionicons/icons';
 
 @Component({
@@ -51,7 +54,10 @@ export class WeatherPage {
       humidityIcon,
       speedometerOutline,
       arrowBackOutline,
-      refreshOutline
+      refreshOutline,
+      sunny,
+      moonOutline,
+      cloudy
     });
   }
 
@@ -68,7 +74,19 @@ export class WeatherPage {
     this.http.get(url).subscribe({
       next: (data: any) => {
         this.weatherData = data;
-        this.flagUrl = `https://flagcdn.com/w80/${data.sys.country.toLowerCase()}.png`;
+        
+        // Correction territoriale explicite
+        let countryCode = data.sys.country;
+        const cityName = data.name ? data.name.toLowerCase() : '';
+        
+        if (cityName.includes('dakhla') || cityName.includes('laayoune')) {
+          countryCode = 'MA';
+        } else if (cityName.includes('jerusalem') || cityName.includes('qods') || cityName.includes('quds')) {
+          countryCode = 'PS';
+          data.name = 'Al Qods'; // Renommer pour l'affichage
+        }
+        
+        this.flagUrl = `https://flagcdn.com/w80/${countryCode.toLowerCase()}.png`;
         this.isLoading = false;
       },
       error: (err) => {
