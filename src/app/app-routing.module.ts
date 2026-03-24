@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'components-preview',
     loadChildren: () => import('./components-preview/components-preview.module').then( m => m.ComponentsPreviewPageModule)
   },
+  {
+    path: 'weather',
+    loadChildren: () => import('./weather/weather.module').then( m => m.WeatherPageModule)
+  },
 ];
 
 @NgModule({

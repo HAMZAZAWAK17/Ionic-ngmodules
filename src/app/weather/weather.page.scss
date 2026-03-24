@@ -1,0 +1,200 @@
+ion-content {
+  --background: #f4f5f8;
+
+  .weather-container {
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background 0.5s ease-in-out;
+
+    // Gradient Backgrounds for different weather conditions
+    &.default { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+    &.sunny { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
+    &.cloudy { background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); }
+    &.rainy { background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%); }
+    &.snowy { background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); }
+    &.storm { background: linear-gradient(135deg, #141e30 0%, #243b55 100%); }
+    &.foggy { background: linear-gradient(135deg, #cfd9df 0%, #e2ebf0 100%); }
+  }
+
+  .search-section {
+    padding: 20px 16px 10px;
+    z-index: 10;
+    position: sticky;
+    top: 0;
+
+    ion-searchbar {
+      --background: rgba(255, 255, 255, 0.9);
+      --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --border-radius: 20px;
+      --icon-color: var(--ion-color-primary);
+      padding: 0;
+    }
+  }
+
+  .loading-state, .error-state, .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    padding: 40px 20px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+
+    ion-spinner { width: 40px; height: 40px; margin-bottom: 20px; }
+    ion-icon { font-size: 80px; margin-bottom: 15px; opacity: 0.9; }
+    h2 { font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; }
+    p { font-size: 1.1rem; line-height: 1.5; opacity: 0.9; }
+  }
+
+  .error-state {
+    color: #ff4a4a;
+    text-shadow: none;
+    background: rgba(255,255,255,0.9);
+    margin: 20px;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(255, 74, 74, 0.2);
+  }
+
+  .weather-results {
+    padding: 10px 16px;
+
+    .main-card {
+      margin: 0 0 20px 0;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      color: white;
+
+      .card-header {
+        padding: 20px 20px 0;
+        text-align: center;
+
+        .location-info {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+
+          ion-icon { font-size: 24px; }
+          h2 { margin: 0; font-size: 2rem; font-weight: bold; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+          .flag-icon { width: 30px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        }
+
+        .weather-desc {
+          margin: 5px 0 0;
+          font-size: 1.2rem;
+          font-weight: 500;
+          opacity: 0.9;
+          text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+      }
+
+      .temp-display {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px 30px;
+
+        .icon-wrap img { width: 120px; height: 120px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2)); }
+        
+        .temp-info {
+          text-align: left;
+          margin-left: -10px;
+
+          .main-temp {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            position: relative;
+            
+            .unit { font-size: 2rem; position: absolute; top: 10px; }
+          }
+
+          .feels-like {
+            margin: 5px 0 0;
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+          }
+        }
+      }
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      margin: 25px 5px 15px;
+      padding-left: 5px;
+    }
+
+    .details-list {
+      background: transparent;
+      padding: 0;
+
+      .detail-item {
+        --background: rgba(255, 255, 255, 0.9);
+        --border-radius: 16px;
+        --padding-start: 16px;
+        --inner-padding-end: 16px;
+        margin-bottom: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+        .item-icon {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 16px;
+          font-size: 22px;
+          color: white;
+
+          &.temp { background: linear-gradient(135deg, #ff7e5f, #feb47b); }
+          &.humidity { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+          &.wind { background: linear-gradient(135deg, #11998e, #38ef7d); }
+          &.pressure { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
+        }
+
+        h3 { font-size: 1.1rem; font-weight: 600; color: #333; margin-bottom: 2px; }
+        p { font-size: 0.85rem; color: #888; margin: 0; }
+        .item-value { font-size: 1.1rem; font-weight: 700; color: var(--ion-color-primary); }
+      }
+    }
+
+    .last-updated {
+      text-align: center;
+      margin-top: 30px;
+      color: rgba(255, 255, 255, 0.8);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      p { font-size: 0.9rem; margin: 0; }
+      .time { font-weight: bold; }
+    }
+  }
+
+  // Animation Utilities
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

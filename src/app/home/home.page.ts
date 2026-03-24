@@ -10,7 +10,8 @@ import {
   listOutline,
   gameControllerOutline,
   imagesOutline,
-  libraryOutline
+  libraryOutline,
+  cloudyOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -35,7 +36,8 @@ export class HomePage {
       listOutline,
       gameControllerOutline,
       imagesOutline,
-      libraryOutline
+      libraryOutline,
+      cloudyOutline
     });
   }
 
@@ -62,6 +64,10 @@ export class HomePage {
 
   goToComponents() {
     this.router.navigate(['/components-preview']);
+  }
+
+  goToWeather() {
+    this.router.navigate(['/weather']);
   }
 
 }
