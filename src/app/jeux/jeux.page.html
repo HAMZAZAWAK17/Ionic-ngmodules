@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Jeu du Hasard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="container">
+    <ion-card class="game-card">
+      <ion-card-header>
+        <ion-card-title class="ion-text-center">Devinez le nombre secret!</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="status-container">
+          <ion-text color="medium">
+            <h3>Essais restants: <span class="attempts">{{ tentatives }}</span></h3>
+          </ion-text>
+        </div>
+
+        <ion-item class="input-item" lines="none">
+          <ion-input 
+            type="number" 
+            [(ngModel)]="nombreSaisi" 
+            placeholder="Entrez votre devinette..."
+            [disabled]="jeuTermine"
+            (keyup.enter)="verifierNombre()">
+          </ion-input>
+        </ion-item>
+
+        <div class="message-container ion-text-center">
+          <ion-text [color]="gagne ? 'success' : (jeuTermine ? 'danger' : 'primary')">
+            <p class="message-text"><strong>{{ message }}</strong></p>
+          </ion-text>
+        </div>
+
+        <div class="button-container ion-margin-top">
+          <ion-button 
+            expand="block" 
+            shape="round" 
+            (click)="verifierNombre()" 
+            [disabled]="jeuTermine || nombreSaisi === null">
+            Vérifier
+          </ion-button>
+          
+          <ion-button 
+            *ngIf="jeuTermine" 
+            expand="block" 
+            shape="round" 
+            color="success" 
+            class="ion-margin-top"
+            (click)="initialiserJeu()">
+            Rejouer
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

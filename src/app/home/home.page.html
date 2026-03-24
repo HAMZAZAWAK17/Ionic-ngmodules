@@ -1,0 +1,86 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Menu Principal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="welcome-section">
+    <h1>Bonjour !</h1>
+    <p>Bienvenue sur votre application Ionic</p>
+  </div>
+
+  <div class="menu-grid">
+    <ion-card class="menu-card" (click)="onTransferData()">
+      <ion-card-content>
+        <div class="icon-container transfer">
+          <ion-icon name="swap-horizontal-outline"></ion-icon>
+        </div>
+        <div class="text-content">
+          <h2>Transfer Data</h2>
+          <p>Envoyer des données vers une autre page</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="menu-card" (click)="goToDetails()">
+      <ion-card-content>
+        <div class="icon-container details">
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </div>
+        <div class="text-content">
+          <h2>Détails</h2>
+          <p>Voir les détails du projet</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="menu-card" (click)="goToUI()">
+      <ion-card-content>
+        <div class="icon-container ui">
+          <ion-icon name="phone-portrait-outline"></ion-icon>
+        </div>
+        <div class="text-content">
+          <h2>Interface UI</h2>
+          <p>Explorer les composants graphiques</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="menu-card" (click)="goToJeux()">
+      <ion-card-content>
+        <div class="icon-container game">
+          <ion-icon name="game-controller-outline"></ion-icon>
+        </div>
+        <div class="text-content">
+          <h2>Jeux</h2>
+          <p>Deviner un nombre secret</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="menu-card" (click)="goToMedia()">
+      <ion-card-content>
+        <div class="icon-container media">
+          <ion-icon name="images-outline"></ion-icon>
+        </div>
+        <div class="text-content">
+          <h2>Media</h2>
+          <p>Images, Audio et Vidéo</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="menu-card" (click)="goToComponents()">
+      <ion-card-content>
+        <div class="icon-container components">
+          <ion-icon name="library-outline"></ion-icon>
+        </div>
+        <div class="text-content">
+          <h2>Composants</h2>
+          <p>Bibliothèque UI Interactive</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

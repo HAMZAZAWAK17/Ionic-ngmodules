@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Media Player</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="media-container">
+    
+    <!-- Image Locale -->
+    <section class="media-section">
+      <h2 class="section-title">Image Locale (Assets)</h2>
+      <ion-card class="media-card">
+        <img src="assets/images/nature.png" alt="Nature Locale" />
+        <ion-card-header>
+          <ion-card-subtitle>src/assets/images/nature.png</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </section>
+
+    <!-- Image Réseau -->
+    <section class="media-section">
+      <h2 class="section-title">Image Réseau (URL)</h2>
+      <ion-card class="media-card">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop" alt="Network Image" />
+        <ion-card-header>
+          <ion-card-subtitle>https://unsplash.com/photos/...</ion-card-subtitle>
+        </ion-card-header>
+      </ion-card>
+    </section>
+
+    <!-- Audio -->
+    <section class="media-section">
+      <h2 class="section-title">Audio Player</h2>
+      <ion-card class="media-card audio-card">
+        <div class="audio-header">
+          <ion-icon name="musical-notes-outline" color="primary"></ion-icon>
+          <h3>Exemple Audio</h3>
+        </div>
+        <audio controls class="full-width">
+          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+          Votre navigateur ne supporte pas l'élément audio.
+        </audio>
+      </ion-card>
+    </section>
+
+    <!-- Vidéo -->
+    <section class="media-section">
+      <h2 class="section-title">Lecteur Vidéo</h2>
+      <ion-card class="media-card video-card">
+        <video controls class="full-width" poster="https://peach.blender.org/wp-content/uploads/title_an_full.jpg">
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          Votre navigateur ne supporte pas l'élément vidéo.
+        </video>
+        <ion-card-header>
+          <ion-card-title>Big Buck Bunny</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </section>
+
+  </div>
+</ion-content>
