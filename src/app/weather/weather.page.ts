@@ -75,6 +75,8 @@ export class WeatherPage {
         this.isLoading = false;
         if (err.status === 404) {
           this.errorMessage = 'Ville introuvable. Vérifiez le nom et réessayez.';
+        } else if (err.status === 401) {
+          this.errorMessage = 'Clé API invalide ou non activée. Veuillez vérifier votre clé OpenWeatherMap.';
         } else {
           this.errorMessage = 'Erreur de connexion. Réessayez plus tard.';
         }
