@@ -57,7 +57,10 @@
           <div class="location-info">
             <ion-icon name="location-outline"></ion-icon>
             <h2>{{ weatherData.name }}</h2>
-            <img *ngIf="flagUrl" [src]="flagUrl" alt="Country Flag" class="flag-icon" />
+            <div class="flag-wrapper" *ngIf="flagUrl" title="Drapeau Officiel">
+              <img [src]="flagUrl" alt="Country Flag" class="flag-icon" />
+              <div class="flag-overlay"></div>
+            </div>
           </div>
           <p class="weather-desc">{{ weatherData.weather[0].description | titlecase }}</p>
         </div>
