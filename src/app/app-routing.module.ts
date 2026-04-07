@@ -47,6 +47,14 @@ const routes: Routes = [
     path: 'google-map',
     loadChildren: () => import('./google-map/google-map.module').then( m => m.GoogleMapPageModule)
   },
+  {
+    path: 'alerts',
+    loadChildren: () => import('./alerts/alerts.module').then( m => m.AlertsPageModule)
+  },
+  {
+    path: 'widgets',
+    loadChildren: () => import('./widgets/widgets.module').then( m => m.WidgetsPageModule)
+  },
 ];
 
 @NgModule({
