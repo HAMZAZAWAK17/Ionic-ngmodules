@@ -22,9 +22,9 @@ export class ClipboardPage implements OnInit {
     if (this.clipboardText) {
       try {
         await navigator.clipboard.writeText(this.clipboardText);
-        this.showMessage('Copied to clipboard!');
+        this.showMessage('✅ Text copied to system clipboard!');
       } catch (err) {
-        this.showMessage('Failed to copy.');
+        this.showMessage('❌ Failed to copy. Check permissions.');
       }
     }
   }
@@ -32,10 +32,15 @@ export class ClipboardPage implements OnInit {
   async pasteFromClipboard() {
     try {
       const text = await navigator.clipboard.readText();
-      this.clipboardText = text;
-      this.showMessage('Pasted from clipboard!');
+      if (text) {
+        this.clipboardText = text;
+        this.showMessage('📋 Text pasted successfully!');
+      } else {
+        this.showMessage('⚠️ Clipboard is empty.');
+      }
     } catch (err) {
-      this.showMessage('Failed to paste.');
+      this.showMessage('🚫 Error: Permission denied to read clipboard.');
+      console.error('Clipboard paste error:', err);
     }
   }
 
