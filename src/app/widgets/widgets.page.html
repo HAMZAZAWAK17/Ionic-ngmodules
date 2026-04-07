@@ -1,13 +1,109 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar>
-    <ion-title>widgets</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Interactive Widgets</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">widgets</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="widgets-wrapper">
+    
+    <div class="intro">
+      <h1>Smart Dashboard</h1>
+      <p>Real-time analytics and system monitoring widgets.</p>
+    </div>
+
+    <!-- Main KPIs -->
+    <div class="kpi-row">
+      <div class="kpi-card purple">
+        <ion-icon name="cash-outline"></ion-icon>
+        <div class="info">
+          <span>Revenue</span>
+          <h3>$12,450</h3>
+        </div>
+      </div>
+      <div class="kpi-card blue">
+        <ion-icon name="people-outline"></ion-icon>
+        <div class="info">
+          <span>Users</span>
+          <h3>4.8k</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Health Widget -->
+    <ion-card class="pro-widget health">
+      <div class="header">
+        <div class="title-group">
+          <ion-icon name="pulse-outline"></ion-icon>
+          <h3>System Health</h3>
+        </div>
+        <ion-badge color="success">Running</ion-badge>
+      </div>
+      <div class="content">
+        <div class="progress-wrap">
+          <div class="label-row">
+            <span>Server CPU</span>
+            <span>72%</span>
+          </div>
+          <ion-progress-bar value="0.72" color="primary"></ion-progress-bar>
+        </div>
+        <div class="progress-wrap">
+          <div class="label-row">
+            <span>Memory Usage</span>
+            <span>45%</span>
+          </div>
+          <ion-progress-bar value="0.45" color="secondary"></ion-progress-bar>
+        </div>
+      </div>
+    </ion-card>
+
+    <!-- Activity Widget -->
+    <ion-card class="pro-widget activity">
+      <h3>Weekly Activity</h3>
+      <div class="chart-mock">
+        <div class="bar" style="height: 40%"></div>
+        <div class="bar" style="height: 60%"></div>
+        <div class="bar highlighted" style="height: 90%"></div>
+        <div class="bar" style="height: 50%"></div>
+        <div class="bar" style="height: 75%"></div>
+        <div class="bar" style="height: 30%"></div>
+      </div>
+      <div class="footer">
+        <ion-icon name="analytics-outline"></ion-icon>
+        <span>+14% growth this week</span>
+      </div>
+    </ion-card>
+
+    <!-- Detailed Stats List -->
+    <div class="stats-list">
+      <ion-item lines="none" class="stat-item">
+        <ion-icon slot="start" name="cart-outline" class="circle blue"></ion-icon>
+        <ion-label>
+          <h3>Total Sales</h3>
+          <p>432 orders today</p>
+        </ion-label>
+        <span class="val">+$890</span>
+      </ion-item>
+      <ion-item lines="none" class="stat-item">
+        <ion-icon slot="start" name="cellular-outline" class="circle green"></ion-icon>
+        <ion-label>
+          <h3>Network Load</h3>
+          <p>Stable connection</p>
+        </ion-label>
+        <span class="val">Active</span>
+      </ion-item>
+      <ion-item lines="none" class="stat-item">
+        <ion-icon slot="start" name="flash-outline" class="circle orange"></ion-icon>
+        <ion-label>
+          <h3>Energy Hub</h3>
+          <p>Battery optimized</p>
+        </ion-label>
+        <span class="val">100%</span>
+      </ion-item>
+    </div>
+
+  </div>
 </ion-content>
