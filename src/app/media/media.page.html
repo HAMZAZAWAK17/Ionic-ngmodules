@@ -13,34 +13,78 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
-  <div class="media-container">
-  
-    <!-- Audio -->
+  <div class="pro-media-wrapper ion-padding">
+    
+    <div class="page-intro">
+      <h1>Discover Media</h1>
+      <p>Explore different media modules from various sources.</p>
+    </div>
+
+    <!-- GALLERY SECTION -->
     <section class="media-section">
-      <h2 class="section-title">Module Audio</h2>
-      <ion-card class="media-card audio-card">
-        <ion-card-header>
-          <ion-card-title>Sample Audio Stream</ion-card-title>
-        </ion-card-header>
-        <audio controls class="full-width">
-          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-          Votre navigateur ne supporte pas l'élément audio.
-        </audio>
+      <h2 class="section-label">Image Gallery</h2>
+      <div class="image-grid">
+        <!-- Local Image -->
+        <ion-card class="media-card gallery-item">
+          <div class="image-container">
+            <img src="assets/images/nature.png" alt="Local nature" onerror="this.src='https://images.unsplash.com/photo-1472214103451-9374bd1c798e?q=80&w=600'">
+            <ion-badge color="secondary" class="source-badge">Local Asset</ion-badge>
+          </div>
+          <ion-card-header>
+            <ion-card-subtitle>Image Source</ion-card-subtitle>
+            <ion-card-title>Nature Scenic View</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+
+        <!-- Network Image -->
+        <ion-card class="media-card gallery-item">
+          <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=600" alt="Network forest">
+            <ion-badge color="tertiary" class="source-badge">Network URL</ion-badge>
+          </div>
+          <ion-card-header>
+            <ion-card-subtitle>Image Network</ion-card-subtitle>
+            <ion-card-title>Primeval Forest</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </div>
+    </section>
+
+    <!-- VIDEO SECTION -->
+    <section class="media-section">
+      <h2 class="section-label">Video Stream</h2>
+      <ion-card class="media-card player-card">
+        <video controls class="player-element" poster="https://peach.blender.org/wp-content/uploads/title_an_full.jpg">
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          Browser unsupported.
+        </video>
+        <ion-item lines="none" class="player-info">
+          <ion-icon slot="start" name="videocam-outline" color="primary"></ion-icon>
+          <ion-label>
+            <h3>Big Buck Bunny</h3>
+            <p>Animated Open Movie Source</p>
+          </ion-label>
+        </ion-item>
       </ion-card>
     </section>
 
-    <!-- Vidéo -->
-    <section class="media-section">
-      <h2 class="section-title">Lecteur Vidéo</h2>
-      <ion-card class="media-card video-card">
-        <video controls class="full-width" poster="https://peach.blender.org/wp-content/uploads/title_an_full.jpg">
-          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-          Votre navigateur ne supporte pas l'élément vidéo.
-        </video>
-        <ion-card-header>
-          <ion-card-title>Big Buck Bunny</ion-card-title>
-        </ion-card-header>
+    <!-- AUDIO SECTION -->
+    <section class="media-section last-section">
+      <h2 class="section-label">Audio Library</h2>
+      <ion-card class="media-card player-card audio-special">
+        <div class="audio-header">
+          <ion-icon name="musical-notes-outline" color="secondary"></ion-icon>
+          <div class="audio-text">
+            <h3>Soundhelix Echoes</h3>
+            <p>Digital Stream • MP3 Format</p>
+          </div>
+        </div>
+        <div class="audio-control-wrap">
+          <audio controls class="audio-player">
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+            Browser unsupported.
+          </audio>
+        </div>
       </ion-card>
     </section>
 
