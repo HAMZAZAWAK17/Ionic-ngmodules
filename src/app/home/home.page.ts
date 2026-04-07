@@ -16,11 +16,9 @@ import {
   mapOutline,
   chevronForwardOutline,
   syncOutline,
-  layersOutline,
   extensionPuzzleOutline,
   playCircleOutline,
-  partlySunnyOutline,
-  briefcaseOutline
+  partlySunnyOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -51,11 +49,9 @@ export class HomePage {
       mapOutline,
       chevronForwardOutline,
       syncOutline,
-      layersOutline,
       extensionPuzzleOutline,
       playCircleOutline,
-      partlySunnyOutline,
-      briefcaseOutline
+      partlySunnyOutline
     });
   }
 
@@ -64,24 +60,12 @@ export class HomePage {
     this.router.navigate(['/transfer-data']);
   }
 
-  goToDetails() {
-    this.router.navigate(['/details']);
-  }
-
-  goToUI() {
-    this.router.navigate(['/ui']);
-  }
-
   goToJeux() {
     this.router.navigate(['/jeux']);
   }
 
   goToMedia() {
     this.router.navigate(['/media']);
-  }
-
-  goToComponents() {
-    this.router.navigate(['/components-preview']);
   }
 
   goToWeather() {
