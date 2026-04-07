@@ -16,8 +16,14 @@ import {
   wifiOutline,
   moonOutline,
   sunnyOutline,
-  flaskOutline
+  flaskOutline,
+  chevronDownOutline,
+  homeOutline,
+  trashOutline,
+  refreshOutline,
+  reorderThreeOutline
 } from 'ionicons/icons';
+import { ModalController, PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-widgets',
@@ -31,8 +37,12 @@ export class WidgetsPage implements OnInit {
   toggleStatus = true;
   checkboxStatus = false;
   selectedSegment = 'all';
+  isModalOpen = false;
 
-  constructor() {
+  constructor(
+    private modalController: ModalController,
+    private popoverController: PopoverController
+  ) {
     addIcons({ 
       addOutline, 
       shareOutline, 
@@ -49,9 +59,18 @@ export class WidgetsPage implements OnInit {
       wifiOutline,
       moonOutline,
       sunnyOutline,
-      flaskOutline
+      flaskOutline,
+      chevronDownOutline,
+      homeOutline,
+      trashOutline,
+      refreshOutline,
+      reorderThreeOutline
     });
   }
 
   ngOnInit() { }
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
 }
