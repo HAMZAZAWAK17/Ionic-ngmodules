@@ -52,4 +52,8 @@ export class JeuxPage implements OnInit {
     
     this.nombreSaisi = null;
   }
+
+  recommencer() {
+    this.initialiserJeu();
+  }
 }
