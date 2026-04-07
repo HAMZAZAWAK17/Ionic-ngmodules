@@ -55,6 +55,10 @@ const routes: Routes = [
     path: 'widgets',
     loadChildren: () => import('./widgets/widgets.module').then( m => m.WidgetsPageModule)
   },
+  {
+    path: 'sms',
+    loadChildren: () => import('./sms/sms.module').then( m => m.SmsPageModule)
+  },
 ];
 
 @NgModule({
