@@ -68,23 +68,31 @@
       <div class="metric-grid">
         <div class="metric-card">
           <ion-icon name="speedometer-outline" color="primary"></ion-icon>
-          <label>Pression</label>
-          <div class="val">{{ weatherData.main.pressure }} hPa</div>
+          <div class="label-group">
+            <label>Pression</label>
+            <div class="val">{{ weatherData.main.pressure }} hPa</div>
+          </div>
         </div>
         <div class="metric-card">
           <ion-icon name="eye-outline" color="primary"></ion-icon>
-          <label>Visibilité</label>
-          <div class="val">{{ (weatherData.visibility / 1000) | number:'1.0-1' }} km</div>
+          <div class="label-group">
+            <label>Visibilité</label>
+            <div class="val">{{ (weatherData.visibility / 1000) | number:'1.0-1' }} km</div>
+          </div>
         </div>
         <div class="metric-card">
           <ion-icon name="thermometer-outline" color="primary"></ion-icon>
-          <label>Ressenti</label>
-          <div class="val">{{ weatherData.main.feels_like | number:'1.0-0' }}°C</div>
+          <div class="label-group">
+            <label>Ressenti</label>
+            <div class="val">{{ weatherData.main.feels_like | number:'1.0-0' }}°C</div>
+          </div>
         </div>
         <div class="metric-card">
           <ion-icon name="cloudy-outline" color="primary"></ion-icon>
-          <label>Nuages</label>
-          <div class="val">{{ weatherData.clouds.all }}%</div>
+          <div class="label-group">
+            <label>Nuages</label>
+            <div class="val">{{ weatherData.clouds.all }}%</div>
+          </div>
         </div>
       </div>
 
