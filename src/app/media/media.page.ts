@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { addIcons } from 'ionicons';
+import { videocamOutline, musicalNotesOutline, shareSocialOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-media',
@@ -8,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MediaPage implements OnInit {
 
-  constructor() { }
+  constructor() {
+    addIcons({ videocamOutline, musicalNotesOutline, shareSocialOutline });
+  }
 
   ngOnInit() {
   }

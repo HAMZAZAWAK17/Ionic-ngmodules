@@ -4,86 +4,172 @@ ion-toolbar {
 }
 
 ion-content {
-  --background: #f8fafc;
+  --background: #ffffff;
 
-  .media-container {
-    padding: 24px 20px 40px;
+  .pro-media-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 24px;
+    padding-bottom: 60px;
+  }
+
+  .page-intro {
+    margin-bottom: 35px;
+    padding: 0 5px;
+    h1 { 
+      margin: 0; 
+      font-weight: 900; 
+      font-size: 2.4rem; 
+      color: #0f172a; 
+      letter-spacing: -1.5px; 
+    }
+    p { 
+      margin: 8px 0 0; 
+      color: #64748b; 
+      font-weight: 600; 
+      font-size: 1.1rem; 
+    }
   }
 
   .media-section {
-    margin-bottom: 35px;
-
+    margin-bottom: 45px;
+    
     .section-label {
-      font-size: 0.75rem;
-      font-weight: 800;
+      font-size: 0.85rem;
+      font-weight: 900;
       text-transform: uppercase;
-      color: var(--ion-color-medium);
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-      display: block;
+      color: #94a3b8;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      padding-left: 5px;
     }
   }
 
-  /* VIDEO CARD */
-  .pro-card-player {
-    background: white;
-    border-radius: 24px;
-    overflow: hidden;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.01);
-    margin-bottom: 25px;
+  /* GALLERY GRID */
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
 
-    .video-viewport {
+  .gallery-item {
+    margin: 0;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    border: 1px solid #f1f5f9;
+    transition: transform 0.3s ease;
+
+    &:active { transform: scale(0.98); }
+
+    .image-container {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+      
+      img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .source-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        padding: 6px 12px;
+        border-radius: 10px;
+        font-weight: 800;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      }
+    }
+
+    ion-card-header {
+      padding: 20px;
+      background: white;
+      
+      ion-card-subtitle {
+        font-weight: 800;
+        color: var(--ion-color-primary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+      }
+      
+      ion-card-title {
+        font-weight: 800;
+        font-size: 1.25rem;
+        color: #1e293b;
+      }
+    }
+  }
+
+  /* PLAYER CARDS */
+  .player-card {
+    margin: 0;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.07);
+    border: 1px solid #f1f5f9;
+    background: white;
+
+    .player-element {
       width: 100%;
+      height: auto;
+      max-height: 480px;
       background: #000;
-      video { width: 100%; display: block; }
+      display: block;
     }
 
     .player-info {
-      padding: 20px;
-      h2 { margin: 0; font-weight: 800; font-size: 1.3rem; color: var(--ion-color-dark); }
-      p { margin: 5px 0 0; color: var(--ion-color-medium); font-size: 0.95rem; }
+      --padding-start: 24px;
+      --padding-top: 20px;
+      --padding-bottom: 20px;
+      
+      ion-icon { font-size: 32px; margin-right: 16px; }
+      h3 { margin: 0; font-weight: 800; font-size: 1.25rem; color: #0f172a; }
+      p { margin: 4px 0 0; color: #64748b; font-weight: 600; }
     }
   }
 
-  /* AUDIO LIST */
-  .audio-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  /* AUDIO SPECIAL STYLING */
+  .audio-special {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    padding: 30px;
 
-  .audio-item {
-    background: white;
-    border-radius: 20px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #edf2f7;
-    
-    .audio-icon-box {
-      width: 44px;
-      height: 44px;
-      background: #f1f5f9;
-      border-radius: 12px;
+    .audio-header {
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: var(--ion-color-secondary);
-      font-size: 20px;
-      margin-right: 15px;
+      margin-bottom: 25px;
+
+      ion-icon {
+        font-size: 56px;
+        margin-right: 20px;
+        filter: drop-shadow(0 8px 12px rgba(var(--ion-color-secondary-rgb), 0.2));
+      }
+
+      .audio-text {
+        h3 { margin: 0; font-weight: 800; font-size: 1.4rem; color: #0f172a; }
+        p { margin: 4px 0 0; font-weight: 700; color: #94a3b8; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+      }
     }
 
-    .audio-info {
-      flex: 1;
-      h3 { margin: 0; font-weight: 700; font-size: 1rem; color: var(--ion-color-dark); }
-      p { margin: 2px 0 0; font-size: 0.8rem; color: var(--ion-color-medium); }
-    }
+    .audio-control-wrap {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 10px;
+      border: 1px solid #e2e8f0;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
 
-    .play-btn {
-      --padding-start: 12px;
-      --padding-end: 12px;
-      font-weight: 700;
+      .audio-player {
+        width: 100%;
+        height: 48px;
+        border-radius: 12px;
+      }
     }
   }
 }
