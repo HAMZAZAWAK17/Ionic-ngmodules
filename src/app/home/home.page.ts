@@ -18,7 +18,9 @@ import {
   syncOutline,
   extensionPuzzleOutline,
   playCircleOutline,
-  partlySunnyOutline
+  partlySunnyOutline,
+  notificationsOutline,
+  barChartOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -51,7 +53,9 @@ export class HomePage {
       syncOutline,
       extensionPuzzleOutline,
       playCircleOutline,
-      partlySunnyOutline
+      partlySunnyOutline,
+      notificationsOutline,
+      barChartOutline
     });
   }
 
@@ -80,4 +84,11 @@ export class HomePage {
     this.router.navigate(['/google-map']);
   }
 
+  goToAlerts() {
+    this.router.navigate(['/alerts']);
+  }
+
+  goToWidgets() {
+    this.router.navigate(['/widgets']);
+  }
 }
