@@ -1,62 +1,61 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+<ion-header class="ion-no-border">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-back-button defaultHref="/home" text="Back" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
-    <ion-title>Jeu du Hasard</ion-title>
+    <ion-title>Logic Module</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="recommencer()">
+        <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <div class="container">
-    <ion-card class="game-card">
-      <ion-card-header>
-        <ion-card-title class="ion-text-center">Devinez le nombre secret!</ion-card-title>
-      </ion-card-header>
+<ion-content [fullscreen]="true">
+  
+  <div class="pro-game-wrapper ion-padding">
+    
+    <div class="module-header">
+      <div class="module-icon">
+        <ion-icon name="extension-puzzle-outline"></ion-icon>
+      </div>
+      <div class="module-text">
+        <h1>Number Logic Game</h1>
+        <p>Attempt to identify the randomly generated system integer between 1 and 100.</p>
+      </div>
+    </div>
 
-      <ion-card-content>
-        <div class="status-container">
-          <ion-text color="medium">
-            <h3>Essais restants: <span class="attempts">{{ tentatives }}</span></h3>
-          </ion-text>
+    <!-- MAIN GAME BOARD -->
+    <div class="logic-board">
+      <div class="status-row">
+        <div class="badge" [ngClass]="{'success': message.includes('Bravo'), 'danger': message.includes('plus'), 'waiting': !message}">
+          {{ message || 'Awaiting input...' }}
         </div>
+      </div>
 
-        <ion-item class="input-item" lines="none">
-          <ion-input 
-            type="number" 
-            [(ngModel)]="nombreSaisi" 
-            placeholder="Entrez votre devinette..."
-            [disabled]="jeuTermine"
-            (keyup.enter)="verifierNombre()">
+      <div class="input-section">
+        <label>System Input</label>
+        <div class="custom-input-box">
+          <ion-input type="number" 
+                    [(ngModel)]="nombreSaisi" 
+                    placeholder="Enter integer..."
+                    mode="md">
           </ion-input>
-        </ion-item>
-
-        <div class="message-container ion-text-center">
-          <ion-text [color]="gagne ? 'success' : (jeuTermine ? 'danger' : 'primary')">
-            <p class="message-text"><strong>{{ message }}</strong></p>
-          </ion-text>
-        </div>
-
-        <div class="button-container ion-margin-top">
-          <ion-button 
-            expand="block" 
-            shape="round" 
-            (click)="verifierNombre()" 
-            [disabled]="jeuTermine || nombreSaisi === null">
-            Vérifier
-          </ion-button>
-          
-          <ion-button 
-            *ngIf="jeuTermine" 
-            expand="block" 
-            shape="round" 
-            color="success" 
-            class="ion-margin-top"
-            (click)="initialiserJeu()">
-            Rejouer
+          <ion-button (click)="verifierNombre()" [disabled]="nombreSaisi === null">
+            Verify Logic
           </ion-button>
         </div>
-      </ion-card-content>
-    </ion-card>
+      </div>
+
+      <!-- REPLAY OPTION displayed if game over -->
+      <div class="replay-overlay" *ngIf="message.includes('Bravo')">
+        <ion-button expand="block" 
+                    class="ion-margin-top"
+                    (click)="initialiserJeu()">
+          Rejouer
+        </ion-button>
+      </div>
+    </div>
   </div>
 </ion-content>

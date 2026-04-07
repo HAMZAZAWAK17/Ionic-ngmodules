@@ -1,33 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+<ion-header class="ion-no-border">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="goHome()">
-        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
-      </ion-button>
+      <ion-back-button defaultHref="/home" text="Back" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
-    <ion-title>TRANSFER DATA</ion-title>
+    <ion-title>Data Management</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-text-center">
-  <div class="container">
-    <div class="icon-header">
-      <ion-icon name="swap-horizontal-outline" color="primary"></ion-icon>
-    </div>
+<ion-content [fullscreen]="true">
+  
+  <div class="transfer-container">
     
-    <h2 class="title">Données Transférées</h2>
-    <p class="subtitle">Informations reçues de la page d'accueil</p>
-
-    <div class="data-card" *ngIf="data">
-      <div class="data-item">
-        <label>MESSAGE</label>
-        <h3>{{ data.msg }}</h3>
+    <div class="transfer-card">
+      <div class="card-header-pro">
+        <h2>Sync Module</h2>
+        <p>Input system data for cross-module synchronization.</p>
       </div>
-      <div class="divider"></div>
-      <div class="data-item">
-        <label>IDENTIFIANT</label>
-        <h3>{{ data.name }}</h3>
+
+      <div class="form-group">
+        <label>Identity String</label>
+        <div class="custom-input">
+          <ion-input type="text" [(ngModel)]="nom" placeholder="Enter name identifier..."></ion-input>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>System Email</label>
+        <div class="custom-input">
+          <ion-input type="email" [(ngModel)]="email" placeholder="Enter contact email..."></ion-input>
+        </div>
+      </div>
+
+      <ion-button expand="block" (click)="valider()" class="submit-btn">
+        Execute Synchronization
+      </ion-button>
+
+      <div class="info-hint">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        <span>Changes will propagate to the summary dashboard immediately.</span>
       </div>
     </div>
+
   </div>
+
 </ion-content>

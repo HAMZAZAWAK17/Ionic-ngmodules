@@ -1,98 +1,148 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>Menu Principal</ion-title>
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>E-STEM Project</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="welcome-section">
-    <h1>Bonjour !</h1>
-    <p>Bienvenue sur votre application Ionic</p>
-  </div>
+  <ion-header collapse="condense" class="ion-no-border">
+    <ion-toolbar>
+      <ion-title size="large">Dashboard</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-  <div class="menu-grid">
-    <ion-card class="menu-card" (click)="onTransferData()">
-      <ion-card-content>
-        <div class="icon-container transfer">
-          <ion-icon name="swap-horizontal-outline"></ion-icon>
+  <div class="main-content">
+    
+    <!-- Professional Greeting Section -->
+    <section class="identity-section">
+      <div class="greeting-row">
+        <div class="text-group">
+          <h1>Welcome back!</h1>
+          <p>Here is your project overview for today.</p>
         </div>
-        <div class="text-content">
-          <h2>Transfer Data</h2>
-          <p>Envoyer des données vers une autre page</p>
+        <div class="date-badge">
+          Apr 3, 2026
         </div>
-      </ion-card-content>
-    </ion-card>
+      </div>
 
-    <ion-card class="menu-card" (click)="goToDetails()">
-      <ion-card-content>
-        <div class="icon-container details">
-          <ion-icon name="information-circle-outline"></ion-icon>
+      <div class="stats-overview">
+        <div class="stat-card">
+          <span class="stat-val">24</span>
+          <span class="stat-lab">Modules</span>
         </div>
-        <div class="text-content">
-          <h2>Détails</h2>
-          <p>Voir les détails du projet</p>
+        <div class="stat-card">
+          <span class="stat-val">98%</span>
+          <span class="stat-lab">Uptime</span>
         </div>
-      </ion-card-content>
-    </ion-card>
+        <div class="stat-card">
+          <span class="stat-val">Active</span>
+          <span class="stat-lab">Status</span>
+        </div>
+      </div>
+    </section>
 
-    <ion-card class="menu-card" (click)="goToUI()">
-      <ion-card-content>
-        <div class="icon-container ui">
-          <ion-icon name="phone-portrait-outline"></ion-icon>
+    <!-- Services Grid -->
+    <section class="services-section">
+      <h2 class="section-label">Main Modules</h2>
+      
+      <div class="pro-grid">
+        <div class="pro-card" (click)="onTransferData()">
+          <div class="pro-icon blue">
+            <ion-icon name="sync-outline"></ion-icon>
+          </div>
+          <div class="pro-info">
+            <h3>Data Transfer</h3>
+            <p>Sync cross-page data</p>
+          </div>
+          <ion-icon class="chevron" name="chevron-forward-outline"></ion-icon>
         </div>
-        <div class="text-content">
-          <h2>Interface UI</h2>
-          <p>Explorer les composants graphiques</p>
-        </div>
-      </ion-card-content>
-    </ion-card>
 
-    <ion-card class="menu-card" (click)="goToJeux()">
-      <ion-card-content>
-        <div class="icon-container game">
-          <ion-icon name="game-controller-outline"></ion-icon>
+        <div class="pro-card" (click)="goToUI()">
+          <div class="pro-icon indigo">
+            <ion-icon name="layers-outline"></ion-icon>
+          </div>
+          <div class="pro-info">
+            <h3>UI Components</h3>
+            <p>Native design library</p>
+          </div>
+          <ion-icon class="chevron" name="chevron-forward-outline"></ion-icon>
         </div>
-        <div class="text-content">
-          <h2>Jeux</h2>
-          <p>Deviner un nombre secret</p>
-        </div>
-      </ion-card-content>
-    </ion-card>
 
-    <ion-card class="menu-card" (click)="goToMedia()">
-      <ion-card-content>
-        <div class="icon-container media">
-          <ion-icon name="images-outline"></ion-icon>
+        <div class="pro-card" (click)="goToJeux()">
+          <div class="pro-icon orange">
+            <ion-icon name="extension-puzzle-outline"></ion-icon>
+          </div>
+          <div class="pro-info">
+            <h3>Games</h3>
+            <p>Interactive exercises</p>
+          </div>
+          <ion-icon class="chevron" name="chevron-forward-outline"></ion-icon>
         </div>
-        <div class="text-content">
-          <h2>Media</h2>
-          <p>Images, Audio et Vidéo</p>
-        </div>
-      </ion-card-content>
-    </ion-card>
 
-    <ion-card class="menu-card" (click)="goToComponents()">
-      <ion-card-content>
-        <div class="icon-container components">
-          <ion-icon name="library-outline"></ion-icon>
+        <div class="pro-card" (click)="goToMedia()">
+          <div class="pro-icon cyan">
+            <ion-icon name="play-circle-outline"></ion-icon>
+          </div>
+          <div class="pro-info">
+            <h3>Multimedia</h3>
+            <p>Video & Audio assets</p>
+          </div>
+          <ion-icon class="chevron" name="chevron-forward-outline"></ion-icon>
         </div>
-        <div class="text-content">
-          <h2>Composants</h2>
-          <p>Bibliothèque UI Interactive</p>
-        </div>
-      </ion-card-content>
-    </ion-card>
 
-    <ion-card class="menu-card" (click)="goToWeather()">
-      <ion-card-content>
-        <div class="icon-container weather">
-          <ion-icon name="cloudy-outline"></ion-icon>
+        <div class="pro-card" (click)="goToWeather()">
+          <div class="pro-icon teal">
+            <ion-icon name="partly-sunny-outline"></ion-icon>
+          </div>
+          <div class="pro-info">
+            <h3>Weather API</h3>
+            <p>Real-time forecasts</p>
+          </div>
+          <ion-icon class="chevron" name="chevron-forward-outline"></ion-icon>
         </div>
-        <div class="text-content">
-          <h2>Météo</h2>
-          <p>Consulter les prévisions météo</p>
+
+        <div class="pro-card" (click)="goToDetails()">
+          <div class="pro-icon slate">
+            <ion-icon name="briefcase-outline"></ion-icon>
+          </div>
+          <div class="pro-info">
+            <h3>Project Details</h3>
+            <p>Configuration & Info</p>
+          </div>
+          <ion-icon class="chevron" name="chevron-forward-outline"></ion-icon>
         </div>
-      </ion-card-content>
-    </ion-card>
+
+        <div class="pro-card" (click)="goToClipboard()">
+          <div class="pro-icon violet">
+            <ion-icon name="clipboard-outline"></ion-icon>
+          </div>
+          <div class="pro-info">
+            <h3>Clipboard</h3>
+            <p>Copy & Paste tools</p>
+          </div>
+          <ion-icon class="chevron" name="chevron-forward-outline"></ion-icon>
+        </div>
+
+        <div class="pro-card" (click)="goToGoogleMap()">
+          <div class="pro-icon green">
+            <ion-icon name="map-outline"></ion-icon>
+          </div>
+          <div class="pro-info">
+            <h3>Google Maps</h3>
+            <p>Location & Navigation</p>
+          </div>
+          <ion-icon class="chevron" name="chevron-forward-outline"></ion-icon>
+        </div>
+      </div>
+    </section>
   </div>
 </ion-content>
+

@@ -1,11 +1,11 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+<ion-header class="ion-no-border">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" icon="arrow-back-outline"></ion-back-button>
+      <ion-back-button defaultHref="/home" text="Back" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
-    <ion-title>Météo Actuelle</ion-title>
+    <ion-title>Weather Analytics</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="searchWeather()" [disabled]="isLoading || !cityInput.trim()">
+      <ion-button (click)="searchWeather()" [disabled]="isLoading">
         <ion-icon name="refresh-outline" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -13,158 +13,85 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="weather-container" [ngClass]="weatherData ? getWeatherGradient(weatherData?.weather[0]?.id) : 'default'">
+  
+  <div class="pro-weather-wrapper">
     
-    <!-- Search Section -->
-    <div class="search-section">
-      <ion-searchbar 
-        [(ngModel)]="cityInput" 
-        (ionInput)="errorMessage = ''"
-        (ionChange)="searchWeather()" 
-        placeholder="Rechercher une ville..."
-        animated="true"
-        enterkeyhint="search"
-        search-icon="search-outline"
-        clear-icon="close-circle-outline">
-      </ion-searchbar>
+    <!-- SEARCH SECTION -->
+    <div class="search-wrap ion-padding">
+      <div class="pro-search">
+        <ion-icon name="search-outline"></ion-icon>
+        <input type="text" [(ngModel)]="cityInput" placeholder="Analyze a city..." (keyup.enter)="searchWeather()">
+      </div>
+      <div class="error-msg" *ngIf="errorMessage">{{ errorMessage }}</div>
     </div>
 
-    <!-- Loading State -->
-    <div *ngIf="isLoading" class="loading-state">
-      <ion-spinner name="crescent" color="light"></ion-spinner>
-      <p>Recherche des données de la ville...</p>
+    <!-- LOADING STATE -->
+    <div *ngIf="isLoading" class="loading-wrap">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Fetching data...</p>
     </div>
 
-    <!-- Error State -->
-    <div *ngIf="errorMessage && !isLoading" class="error-state">
-      <ion-icon name="alert-circle-outline"></ion-icon>
-      <p>{{ errorMessage }}</p>
-    </div>
-
-    <!-- Empty State -->
-    <div *ngIf="!isLoading && !weatherData && !errorMessage" class="empty-state">
-      <ion-icon name="cloud-outline"></ion-icon>
-      <h2>Quelle est la météo ?</h2>
-      <p>Recherchez une ville pour voir ses conditions météo actuelles</p>
-    </div>
-
-    <!-- Weather Data View -->
-    <div *ngIf="!isLoading && weatherData" class="weather-results animate-fade-in">
+    <!-- DATA VIEW -->
+    <div *ngIf="!isLoading && weatherData" class="data-view ion-padding">
       
-      <!-- Main Card -->
-      <ion-card class="main-card">
-        <div class="card-header">
-          <div class="location-info">
-            <ion-icon name="location-outline"></ion-icon>
+      <div class="main-stats-card">
+        <div class="top-row">
+          <div class="location">
             <h2>{{ weatherData.name }}</h2>
-            <div class="flag-wrapper" *ngIf="flagUrl" title="Drapeau Officiel">
-              <img [src]="flagUrl" alt="Country Flag" class="flag-icon" />
-              <div class="flag-overlay"></div>
-            </div>
+            <span>{{ weatherData.weather[0].description }}</span>
           </div>
-          <p class="weather-desc">{{ weatherData.weather[0].description | titlecase }}</p>
-        </div>
-
-        <div class="temp-display">
-          <div class="icon-wrap">
-            <img [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@4x.png'" alt="Weather Icon" />
-          </div>
-          <div class="temp-info">
-            <h1 class="main-temp">{{ weatherData.main.temp | number:'1.0-0' }}°<span class="unit">C</span></h1>
-            <p class="feels-like">Ressenti: {{ weatherData.main.feels_like | number:'1.0-0' }}°C</p>
+          <div class="main-temp">
+            {{ weatherData.main.temp | number:'1.0-0' }}°
           </div>
         </div>
-      </ion-card>
-
-      <!-- Details List -->
-      <h3 class="section-title">Détails météo</h3>
-      
-      <ion-list class="details-list" lines="none">
         
-        <ion-item class="detail-item">
-          <div class="item-icon temp">
-            <ion-icon name="thermometer-outline"></ion-icon>
-          </div>
-          <ion-label>
-            <h3>Min / Max</h3>
-            <p>Température du jour</p>
-          </ion-label>
-          <div slot="end" class="item-value">
-            {{ weatherData.main.temp_min | number:'1.0-0' }}° / {{ weatherData.main.temp_max | number:'1.0-0' }}°
-          </div>
-        </ion-item>
-
-        <ion-item class="detail-item">
-          <div class="item-icon humidity">
+        <div class="stats-row">
+          <div class="stat-pill">
             <ion-icon name="water-outline"></ion-icon>
+            <span>Humidity: {{ weatherData.main.humidity }}%</span>
           </div>
-          <ion-label>
-            <h3>Humidité</h3>
-            <p>Dans l'air</p>
-          </ion-label>
-          <div slot="end" class="item-value">
-            {{ weatherData.main.humidity }}%
+          <div class="stat-pill">
+            <ion-icon name="leaf-outline"></ion-icon>
+            <span>Wind: {{ (weatherData.wind.speed * 3.6) | number:'1.0-1' }}km/h</span>
           </div>
-        </ion-item>
+        </div>
+      </div>
 
-        <ion-item class="detail-item">
-          <div class="item-icon wind">
-            <ion-icon name="speedometer-outline"></ion-icon>
-          </div>
-          <ion-label>
-            <h3>Vent</h3>
-            <p>{{ getWindDirection(weatherData.wind.deg) }}</p>
-          </ion-label>
-          <div slot="end" class="item-value">
-            {{ (weatherData.wind.speed * 3.6) | number:'1.0-1' }} km/h
-          </div>
-        </ion-item>
+      <h3 class="section-label">Detailed Metrics</h3>
+      
+      <div class="metric-grid">
+        <div class="metric-card">
+          <label>Pressure</label>
+          <div class="val">{{ weatherData.main.pressure }} hPa</div>
+        </div>
+        <div class="metric-card">
+          <label>Visibility</label>
+          <div class="val">{{ (weatherData.visibility / 1000) | number:'1.0-1' }} km</div>
+        </div>
+        <div class="metric-card">
+          <label>Feels Like</label>
+          <div class="val">{{ weatherData.main.feels_like | number:'1.0-0' }}°C</div>
+        </div>
+        <div class="metric-card">
+          <label>Clouds</label>
+          <div class="val">{{ weatherData.clouds.all }}%</div>
+        </div>
+      </div>
 
-        <ion-item class="detail-item">
-          <div class="item-icon pressure">
-            <ion-icon name="cloudy-outline"></ion-icon>
-          </div>
-          <ion-label>
-            <h3>Pression</h3>
-            <p>Atmosphérique</p>
-          </ion-label>
-          <div slot="end" class="item-value">
-            {{ weatherData.main.pressure }} hPa
-          </div>
-        </ion-item>
-
-        <ion-item class="detail-item">
-          <div class="item-icon sun">
-            <ion-icon name="sunny"></ion-icon>
-          </div>
-          <ion-label>
-            <h3>Soleil</h3>
-            <p>Lever / Coucher</p>
-          </ion-label>
-          <div slot="end" class="item-value">
-            {{ formatTime(weatherData.sys.sunrise, weatherData.timezone) }} - {{ formatTime(weatherData.sys.sunset, weatherData.timezone) }}
-          </div>
-        </ion-item>
-
-        <ion-item class="detail-item">
-          <div class="item-icon clouds">
-            <ion-icon name="cloudy-outline"></ion-icon>
-          </div>
-          <ion-label>
-            <h3>Nuages</h3>
-            <p>Couverture nuageuse</p>
-          </ion-label>
-          <div slot="end" class="item-value">
-            {{ weatherData.clouds.all }}%
-          </div>
-        </ion-item>
-
-      </ion-list>
-
-      <div class="last-updated">
-        <p>Heure locale: <span class="time">{{ formatTime(weatherData.dt, weatherData.timezone) }}</span></p>
+      <div class="footer-info">
+        <p>Data provided by OpenWeather API • {{ formatTime(weatherData.dt, weatherData.timezone) }}</p>
       </div>
 
     </div>
+
+    <!-- EMPTY STATE -->
+    <div *ngIf="!isLoading && !weatherData && !errorMessage" class="empty-state">
+      <ion-icon name="analytics-outline"></ion-icon>
+      <h3>No Data Instance</h3>
+      <p>Please enter a city name to initialize the weather data module.</p>
+    </div>
+
   </div>
+
 </ion-content>
+

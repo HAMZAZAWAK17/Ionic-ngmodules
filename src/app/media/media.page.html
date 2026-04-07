@@ -1,45 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+<ion-header class="ion-no-border">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-back-button defaultHref="/home" text="Back" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
-    <ion-title>Media Player</ion-title>
+    <ion-title>Media Assets</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" name="share-social-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true">
+  
   <div class="media-container">
-    
-    <!-- Image Locale -->
-    <section class="media-section">
-      <h2 class="section-title">Image Locale (Assets)</h2>
-      <ion-card class="media-card">
-        <img src="assets/images/nature.png" alt="Nature Locale" />
-        <ion-card-header>
-          <ion-card-subtitle>src/assets/images/nature.png</ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
-    </section>
-
-    <!-- Image Réseau -->
-    <section class="media-section">
-      <h2 class="section-title">Image Réseau (URL)</h2>
-      <ion-card class="media-card">
-        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2070&auto=format&fit=crop" alt="Network Image" />
-        <ion-card-header>
-          <ion-card-subtitle>https://unsplash.com/photos/...</ion-card-subtitle>
-        </ion-card-header>
-      </ion-card>
-    </section>
-
+  
     <!-- Audio -->
     <section class="media-section">
-      <h2 class="section-title">Audio Player</h2>
+      <h2 class="section-title">Module Audio</h2>
       <ion-card class="media-card audio-card">
-        <div class="audio-header">
-          <ion-icon name="musical-notes-outline" color="primary"></ion-icon>
-          <h3>Exemple Audio</h3>
-        </div>
+        <ion-card-header>
+          <ion-card-title>Sample Audio Stream</ion-card-title>
+        </ion-card-header>
         <audio controls class="full-width">
           <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
           Votre navigateur ne supporte pas l'élément audio.

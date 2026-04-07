@@ -39,6 +39,14 @@ const routes: Routes = [
     path: 'weather',
     loadChildren: () => import('./weather/weather.module').then( m => m.WeatherPageModule)
   },
+  {
+    path: 'clipboard',
+    loadChildren: () => import('./clipboard/clipboard.module').then( m => m.ClipboardPageModule)
+  },
+  {
+    path: 'google-map',
+    loadChildren: () => import('./google-map/google-map.module').then( m => m.GoogleMapPageModule)
+  },
 ];
 
 @NgModule({

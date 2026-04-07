@@ -11,7 +11,16 @@ import {
   gameControllerOutline,
   imagesOutline,
   libraryOutline,
-  cloudyOutline
+  cloudyOutline,
+  clipboardOutline,
+  mapOutline,
+  chevronForwardOutline,
+  syncOutline,
+  layersOutline,
+  extensionPuzzleOutline,
+  playCircleOutline,
+  partlySunnyOutline,
+  briefcaseOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -37,7 +46,16 @@ export class HomePage {
       gameControllerOutline,
       imagesOutline,
       libraryOutline,
-      cloudyOutline
+      cloudyOutline,
+      clipboardOutline,
+      mapOutline,
+      chevronForwardOutline,
+      syncOutline,
+      layersOutline,
+      extensionPuzzleOutline,
+      playCircleOutline,
+      partlySunnyOutline,
+      briefcaseOutline
     });
   }
 
@@ -68,6 +86,14 @@ export class HomePage {
 
   goToWeather() {
     this.router.navigate(['/weather']);
+  }
+
+  goToClipboard() {
+    this.router.navigate(['/clipboard']);
+  }
+
+  goToGoogleMap() {
+    this.router.navigate(['/google-map']);
   }
 
 }

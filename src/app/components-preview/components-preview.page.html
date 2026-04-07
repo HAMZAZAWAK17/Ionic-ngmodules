@@ -1,309 +1,128 @@
-<ion-header [translucent]="true" class="ion-no-border">
-  <ion-toolbar color="primary">
+<ion-header class="ion-no-border">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" icon="arrow-back-circle-outline"></ion-back-button>
+      <ion-back-button defaultHref="/home" text="Back" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
-    <ion-title>Ionic Components UI</ion-title>
+    <ion-title>Design Library</ion-title>
     <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" name="albums-outline"></ion-icon>
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-  </ion-toolbar>
-  <ion-toolbar color="primary">
-    <ion-searchbar 
-      placeholder="Rechercher un composant..." 
-      animated="true" 
-      (ionInput)="onSearch($event)">
-    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   
-  <div class="header-banner">
-    <h1>L'ultime Bibliothèque UI</h1>
-    <p>Découvrez plus de {{ allComponents.length }} composants interactifs</p>
+  <div class="pro-header">
+    <div class="inner-header">
+      <h1>Component Library</h1>
+      <p>Browse and preview our core UI building blocks.</p>
+    </div>
+
+    <!-- CLEAN CATEGORY PILLS -->
+    <div class="pro-pills">
+      <div class="pro-pill" 
+           *ngFor="let cat of categories" 
+           [class.active]="selectedCategory === cat.id"
+           (click)="filterCategory(cat.id)">
+        {{ cat.title }}
+      </div>
+    </div>
+  </div>
+
+  <div class="pro-list-wrapper ion-padding">
+    <h2 class="list-label">Available Components ({{ filteredComponents.length }})</h2>
     
-    <div class="category-pills">
-      <ion-chip 
-        *ngFor="let cat of categories" 
-        [outline]="selectedCategory !== cat.id"
-        [color]="selectedCategory === cat.id ? 'light' : 'light'"
-        (click)="filterCategory(cat.id)"
-        class="category-chip"
-        [class.active-chip]="selectedCategory === cat.id">
-        <ion-label>{{ cat.title }}</ion-label>
-      </ion-chip>
-    </div>
-  </div>
-
-  <!-- ZONE DE PRÉVISUALISATION DYNAMIQUE -->
-  <div class="preview-hero-container" id="preview-container" *ngIf="selectedComponent">
-    <div class="preview-hero">
-      <div class="preview-hero-header">
-        <div class="title-area">
-          <ion-icon [name]="selectedComponent.icon"></ion-icon>
-          <h2>{{ selectedComponent.title }}</h2>
+    <div class="enterprise-list">
+      <div class="list-item" *ngFor="let comp of filteredComponents" (click)="showComponent(comp)">
+        <div class="item-icon-box" [ngClass]="comp.category">
+          <ion-icon [name]="comp.icon"></ion-icon>
         </div>
-        <ion-button fill="clear" color="medium" (click)="closePreview()">
-          <ion-icon slot="icon-only" name="close-circle"></ion-icon>
-        </ion-button>
-      </div>
-      <p class="preview-desc">{{ selectedComponent.desc }}</p>
-
-      <div class="preview-box">
-        
-        <!-- ======================= -->
-        <!-- PREVIEWS DES COMPOSANTS -->
-        <!-- ======================= -->
-
-        <!-- Action Sheet -->
-        <div *ngIf="selectedComponent.id === 'action-sheet'" class="ion-text-center">
-          <ion-button shape="round" color="dark" (click)="presentActionSheet()">Ouvrir Action Sheet</ion-button>
+        <div class="item-info">
+          <h4>{{ comp.title }}</h4>
+          <p>{{ comp.desc }}</p>
         </div>
-
-        <!-- Alert -->
-        <div *ngIf="selectedComponent.id === 'alert'" class="ion-text-center">
-          <ion-button shape="round" color="danger" (click)="presentAlert()">Déclencher l'alerte</ion-button>
-        </div>
-
-        <!-- Avatar -->
-        <div *ngIf="selectedComponent.id === 'avatar'" class="ion-text-center avatar-demo">
-          <ion-avatar>
-            <img alt="Silhouette" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </ion-avatar>
-        </div>
-
-        <!-- Badge -->
-        <div *ngIf="selectedComponent.id === 'badge'" class="ion-text-center">
-          <ion-badge color="primary" class="ion-margin-end">Nouveau</ion-badge>
-          <ion-badge color="secondary" class="ion-margin-end">Beta</ion-badge>
-          <ion-badge color="tertiary" class="ion-margin-end">99+</ion-badge>
-        </div>
-
-        <!-- Breadcrumbs -->
-        <div *ngIf="selectedComponent.id === 'breadcrumbs'">
-          <ion-breadcrumbs>
-            <ion-breadcrumb href="#home">Home</ion-breadcrumb>
-            <ion-breadcrumb href="#electronics">Electronics</ion-breadcrumb>
-            <ion-breadcrumb href="#cameras">Cameras</ion-breadcrumb>
-            <ion-breadcrumb href="#film">Film</ion-breadcrumb>
-          </ion-breadcrumbs>
-        </div>
-
-        <!-- Button -->
-        <div *ngIf="selectedComponent.id === 'button'" class="button-demo">
-          <ion-button>Default</ion-button>
-          <ion-button fill="outline" color="success">Outline</ion-button>
-          <ion-button fill="clear" color="danger">Clear</ion-button>
-          <ion-button shape="round" color="warning">Round</ion-button>
-        </div>
-
-        <!-- Card -->
-        <div *ngIf="selectedComponent.id === 'card'">
-          <ion-card color="primary">
-            <ion-card-header>
-              <ion-card-title>Superbe Carte</ion-card-title>
-              <ion-card-subtitle>Design Ionic Standard</ion-card-subtitle>
-            </ion-card-header>
-            <ion-card-content>
-              Les cartes sont parfaites pour organiser des informations complexes en unités digestes.
-            </ion-card-content>
-          </ion-card>
-        </div>
-
-        <!-- Checkbox -->
-        <div *ngIf="selectedComponent.id === 'checkbox'">
-          <ion-item lines="none">
-            <ion-checkbox slot="start" color="primary"></ion-checkbox>
-            <ion-label>Accepter les CGU</ion-label>
-          </ion-item>
-          <ion-item lines="none">
-            <ion-checkbox slot="start" checked color="success"></ion-checkbox>
-            <ion-label>S'inscrire à la Newsletter</ion-label>
-          </ion-item>
-        </div>
-
-        <!-- Chip -->
-        <div *ngIf="selectedComponent.id === 'chip'" class="chip-demo ion-text-center">
-          <ion-chip>Default</ion-chip>
-          <ion-chip color="primary">
-            <ion-icon name="pin"></ion-icon>
-            <ion-label>Location</ion-label>
-          </ion-chip>
-          <ion-chip color="secondary">
-            <ion-avatar>
-              <img alt="Silhouette" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-            </ion-avatar>
-            <ion-label>Profil</ion-label>
-          </ion-chip>
-        </div>
-
-        <!-- Datetime -->
-        <div *ngIf="selectedComponent.id === 'datetime'" class="datetime-demo">
-          <ion-datetime presentation="date" mode="ios"></ion-datetime>
-        </div>
-
-        <!-- FAB -->
-        <div *ngIf="selectedComponent.id === 'fab'" class="fab-demo ion-text-center">
-          <p>Un bouton FAB apparaîtra en bas à droite (exemple simulé ici)</p>
-          <ion-fab-button color="tertiary" style="margin: 0 auto;">
-            <ion-icon name="add"></ion-icon>
-          </ion-fab-button>
-        </div>
-
-        <!-- Grid -->
-        <div *ngIf="selectedComponent.id === 'grid'" class="grid-demo">
-          <ion-grid>
-            <ion-row>
-              <ion-col size="6"><div class="grid-box">50%</div></ion-col>
-              <ion-col size="6"><div class="grid-box">50%</div></ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col size="4"><div class="grid-box">33%</div></ion-col>
-              <ion-col size="4"><div class="grid-box">33%</div></ion-col>
-              <ion-col size="4"><div class="grid-box">33%</div></ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-
-        <!-- Input -->
-        <div *ngIf="selectedComponent.id === 'input'">
-          <ion-item>
-            <ion-label position="floating">Prénom (Floating)</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="stacked">Email (Stacked)</ion-label>
-            <ion-input type="email" placeholder="email@domaine.com"></ion-input>
-          </ion-item>
-        </div>
-
-        <!-- Progress Bar -->
-        <div *ngIf="selectedComponent.id === 'progress'">
-          <p>Progression Déterminée (50%)</p>
-          <ion-progress-bar value="0.5" color="primary"></ion-progress-bar>
-          <br>
-          <p>Progression Indéterminée</p>
-          <ion-progress-bar type="indeterminate" color="success"></ion-progress-bar>
-        </div>
-
-        <!-- List -->
-        <div *ngIf="selectedComponent.id === 'list'">
-          <ion-list>
-            <ion-list-header>Catégories (List Header)</ion-list-header>
-            <ion-item>
-              <ion-icon name="fast-food-outline" slot="start" color="warning"></ion-icon>
-              <ion-label>Alimentation (Item)</ion-label>
-            </ion-item>
-            <ion-item-divider>
-              <ion-label>Séparateur</ion-label>
-            </ion-item-divider>
-            <ion-item lines="none">
-              <ion-icon name="fitness-outline" slot="start" color="success"></ion-icon>
-              <ion-label>Sport</ion-label>
-            </ion-item>
-          </ion-list>
-        </div>
-
-        <!-- Radio -->
-        <div *ngIf="selectedComponent.id === 'radio'">
-          <ion-radio-group value="burt">
-            <ion-item lines="none">
-              <ion-radio slot="start" value="a"></ion-radio>
-              <ion-label>Pizza</ion-label>
-            </ion-item>
-            <ion-item lines="none">
-              <ion-radio slot="start" value="burt"></ion-radio>
-              <ion-label>Burger</ion-label>
-            </ion-item>
-          </ion-radio-group>
-        </div>
-
-        <!-- Range -->
-        <div *ngIf="selectedComponent.id === 'range'">
-            <ion-range min="0" max="100" pin="true" value="50" color="danger">
-              <ion-icon slot="start" name="volume-low"></ion-icon>
-              <ion-icon slot="end" name="volume-high"></ion-icon>
-            </ion-range>
-        </div>
-
-        <!-- Toggle -->
-        <div *ngIf="selectedComponent.id === 'toggle'">
-          <ion-item lines="none">
-            <ion-label>Vibreur</ion-label>
-            <ion-toggle slot="end" checked color="success"></ion-toggle>
-          </ion-item>
-          <ion-item lines="none">
-            <ion-label>Mode Avion</ion-label>
-            <ion-toggle slot="end" color="warning"></ion-toggle>
-          </ion-item>
-        </div>
-
-        <!-- Toast -->
-        <div *ngIf="selectedComponent.id === 'toast'" class="ion-text-center">
-          <ion-button color="medium" (click)="presentToast()">Afficher Notification (Toast)</ion-button>
-        </div>
-
-        <!-- Skeleton Text -->
-        <div *ngIf="selectedComponent.id === 'skeleton'">
-          <ion-list>
-            <ion-item>
-              <ion-thumbnail slot="start">
-                <ion-skeleton-text animated></ion-skeleton-text>
-              </ion-thumbnail>
-              <ion-label>
-                <h3><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></h3>
-                <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </div>
-
-        <!-- Spinner -->
-        <div *ngIf="selectedComponent.id === 'spinner'" class="ion-text-center spinner-demo">
-          <ion-spinner name="bubbles" color="primary"></ion-spinner>
-          <ion-spinner name="circles" color="secondary"></ion-spinner>
-          <ion-spinner name="crescent" color="tertiary"></ion-spinner>
-          <ion-spinner name="dots" color="success"></ion-spinner>
-        </div>
-
-        <!-- Si le composant n'a pas encore de démo spécifique -->
-        <div *ngIf="!['action-sheet','alert','avatar','badge','breadcrumbs','button','card','checkbox','chip','datetime','fab','grid','input','list','progress','radio','range','skeleton','spinner','toast','toggle'].includes(selectedComponent.id)" class="ion-text-center">
-          <ion-icon name="construct-outline" style="font-size: 40px; color: #ccc"></ion-icon>
-          <p>La démonstration visuelle pour <strong>{{ selectedComponent.title }}</strong> est conceptuelle. Explorez la documentation Ionic pour les cas d'utilisation complexes.</p>
-        </div>
-
+        <ion-icon name="chevron-forward-outline" class="item-arrow"></ion-icon>
       </div>
     </div>
   </div>
 
-  <!-- GRILLE COMPLETE DES COMPOSANTS -->
-  <div class="components-grid">
-    <div 
-      class="comp-card" 
-      *ngFor="let comp of filteredComponents" 
-      (click)="showComponent(comp)">
-      
-      <div class="comp-icon" [ngClass]="comp.category">
-        <ion-icon [name]="comp.icon"></ion-icon>
-      </div>
+  <!-- CLEAN PROFESSIONAL MODAL -->
+  <ion-modal [isOpen]="selectedComponent !== null" (didDismiss)="closePreview()" 
+             [initialBreakpoint]="0.6" [breakpoints]="[0, 0.6, 0.8, 1]" 
+             mode="ios" class="enterprise-modal">
+    <ng-template>
+      <div class="modal-root">
+        <div class="modal-bar"></div>
+        <div class="modal-title-row">
+          <ion-icon [name]="selectedComponent?.icon"></ion-icon>
+          <h2>{{ selectedComponent?.title }}</h2>
+          <ion-button fill="clear" (click)="closePreview()" color="medium">
+            <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </div>
 
-      <div class="comp-info">
-        <h3>{{ comp.title }}</h3>
-        <p>{{ comp.category | uppercase }}</p>
-      </div>
-      
-      <ion-icon name="chevron-forward" class="arrow-icon"></ion-icon>
-    </div>
-  </div>
+        <div class="modal-content-area ion-padding">
+          <div class="comp-meta">
+            <label>Description</label>
+            <p>{{ selectedComponent?.desc }}</p>
+          </div>
 
-  <!-- Vide ou Pas de résultats -->
-  <div class="empty-state" *ngIf="filteredComponents.length === 0">
-    <ion-icon name="search-outline"></ion-icon>
-    <h3>Aucun composant trouvé</h3>
-    <p>Essayez de modifier votre recherche ou catégorie.</p>
-  </div>
+          <div class="component-preview-window">
+            <div class="win-header">
+              <span>Interactive Preview</span>
+            </div>
+            
+            <div class="win-body">
+              <!-- Action Sheet -->
+              <div *ngIf="selectedComponent?.id === 'action-sheet'">
+                <ion-button expand="block" (click)="presentActionSheet()">Run Action Sheet</ion-button>
+              </div>
+
+              <!-- Alert -->
+              <div *ngIf="selectedComponent?.id === 'alert'">
+                <ion-button expand="block" color="danger" (click)="presentAlert()">Run Alert</ion-button>
+              </div>
+
+              <!-- Avatar -->
+              <div *ngIf="selectedComponent?.id === 'avatar'" class="avatar-center">
+                <ion-avatar>
+                  <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                </ion-avatar>
+              </div>
+
+              <!-- Progress Bar -->
+              <div *ngIf="selectedComponent?.id === 'progress'">
+                <ion-progress-bar value="0.75" color="primary"></ion-progress-bar>
+              </div>
+
+              <!-- Toggle -->
+              <div *ngIf="selectedComponent?.id === 'toggle'">
+                <ion-item lines="none">
+                  <ion-label>Enable Feature</ion-label>
+                  <ion-toggle color="success" checked></ion-toggle>
+                </ion-item>
+              </div>
+
+              <!-- Spinner -->
+              <div *ngIf="selectedComponent?.id === 'spinner'">
+                <ion-spinner color="primary"></ion-spinner>
+              </div>
+
+              <!-- Default -->
+              <div *ngIf="!['action-sheet','alert','avatar','progress','toggle','spinner'].includes(selectedComponent?.id)" class="wip-box">
+                <ion-icon [name]="selectedComponent?.icon"></ion-icon>
+                <p>Preview for {{ selectedComponent?.title }} is coming soon.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
 
 </ion-content>
+
+
+

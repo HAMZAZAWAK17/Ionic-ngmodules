@@ -11,6 +11,8 @@ import { arrowBackOutline, swapHorizontalOutline } from 'ionicons/icons';
   standalone: false
 })
 export class TransferDataPage implements OnInit {
+  nom: string = '';
+  email: string = '';
   data: any = null;
 
   constructor(
@@ -22,6 +24,14 @@ export class TransferDataPage implements OnInit {
 
   ngOnInit() {
     this.data = this.dataTransferService.getData();
+    if (this.data) {
+      this.nom = this.data.name || '';
+    }
+  }
+
+  valider() {
+    console.log('Submission:', { nom: this.nom, email: this.email });
+    // Process submission logic here
   }
 
   goHome() {
