@@ -3,107 +3,134 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" color="primary"></ion-back-button>
     </ion-buttons>
-    <ion-title>Interactive Widgets</ion-title>
+    <ion-title>Ionic Widget Collection</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <div class="widgets-wrapper">
+<ion-content [fullscreen]="true">
+  <div class="widgets-container ion-padding">
     
-    <div class="intro">
-      <h1>Smart Dashboard</h1>
-      <p>Real-time analytics and system monitoring widgets.</p>
+    <div class="header-intro">
+      <h1>The UI Toolkit</h1>
+      <p>A comprehensive gallery of official Ionic components and custom widgets.</p>
     </div>
 
-    <!-- Main KPIs -->
-    <div class="kpi-row">
-      <div class="kpi-card purple">
-        <ion-icon name="cash-outline"></ion-icon>
-        <div class="info">
-          <span>Revenue</span>
-          <h3>$12,450</h3>
+    <!-- 1. BUTTONS & CHIPS -->
+    <section class="widget-section">
+      <h2 class="section-badge">Buttons & Chips</h2>
+      
+      <div class="button-gallery">
+        <ion-button expand="block">Confirm Action</ion-button>
+        <div class="flex-row">
+          <ion-button fill="outline" color="secondary">Cancel</ion-button>
+          <ion-button fill="clear" color="danger">Delete</ion-button>
+        </div>
+        <div class="flex-row">
+          <ion-button size="small">Small</ion-button>
+          <ion-button size="large" shape="round">Large Round</ion-button>
         </div>
       </div>
-      <div class="kpi-card blue">
-        <ion-icon name="people-outline"></ion-icon>
-        <div class="info">
-          <span>Users</span>
-          <h3>4.8k</h3>
-        </div>
-      </div>
-    </div>
 
-    <!-- Health Widget -->
-    <ion-card class="pro-widget health">
-      <div class="header">
-        <div class="title-group">
-          <ion-icon name="pulse-outline"></ion-icon>
-          <h3>System Health</h3>
-        </div>
-        <ion-badge color="success">Running</ion-badge>
+      <div class="chip-container">
+        <ion-chip color="primary"><ion-label>New</ion-label></ion-chip>
+        <ion-chip color="secondary"><ion-icon name="heart-outline"></ion-icon><ion-label>Favorite</ion-label></ion-chip>
+        <ion-chip outline color="tertiary"><ion-label>Outline</ion-label><ion-icon name="star-outline"></ion-icon></ion-chip>
+        <ion-chip disabled><ion-label>Disabled</ion-label></ion-chip>
       </div>
-      <div class="content">
+    </section>
+
+    <!-- 2. FORM & INPUTS -->
+    <section class="widget-section">
+      <h2 class="section-badge">Form Elements</h2>
+      <ion-card class="form-card">
+        <ion-item lines="full">
+          <ion-label position="stacked">Full Name</ion-label>
+          <ion-input placeholder="John Doe"></ion-input>
+        </ion-item>
+        
+        <ion-item lines="full">
+          <ion-label>Enable Notifications</ion-label>
+          <ion-toggle slot="end" [(ngModel)]="toggleStatus" color="success"></ion-toggle>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label>Accept Terms</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="checkboxStatus"></ion-checkbox>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label>Priority Level</ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="high">High Priority</ion-select-option>
+            <ion-select-option value="med">Medium Priority</ion-select-option>
+            <ion-select-option value="low">Low Priority</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card>
+    </section>
+
+    <!-- 3. RANGE & PROGRESS -->
+    <section class="widget-section">
+      <h2 class="section-badge">Range & Status</h2>
+      <ion-card class="status-card">
+        <div class="range-wrap">
+          <div class="label-row">
+            <span>Volume Level</span>
+            <span>{{ rangeValue }}%</span>
+          </div>
+          <ion-range [(ngModel)]="rangeValue" color="secondary">
+            <ion-icon slot="start" name="sunny-outline"></ion-icon>
+            <ion-icon slot="end" name="moon-outline"></ion-icon>
+          </ion-range>
+        </div>
+
         <div class="progress-wrap">
           <div class="label-row">
-            <span>Server CPU</span>
-            <span>72%</span>
+            <span>Download Progress</span>
+            <span>{{ (progressValue * 100) | number:'1.0-0' }}%</span>
           </div>
-          <ion-progress-bar value="0.72" color="primary"></ion-progress-bar>
+          <ion-progress-bar [value]="progressValue" type="indeterminate"></ion-progress-bar>
         </div>
-        <div class="progress-wrap">
-          <div class="label-row">
-            <span>Memory Usage</span>
-            <span>45%</span>
-          </div>
-          <ion-progress-bar value="0.45" color="secondary"></ion-progress-bar>
-        </div>
-      </div>
-    </ion-card>
+      </ion-card>
+    </section>
 
-    <!-- Activity Widget -->
-    <ion-card class="pro-widget activity">
-      <h3>Weekly Activity</h3>
-      <div class="chart-mock">
-        <div class="bar" style="height: 40%"></div>
-        <div class="bar" style="height: 60%"></div>
-        <div class="bar highlighted" style="height: 90%"></div>
-        <div class="bar" style="height: 50%"></div>
-        <div class="bar" style="height: 75%"></div>
-        <div class="bar" style="height: 30%"></div>
-      </div>
-      <div class="footer">
-        <ion-icon name="analytics-outline"></ion-icon>
-        <span>+14% growth this week</span>
-      </div>
-    </ion-card>
+    <!-- 4. LISTS & ITEMS -->
+    <section class="widget-section">
+      <h2 class="section-badge">List Components</h2>
+      <ion-list class="pro-list">
+        <ion-list-header>RECENT ACTIVITY</ion-list-header>
+        
+        <ion-item button lines="full">
+          <ion-avatar slot="start">
+            <img src="https://ionicframework.com/docs/img/demos/avatar.svg">
+          </ion-avatar>
+          <ion-label>
+            <h3>Hamza Zakariya</h3>
+            <p>Sent you a message</p>
+          </ion-label>
+          <ion-note slot="end">3m ago</ion-note>
+        </ion-item>
 
-    <!-- Detailed Stats List -->
-    <div class="stats-list">
-      <ion-item lines="none" class="stat-item">
-        <ion-icon slot="start" name="cart-outline" class="circle blue"></ion-icon>
-        <ion-label>
-          <h3>Total Sales</h3>
-          <p>432 orders today</p>
-        </ion-label>
-        <span class="val">+$890</span>
-      </ion-item>
-      <ion-item lines="none" class="stat-item">
-        <ion-icon slot="start" name="cellular-outline" class="circle green"></ion-icon>
-        <ion-label>
-          <h3>Network Load</h3>
-          <p>Stable connection</p>
-        </ion-label>
-        <span class="val">Active</span>
-      </ion-item>
-      <ion-item lines="none" class="stat-item">
-        <ion-icon slot="start" name="flash-outline" class="circle orange"></ion-icon>
-        <ion-label>
-          <h3>Energy Hub</h3>
-          <p>Battery optimized</p>
-        </ion-label>
-        <span class="val">100%</span>
-      </ion-item>
-    </div>
+        <ion-item button lines="none">
+          <ion-icon slot="start" name="flask-outline" color="warning"></ion-icon>
+          <ion-label>
+            <h3>Project Update</h3>
+            <p>S2 TP IONIC v2.0 deployed</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </section>
 
   </div>
+
+  <!-- FAB -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light"><ion-icon name="share-outline"></ion-icon></ion-fab-button>
+      <ion-fab-button color="light"><ion-icon name="settings-outline"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

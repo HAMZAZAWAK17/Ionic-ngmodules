@@ -1,15 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { addIcons } from 'ionicons';
 import { 
-  statsChartOutline, 
-  cashOutline, 
-  peopleOutline, 
-  analyticsOutline, 
-  cartOutline,
-  cellularOutline,
-  pulseOutline,
-  flashOutline,
-  batteryChargingOutline
+  addOutline, 
+  shareOutline, 
+  starOutline, 
+  heartOutline, 
+  searchOutline, 
+  personOutline, 
+  settingsOutline,
+  notificationsOutline,
+  mailOutline,
+  callOutline,
+  airplaneOutline,
+  bluetoothOutline,
+  wifiOutline,
+  moonOutline,
+  sunnyOutline,
+  flaskOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -19,18 +26,30 @@ import {
   standalone: false
 })
 export class WidgetsPage implements OnInit {
+  progressValue = 0.5;
+  rangeValue = 50;
+  toggleStatus = true;
+  checkboxStatus = false;
+  selectedSegment = 'all';
 
   constructor() {
     addIcons({ 
-      statsChartOutline, 
-      cashOutline, 
-      peopleOutline, 
-      analyticsOutline, 
-      cartOutline,
-      cellularOutline,
-      pulseOutline,
-      flashOutline,
-      batteryChargingOutline
+      addOutline, 
+      shareOutline, 
+      starOutline, 
+      heartOutline, 
+      searchOutline, 
+      personOutline, 
+      settingsOutline,
+      notificationsOutline,
+      mailOutline,
+      callOutline,
+      airplaneOutline,
+      bluetoothOutline,
+      wifiOutline,
+      moonOutline,
+      sunnyOutline,
+      flaskOutline
     });
   }
 
