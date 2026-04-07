@@ -20,7 +20,8 @@ import {
   playCircleOutline,
   partlySunnyOutline,
   notificationsOutline,
-  barChartOutline
+  barChartOutline,
+  chatbubblesOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -55,7 +56,8 @@ export class HomePage {
       playCircleOutline,
       partlySunnyOutline,
       notificationsOutline,
-      barChartOutline
+      barChartOutline,
+      chatbubblesOutline
     });
   }
 
@@ -90,5 +92,9 @@ export class HomePage {
 
   goToWidgets() {
     this.router.navigate(['/widgets']);
+  }
+
+  goToSms() {
+    this.router.navigate(['/sms']);
   }
 }
