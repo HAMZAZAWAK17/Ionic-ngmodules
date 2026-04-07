@@ -47,23 +47,49 @@ ion-content {
     border: 1px solid #e2e8f0;
     box-shadow: 0 10px 40px rgba(0,0,0,0.02);
     margin-bottom: 30px;
+    transition: all 0.5s ease;
+
+    &.storm { background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; }
+    &.rainy { background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); color: white; }
+    &.snowy { background: linear-gradient(135deg, #E0EAFC 0%, #CFDEF3 100%); color: #1e293b; }
+    &.foggy { background: linear-gradient(135deg, #606c88 0%, #3f4c6b 100%); color: white; }
+    &.sunny { background: linear-gradient(135deg, #FF9966 0%, #FF5E62 100%); color: white; }
+    &.cloudy { background: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%); color: white; }
+
+    &.storm, &.rainy, &.sunny, &.cloudy, &.foggy {
+      h2, .weather-desc, .main-temp, .stat-pill span, .stat-pill ion-icon { color: white !important; }
+      .stat-pill { background: rgba(255,255,255,0.15); border: none; }
+      .weather-visual ion-icon { color: white; }
+    }
 
     .top-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
+      align-items: flex-start;
+      margin-bottom: 25px;
 
-      .location {
-        h2 { margin: 0; font-weight: 800; font-size: 1.8rem; color: var(--ion-color-dark); letter-spacing: -0.8px; }
-        span { display: block; font-size: 0.95rem; color: var(--ion-color-medium); text-transform: capitalize; margin-top: 4px; }
+      .location-group {
+        .city-line {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          .country-flag {
+            width: 32px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          }
+          h2 { margin: 0; font-weight: 800; font-size: 1.8rem; letter-spacing: -0.8px; }
+        }
+        .weather-desc { display: block; font-size: 1rem; font-weight: 600; text-transform: capitalize; margin-top: 6px; opacity: 0.9; }
       }
 
-      .main-temp {
-        font-size: 3.2rem;
-        font-weight: 800;
-        color: var(--ion-color-primary);
-        letter-spacing: -2px;
+      .weather-visual {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        ion-icon { font-size: 64px; margin-top: -10px; }
+        .main-temp { font-size: 3.8rem; font-weight: 800; letter-spacing: -2px; margin-top: -5px; }
       }
     }
 
@@ -71,15 +97,16 @@ ion-content {
       display: flex;
       gap: 12px;
       .stat-pill {
-        background: #f8fafc;
-        padding: 10px 14px;
-        border-radius: 12px;
+        flex: 1;
+        padding: 12px 16px;
+        border-radius: 16px;
         display: flex;
         align-items: center;
         gap: 8px;
         border: 1px solid #edf2f7;
-        span { font-size: 0.85rem; font-weight: 700; color: #475569; }
-        ion-icon { color: var(--ion-color-secondary); }
+        background: #f8fafc;
+        span { font-size: 0.9rem; font-weight: 700; color: #475569; }
+        ion-icon { font-size: 18px; color: var(--ion-color-primary); }
       }
     }
   }

@@ -1,0 +1,68 @@
+.map-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+
+  .search-section {
+    background: white;
+    padding: 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #edf2f7;
+
+    ion-searchbar {
+      --padding-top: 10px;
+      --padding-bottom: 20px;
+      --border-radius: 14px;
+      --background: #f1f5f9;
+      --padding-start: 12px;
+      --padding-end: 12px;
+      margin-bottom: 12px;
+    }
+
+    ion-button {
+      --border-radius: 12px;
+      height: 48px;
+      font-weight: 700;
+    }
+  }
+
+  .map-card {
+    flex: 1;
+    margin: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+
+    .iframe-wrapper {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      
+      iframe {
+        width: 100%;
+        height: 100%;
+        min-height: 450px;
+      }
+    }
+  }
+
+  .info-footer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+
+    ion-chip {
+      background: white;
+      border: 1px solid var(--ion-color-primary);
+      height: 40px;
+      padding: 0 18px;
+      font-weight: 700;
+    }
+  }
+}

@@ -34,25 +34,31 @@
     <!-- DATA VIEW -->
     <div *ngIf="!isLoading && weatherData" class="data-view ion-padding">
       
-      <div class="main-stats-card">
+      <div class="main-stats-card" [ngClass]="getWeatherGradient(weatherData.weather[0].id)">
         <div class="top-row">
-          <div class="location">
-            <h2>{{ weatherData.name }}</h2>
-            <span>{{ weatherData.weather[0].description }}</span>
+          <div class="location-group">
+            <div class="city-line">
+              <img *ngIf="flagUrl" [src]="flagUrl" class="country-flag" alt="flag">
+              <h2>{{ weatherData.name }}</h2>
+            </div>
+            <span class="weather-desc">{{ weatherData.weather[0].description }}</span>
           </div>
-          <div class="main-temp">
-            {{ weatherData.main.temp | number:'1.0-0' }}°
+          <div class="weather-visual">
+            <ion-icon [name]="getWeatherIcon(weatherData.weather[0].id)"></ion-icon>
+            <div class="main-temp">
+              {{ weatherData.main.temp | number:'1.0-0' }}°
+            </div>
           </div>
         </div>
         
         <div class="stats-row">
           <div class="stat-pill">
             <ion-icon name="water-outline"></ion-icon>
-            <span>Humidity: {{ weatherData.main.humidity }}%</span>
+            <span>Humidité: {{ weatherData.main.humidity }}%</span>
           </div>
           <div class="stat-pill">
-            <ion-icon name="leaf-outline"></ion-icon>
-            <span>Wind: {{ (weatherData.wind.speed * 3.6) | number:'1.0-1' }}km/h</span>
+            <ion-icon name="speedometer-outline"></ion-icon>
+            <span>Vent: {{ (weatherData.wind.speed * 3.6) | number:'1.0-1' }}km/h</span>
           </div>
         </div>
       </div>
@@ -61,19 +67,23 @@
       
       <div class="metric-grid">
         <div class="metric-card">
-          <label>Pressure</label>
+          <ion-icon name="speedometer-outline" color="primary"></ion-icon>
+          <label>Pression</label>
           <div class="val">{{ weatherData.main.pressure }} hPa</div>
         </div>
         <div class="metric-card">
-          <label>Visibility</label>
+          <ion-icon name="eye-outline" color="primary"></ion-icon>
+          <label>Visibilité</label>
           <div class="val">{{ (weatherData.visibility / 1000) | number:'1.0-1' }} km</div>
         </div>
         <div class="metric-card">
-          <label>Feels Like</label>
+          <ion-icon name="thermometer-outline" color="primary"></ion-icon>
+          <label>Ressenti</label>
           <div class="val">{{ weatherData.main.feels_like | number:'1.0-0' }}°C</div>
         </div>
         <div class="metric-card">
-          <label>Clouds</label>
+          <ion-icon name="cloudy-outline" color="primary"></ion-icon>
+          <label>Nuages</label>
           <div class="val">{{ weatherData.clouds.all }}%</div>
         </div>
       </div>

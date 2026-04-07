@@ -7,10 +7,49 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">clipboard</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="clipboard-container">
+    <div class="header-section">
+      <ion-icon name="clipboard-outline" color="primary" class="main-icon"></ion-icon>
+      <h1>Clipboard Manager</h1>
+      <p>Easily copy and paste text between your device and the app.</p>
+    </div>
+
+    <ion-card class="input-card">
+      <ion-card-content>
+        <ion-item lines="none" class="text-area-item">
+          <ion-textarea
+            [(ngModel)]="clipboardText"
+            placeholder="Type or paste text here..."
+            rows="8"
+            auto-grow="true"
+            class="custom-textarea"
+          ></ion-textarea>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="action-buttons">
+      <ion-button expand="block" (click)="copyToClipboard()" [disabled]="!clipboardText">
+        <ion-icon slot="start" name="copy-outline"></ion-icon>
+        Copy to Device
+      </ion-button>
+      
+      <ion-button expand="block" fill="outline" (click)="pasteFromClipboard()">
+        <ion-icon slot="start" name="clipboard-outline"></ion-icon>
+        Paste from Device
+      </ion-button>
+
+      <ion-button expand="block" fill="clear" color="danger" (click)="clearText()" [disabled]="!clipboardText">
+        <ion-icon slot="start" name="trash-outline"></ion-icon>
+        Clear Text
+      </ion-button>
+    </div>
+
+    <div class="toast-area" *ngIf="message">
+      <ion-chip color="success">
+        <ion-label>{{ message }}</ion-label>
+      </ion-chip>
+    </div>
+  </div>
 </ion-content>

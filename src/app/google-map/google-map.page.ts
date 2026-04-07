@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { addIcons } from 'ionicons';
+import { searchOutline, pinOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-google-map',
@@ -7,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
   standalone: false
 })
 export class GoogleMapPage implements OnInit {
+  locationName: string = 'Casablanca';
+  mapUrl: SafeResourceUrl = '';
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private sanitizer: DomSanitizer) {
+    addIcons({ searchOutline, pinOutline });
   }
 
+  ngOnInit() {
+    this.updateMap();
+  }
+
+  updateMap() {
+    if (!this.locationName) return;
+    const url = `https://maps.google.com/maps?q=${encodeURIComponent(this.locationName)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
 }
