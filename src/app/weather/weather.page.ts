@@ -67,9 +67,9 @@ export class WeatherPage {
       cloudy,
       compassOutline,
       navigateCircleOutline,
-      sunriseIcon,
-      sunsetIcon,
-      tempMinMax
+      'sunrise-icon': sunriseIcon,
+      'sunset-icon': sunsetIcon,
+      'temp-min-max': tempMinMax
     });
   }
 
