@@ -54,9 +54,15 @@
     <section class="media-section">
       <h2 class="section-label">Video Stream</h2>
       <ion-card class="media-card player-card">
-        <video controls class="player-element" poster="https://peach.blender.org/wp-content/uploads/title_an_full.jpg">
+        <video 
+          controls 
+          playsinline 
+          webkit-playsinline 
+          class="player-element" 
+          poster="https://peach.blender.org/wp-content/uploads/title_an_full.jpg">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
           <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-          Browser unsupported.
+          Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
         <ion-item lines="none" class="player-info">
           <ion-icon slot="start" name="videocam-outline" color="primary"></ion-icon>
