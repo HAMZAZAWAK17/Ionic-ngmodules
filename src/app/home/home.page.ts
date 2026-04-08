@@ -21,7 +21,9 @@ import {
   partlySunnyOutline,
   notificationsOutline,
   barChartOutline,
-  chatbubblesOutline
+  chatbubblesOutline,
+  callOutline,
+  calculatorOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -57,7 +59,9 @@ export class HomePage {
       partlySunnyOutline,
       notificationsOutline,
       barChartOutline,
-      chatbubblesOutline
+      chatbubblesOutline,
+      callOutline,
+      calculatorOutline
     });
   }
 
@@ -96,5 +100,13 @@ export class HomePage {
 
   goToSms() {
     this.router.navigate(['/sms']);
+  }
+
+  goToCall() {
+    this.router.navigate(['/call']);
+  }
+
+  goToCalculator() {
+    this.router.navigate(['/calculator']);
   }
 }

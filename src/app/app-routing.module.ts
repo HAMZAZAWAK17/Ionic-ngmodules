@@ -59,6 +59,14 @@ const routes: Routes = [
     path: 'sms',
     loadChildren: () => import('./sms/sms.module').then( m => m.SmsPageModule)
   },
+  {
+    path: 'call',
+    loadChildren: () => import('./call/call.module').then( m => m.CallPageModule)
+  },
+  {
+    path: 'calculator',
+    loadChildren: () => import('./calculator/calculator.module').then( m => m.CalculatorPageModule)
+  },
 ];
 
 @NgModule({

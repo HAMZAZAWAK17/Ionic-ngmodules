@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Calculatrice Simple</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Calculez Facilement</ion-card-title>
+      <ion-card-subtitle>Entrez vos nombres ci-dessous</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <!-- Premier nombre -->
+      <ion-item lines="full">
+        <ion-label position="stacked">Nombre 1</ion-label>
+        <ion-input type="number" [(ngModel)]="n1" placeholder="0"></ion-input>
+      </ion-item>
+
+      <div class="div-spacing"></div>
+
+      <!-- Deuxième nombre -->
+      <ion-item lines="full">
+        <ion-label position="stacked">Nombre 2</ion-label>
+        <ion-input type="number" [(ngModel)]="n2" placeholder="0"></ion-input>
+      </ion-item>
+
+      <div class="div-spacing"></div>
+
+      <!-- Les boutons d'opérations -->
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="3">
+          <ion-button expand="block" (click)="add()" color="success">+</ion-button>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button expand="block" (click)="subtract()" color="warning">-</ion-button>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button expand="block" (click)="multiply()" color="tertiary">*</ion-button>
+        </ion-col>
+        <ion-col size="3">
+          <ion-button expand="block" (click)="divide()" color="danger">/</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <div class="div-spacing"></div>
+
+      <!-- Affichage du résultat -->
+      <div class="result-box">
+        <h3>Résultat : <b>{{ result }}</b></h3>
+      </div>
+
+      <!-- Bouton Effacer -->
+      <ion-button expand="block" (click)="clear()" color="light" class="ion-margin-top">
+        <ion-icon name="trash-outline" slot="start"></ion-icon>
+        Effacer tout
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Fast Dialer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="call-wrapper">
+    
+    <div class="page-intro">
+      <h1>Voice Call</h1>
+      <p>Instantly launch your native dialer for any contact.</p>
+    </div>
+
+    <ion-card class="dialer-card">
+      <div class="card-content ion-padding">
+        <ion-item lines="none" class="num-item">
+          <ion-icon name="phone-portrait-outline" slot="start" color="success"></ion-icon>
+          <ion-input type="tel" placeholder="Enter number..." [(ngModel)]="phoneNumber" class="big-input"></ion-input>
+        </ion-item>
+        
+        <p class="hint">The number will be pre-filled in your phone app.</p>
+      </div>
+
+      <div class="action-footer ion-padding">
+        <ion-button expand="block" (click)="makeCall()" [disabled]="!phoneNumber" color="success" shape="round">
+          <ion-icon slot="start" name="call-outline"></ion-icon>
+          Place Call
+        </ion-button>
+      </div>
+    </ion-card>
+
+  </div>
+</ion-content>
