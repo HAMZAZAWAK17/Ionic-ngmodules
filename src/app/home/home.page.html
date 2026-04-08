@@ -47,6 +47,18 @@
           <span class="stat-lab">Status</span>
         </div>
       </div>
+
+      <!-- New Sync Status Section -->
+      <div class="sync-status-card" *ngIf="data.email">
+        <div class="sync-icon">
+          <ion-icon name="cloud-done-outline"></ion-icon>
+        </div>
+        <div class="sync-details">
+          <h3>Dernières données transférées</h3>
+          <p><strong>Email :</strong> {{ data.email }}</p>
+          <p class="sync-time">Synchronisé à {{ data.timestamp || 'l\'instant' }}</p>
+        </div>
+      </div>
     </section>
 
     <!-- Services Grid -->

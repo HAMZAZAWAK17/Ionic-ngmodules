@@ -23,7 +23,8 @@ import {
   barChartOutline,
   chatbubblesOutline,
   callOutline,
-  calculatorOutline
+  calculatorOutline,
+  cloudDoneOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -34,9 +35,11 @@ import {
 })
 export class HomePage {
 
-  data = {
+  data: any = {
     msg: 'Bonjour',
-    name: 'SDDI4'
+    name: 'SDDI4',
+    email: '',
+    timestamp: ''
   };
 
   constructor(private router: Router, private dataTransferService: DataTransferService) {
@@ -61,15 +64,18 @@ export class HomePage {
       barChartOutline,
       chatbubblesOutline,
       callOutline,
-      calculatorOutline
+      calculatorOutline,
+      cloudDoneOutline
     });
   }
 
   ionViewWillEnter() {
     // On récupère les données transférées pour les afficher sur l'accueil
     const savedData = this.dataTransferService.getData();
-    if (savedData && savedData.name) {
-      this.data.name = savedData.name;
+    if (savedData) {
+      this.data.name = savedData.name || this.data.name;
+      this.data.email = savedData.email || this.data.email;
+      this.data.timestamp = savedData.timestamp || this.data.timestamp;
     }
   }
 

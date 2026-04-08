@@ -82,6 +82,65 @@ ion-content {
         }
       }
     }
+
+    .sync-status-card {
+      margin-top: 25px;
+      background: #f1f5f9;
+      border: 1px dotted #3b82f6;
+      border-radius: 20px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      animation: slideIn 0.5s ease-out;
+
+      .sync-icon {
+        width: 44px;
+        height: 44px;
+        background: #3b82f6;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        ion-icon {
+          font-size: 24px;
+          color: white;
+        }
+      }
+
+      .sync-details {
+        flex: 1;
+        
+        h3 {
+          margin: 0;
+          font-size: 0.75rem;
+          color: var(--ion-color-medium);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          font-weight: 800;
+        }
+
+        p {
+          margin: 2px 0 0 0;
+          font-size: 0.95rem;
+          color: var(--ion-color-dark);
+          font-weight: 700;
+        }
+
+        .sync-time {
+          font-size: 0.7rem;
+          color: #3b82f6;
+          margin-top: 2px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 1; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
 
   /* SERVICES SECTION */
