@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, ActionSheetController } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { 
-  alertCircleOutline, 
-  checkmarkCircleOutline, 
-  warningOutline, 
   informationCircleOutline,
-  createOutline,
+  alertTriangleOutline,
+  documentTextOutline,
+  listOutline,
+  gridOutline,
+  arrowForwardOutline,
   trashOutline,
   closeOutline,
   shareOutline
@@ -25,11 +26,12 @@ export class AlertsPage implements OnInit {
     private actionSheetController: ActionSheetController
   ) {
     addIcons({ 
-      alertCircleOutline, 
-      checkmarkCircleOutline, 
-      warningOutline, 
       informationCircleOutline,
-      createOutline,
+      warningOutline,
+      documentTextOutline,
+      listOutline,
+      gridOutline,
+      arrowForwardOutline,
       trashOutline,
       closeOutline,
       shareOutline
