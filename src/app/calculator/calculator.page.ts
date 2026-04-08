@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-calculator',
   templateUrl: './calculator.page.html',
   styleUrls: ['./calculator.page.scss'],
+  standalone: false
 })
 export class CalculatorPage {
   // Variables pour stocker les nombres et le résultat
