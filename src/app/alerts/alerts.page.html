@@ -15,64 +15,49 @@
     </div>
 
     <div class="alert-grid">
-      <!-- Info Alert -->
       <ion-card class="alert-card info" (click)="presentSimpleAlert()">
-        <div class="card-icon">
-          <ion-icon name="information-circle-outline"></ion-icon>
-        </div>
+        <div class="card-icon"><ion-icon name="information-circle-outline"></ion-icon></div>
         <div class="card-content">
-          <h3>Info Alert</h3>
-          <p>Simple feedback notice</p>
+          <h3>Information</h3>
+          <p>Notes de système simples et notifications de base.</p>
         </div>
-        <ion-icon name="chevron-forward-outline" class="go"></ion-icon>
+        <ion-icon name="arrow-forward-outline" class="go"></ion-icon>
       </ion-card>
 
-      <!-- Confirmation -->
       <ion-card class="alert-card warning" (click)="presentConfirmAlert()">
-        <div class="card-icon">
-          <ion-icon name="warning-outline"></ion-icon>
-        </div>
+        <div class="card-icon"><ion-icon name="alert-triangle-outline"></ion-icon></div>
         <div class="card-content">
           <h3>Confirmation</h3>
-          <p>Destructive action dialog</p>
+          <p>Actions critiques nécessitant une validation.</p>
         </div>
-        <ion-icon name="chevron-forward-outline" class="go"></ion-icon>
+        <ion-icon name="arrow-forward-outline" class="go"></ion-icon>
       </ion-card>
 
-      <!-- Input -->
       <ion-card class="alert-card primary" (click)="presentInputAlert()">
-        <div class="card-icon">
-          <ion-icon name="create-outline"></ion-icon>
-        </div>
+        <div class="card-icon"><ion-icon name="document-text-outline"></ion-icon></div>
         <div class="card-content">
-          <h3>Input Alert</h3>
-          <p>Quick form interaction</p>
+          <h3>Saisie Directe</h3>
+          <p>Capturer des données texte rapidement.</p>
         </div>
-        <ion-icon name="chevron-forward-outline" class="go"></ion-icon>
+        <ion-icon name="arrow-forward-outline" class="go"></ion-icon>
       </ion-card>
 
-      <!-- Selection -->
       <ion-card class="alert-card secondary" (click)="presentRadioAlert()">
-        <div class="card-icon">
-          <ion-icon name="checkmark-circle-outline"></ion-icon>
-        </div>
+        <div class="card-icon"><ion-icon name="list-outline"></ion-icon></div>
         <div class="card-content">
-          <h3>Radio List</h3>
-          <p>Multiple choice selection</p>
+          <h3>Choix Multiples</h3>
+          <p>Sélection unique parmi une liste d'options.</p>
         </div>
-        <ion-icon name="chevron-forward-outline" class="go"></ion-icon>
+        <ion-icon name="arrow-forward-outline" class="go"></ion-icon>
       </ion-card>
 
-      <!-- Action Sheet -->
       <ion-card class="alert-card sheet" (click)="presentActionSheet()">
-        <div class="card-icon">
-          <ion-icon name="alert-circle-outline"></ion-icon>
-        </div>
+        <div class="card-icon"><ion-icon name="grid-outline"></ion-icon></div>
         <div class="card-content">
-          <h3>Action Sheet</h3>
-          <p>Contextual menu options</p>
+          <h3>Menu Actions</h3>
+          <p>Options contextuelles pour des actions groupées.</p>
         </div>
-        <ion-icon name="chevron-forward-outline" class="go"></ion-icon>
+        <ion-icon name="arrow-forward-outline" class="go"></ion-icon>
       </ion-card>
     </div>
   </div>
