@@ -65,6 +65,14 @@ export class HomePage {
     });
   }
 
+  ionViewWillEnter() {
+    // On récupère les données transférées pour les afficher sur l'accueil
+    const savedData = this.dataTransferService.getData();
+    if (savedData && savedData.name) {
+      this.data.name = savedData.name;
+    }
+  }
+
   onTransferData() {
     this.dataTransferService.setData(this.data);
     this.router.navigate(['/transfer-data']);
