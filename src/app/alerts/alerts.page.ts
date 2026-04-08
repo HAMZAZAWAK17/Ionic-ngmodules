@@ -3,7 +3,7 @@ import { AlertController, ActionSheetController } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { 
   informationCircleOutline,
-  alertTriangleOutline,
+  warningOutline,
   documentTextOutline,
   listOutline,
   gridOutline,
@@ -27,7 +27,7 @@ export class AlertsPage implements OnInit {
   ) {
     addIcons({ 
       informationCircleOutline,
-      warningOutline,
+      'alert-triangle-outline': warningOutline,
       documentTextOutline,
       listOutline,
       gridOutline,
