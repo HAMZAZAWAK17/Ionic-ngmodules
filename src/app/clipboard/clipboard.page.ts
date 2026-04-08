@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Clipboard } from '@capacitor/clipboard';
 import { addIcons } from 'ionicons';
 import { copyOutline, clipboardOutline, trashOutline } from 'ionicons/icons';
 
@@ -21,19 +22,22 @@ export class ClipboardPage implements OnInit {
   async copyToClipboard() {
     if (this.clipboardText) {
       try {
-        await navigator.clipboard.writeText(this.clipboardText);
+        await Clipboard.write({
+          string: this.clipboardText
+        });
         this.showMessage('✅ Text copied to system clipboard!');
       } catch (err) {
         this.showMessage('❌ Failed to copy. Check permissions.');
+        console.error('Clipboard copy error:', err);
       }
     }
   }
 
   async pasteFromClipboard() {
     try {
-      const text = await navigator.clipboard.readText();
-      if (text) {
-        this.clipboardText = text;
+      const { type, value } = await Clipboard.read();
+      if (value) {
+        this.clipboardText = value;
         this.showMessage('📋 Text pasted successfully!');
       } else {
         this.showMessage('⚠️ Clipboard is empty.');
