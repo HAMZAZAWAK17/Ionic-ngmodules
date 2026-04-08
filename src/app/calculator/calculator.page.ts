@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { addIcons } from 'ionicons';
+import { addOutline, removeOutline, closeOutline, refreshOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-calculator',
@@ -12,7 +14,9 @@ export class CalculatorPage {
   n2: number = 0;
   result: number | string = 0;
 
-  constructor() {}
+  constructor() {
+    addIcons({ addOutline, removeOutline, closeOutline, refreshOutline });
+  }
 
   // Fonctions pour les opérations
   add() {

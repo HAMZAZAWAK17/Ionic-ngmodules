@@ -1,64 +1,54 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+<ion-header class="ion-no-border">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-back-button defaultHref="home" color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title>Calculatrice Simple</ion-title>
+    <ion-title>Calculatrice Pro</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Calculez Facilement</ion-card-title>
-      <ion-card-subtitle>Entrez vos nombres ci-dessous</ion-card-subtitle>
-    </ion-card-header>
+<ion-content [fullscreen]="true">
+  <div class="calculator-container">
+    
+    <div class="display-section">
+      <div class="input-display">
+        <div class="number-input">
+          <span class="label">Nombre A</span>
+          <input type="number" [(ngModel)]="n1" placeholder="0">
+        </div>
+        <div class="number-input">
+          <span class="label">Nombre B</span>
+          <input type="number" [(ngModel)]="n2" placeholder="0">
+        </div>
+      </div>
+      
+      <div class="result-glass">
+        <div class="result-label">RÉSULTAT</div>
+        <div class="result-value">{{ result }}</div>
+      </div>
+    </div>
 
-    <ion-card-content>
-      <!-- Premier nombre -->
-      <ion-item lines="full">
-        <ion-label position="stacked">Nombre 1</ion-label>
-        <ion-input type="number" [(ngModel)]="n1" placeholder="0"></ion-input>
-      </ion-item>
-
-      <div class="div-spacing"></div>
-
-      <!-- Deuxième nombre -->
-      <ion-item lines="full">
-        <ion-label position="stacked">Nombre 2</ion-label>
-        <ion-input type="number" [(ngModel)]="n2" placeholder="0"></ion-input>
-      </ion-item>
-
-      <div class="div-spacing"></div>
-
-      <!-- Les boutons d'opérations -->
-      <ion-row class="ion-justify-content-center">
-        <ion-col size="3">
-          <ion-button expand="block" (click)="add()" color="success">+</ion-button>
-        </ion-col>
-        <ion-col size="3">
-          <ion-button expand="block" (click)="subtract()" color="warning">-</ion-button>
-        </ion-col>
-        <ion-col size="3">
-          <ion-button expand="block" (click)="multiply()" color="tertiary">*</ion-button>
-        </ion-col>
-        <ion-col size="3">
-          <ion-button expand="block" (click)="divide()" color="danger">/</ion-button>
-        </ion-col>
-      </ion-row>
-
-      <div class="div-spacing"></div>
-
-      <!-- Affichage du résultat -->
-      <div class="result-box">
-        <h3>Résultat : <b>{{ result }}</b></h3>
+    <div class="actions-section">
+      <div class="operator-grid">
+        <button class="op-btn plus" (click)="add()">
+          <ion-icon name="add-outline"></ion-icon>
+        </button>
+        <button class="op-btn minus" (click)="subtract()">
+          <ion-icon name="remove-outline"></ion-icon>
+        </button>
+        <button class="op-btn multiply" (click)="multiply()">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <button class="op-btn divide" (click)="divide()">
+          <span>/</span>
+        </button>
       </div>
 
-      <!-- Bouton Effacer -->
-      <ion-button expand="block" (click)="clear()" color="light" class="ion-margin-top">
-        <ion-icon name="trash-outline" slot="start"></ion-icon>
-        Effacer tout
-      </ion-button>
-    </ion-card-content>
-  </ion-card>
+      <button class="clear-btn" (click)="clear()">
+        <ion-icon name="refresh-outline" slot="start"></ion-icon>
+        RÉINITIALISER
+      </button>
+    </div>
+
+  </div>
 </ion-content>
