@@ -20,7 +20,12 @@ import {
   refreshOutline,
   sunny,
   moonOutline,
-  cloudy
+  cloudy,
+  compassOutline,
+  navigateCircleOutline,
+  sunnyOutline as sunriseIcon,
+  moonOutline as sunsetIcon,
+  thermometerOutline as tempMinMax
 } from 'ionicons/icons';
 
 @Component({
@@ -59,7 +64,12 @@ export class WeatherPage {
       refreshOutline,
       sunny,
       moonOutline,
-      cloudy
+      cloudy,
+      compassOutline,
+      navigateCircleOutline,
+      sunriseIcon,
+      sunsetIcon,
+      tempMinMax
     });
   }
 
