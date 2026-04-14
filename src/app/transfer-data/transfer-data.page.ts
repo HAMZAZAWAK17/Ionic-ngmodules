@@ -3,7 +3,16 @@ import { Router } from '@angular/router';
 import { DataTransferService } from '../services/data-transfer.service';
 import { addIcons } from 'ionicons';
 import { ToastController } from '@ionic/angular';
-import { arrowBackOutline, swapHorizontalOutline, checkmarkCircleOutline } from 'ionicons/icons';
+import { 
+  arrowBackOutline, 
+  swapHorizontalOutline, 
+  checkmarkCircleOutline, 
+  syncOutline, 
+  personOutline, 
+  mailOutline,
+  informationCircleOutline,
+  chevronBackOutline
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-transfer-data',
@@ -21,7 +30,16 @@ export class TransferDataPage implements OnInit {
     private dataTransferService: DataTransferService,
     private toastController: ToastController
   ) { 
-    addIcons({ arrowBackOutline, swapHorizontalOutline, checkmarkCircleOutline });
+    addIcons({ 
+      arrowBackOutline, 
+      swapHorizontalOutline, 
+      checkmarkCircleOutline, 
+      syncOutline, 
+      personOutline, 
+      mailOutline,
+      informationCircleOutline,
+      chevronBackOutline
+    });
   }
 
   ngOnInit() {
