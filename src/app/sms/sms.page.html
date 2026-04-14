@@ -1,50 +1,53 @@
 <ion-header [translucent]="true" class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar class="custom-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" color="primary"></ion-back-button>
+      <ion-back-button defaultHref="/home" color="light" text=""></ion-back-button>
     </ion-buttons>
     <ion-title>SMS Composer</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <div class="sms-wrapper">
-    
-    <div class="page-intro">
-      <h1>New Message</h1>
-      <p>Send a pre-filled direct message to any contact.</p>
+<ion-content [fullscreen]="true" class="custom-content">
+  <div class="sms-dashboard">
+    <div class="header-section">
+      <div class="header-icon-box">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+      </div>
+      <h1 class="glow-text">New Message</h1>
+      <p class="subtitle">Send a pre-filled direct message</p>
     </div>
 
-    <ion-card class="composer-card">
-      <div class="input-section">
-        <ion-item lines="full" class="num-item">
-          <ion-icon name="phone-portrait-outline" slot="start" color="primary"></ion-icon>
-          <ion-label position="floating">Receiver Number</ion-label>
-          <ion-input type="tel" placeholder="+212 600..." [(ngModel)]="phoneNumber"></ion-input>
-        </ion-item>
+    <div class="composer-container">
+      <div class="input-group">
+        <div class="field-label">Receiver Number</div>
+        <div class="field-container">
+          <ion-icon name="phone-portrait-outline" class="field-icon"></ion-icon>
+          <ion-input type="tel" placeholder="+212 600..." [(ngModel)]="phoneNumber" class="custom-input"></ion-input>
+        </div>
+      </div>
 
-        <ion-item lines="none" class="msg-item">
-          <ion-label position="stacked">Your Message</ion-label>
+      <div class="input-group">
+        <div class="field-label">Your Message</div>
+        <div class="field-container textarea-container">
+          <ion-icon name="document-text-outline" class="field-icon align-top"></ion-icon>
           <ion-textarea 
             placeholder="Type your message here..." 
             [(ngModel)]="messageText"
             rows="6"
-            auto-grow="true">
+            auto-grow="true"
+            class="custom-input custom-textarea">
           </ion-textarea>
-        </ion-item>
+        </div>
       </div>
 
-      <div class="action-footer">
-        <ion-button expand="block" (click)="sendSms()" [disabled]="!phoneNumber || !messageText" shape="round">
-          <ion-icon slot="start" name="paper-plane-outline"></ion-icon>
-          Launch SMS App
-        </ion-button>
-      </div>
-    </ion-card>
-
-    <div class="helper-text">
-      <p>This action will open the native SMS manager on your mobile device.</p>
+      <button class="send-btn" (click)="sendSms()" [disabled]="!phoneNumber || !messageText">
+        <span>Launch SMS App</span>
+        <ion-icon name="paper-plane-outline"></ion-icon>
+      </button>
     </div>
 
+    <div class="helper-text">
+      <p>This will open the native SMS manager on your device.</p>
+    </div>
   </div>
 </ion-content>

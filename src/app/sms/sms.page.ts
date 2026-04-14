@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { addIcons } from 'ionicons';
-import { paperPlaneOutline, phonePortraitOutline } from 'ionicons/icons';
+import { paperPlaneOutline, phonePortraitOutline, chatbubblesOutline, documentTextOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-sms',
@@ -13,7 +13,7 @@ export class SmsPage implements OnInit {
   messageText: string = '';
 
   constructor() {
-    addIcons({ paperPlaneOutline, phonePortraitOutline });
+    addIcons({ paperPlaneOutline, phonePortraitOutline, chatbubblesOutline, documentTextOutline });
   }
 
   ngOnInit() { }
