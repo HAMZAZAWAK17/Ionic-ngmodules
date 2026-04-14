@@ -1,0 +1,54 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="light" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Smart Camera</ion-title>
+    <ion-buttons slot="end" *ngIf="capturedImage">
+      <ion-button (click)="deletePicture()" color="danger">
+        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="custom-content">
+  <div class="camera-dashboard">
+    <div class="header-section" *ngIf="!capturedImage">
+      <div class="header-icon-box">
+        <ion-icon name="aperture-outline"></ion-icon>
+      </div>
+      <h1 class="glow-text">Capture Moment</h1>
+      <p class="subtitle">Take a high-quality photo instantly</p>
+    </div>
+
+    <!-- PREVIEW AREA -->
+    <div class="preview-container" [class.has-image]="capturedImage">
+      <div class="image-frame" *ngIf="capturedImage">
+        <img [src]="capturedImage" alt="Captured content">
+      </div>
+      
+      <div class="placeholder-frame" *ngIf="!capturedImage" (click)="takePicture()">
+        <ion-icon name="camera-outline"></ion-icon>
+        <p>Tap to open camera</p>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="controls-container">
+      <button class="action-btn camera-btn" (click)="takePicture()">
+        <ion-icon name="camera-outline"></ion-icon>
+        <span>{{ capturedImage ? 'Retake Photo' : 'Open Camera' }}</span>
+      </button>
+
+      <button class="action-btn gallery-btn" (click)="selectFromGallery()">
+        <ion-icon name="image-outline"></ion-icon>
+        <span>Library</span>
+      </button>
+    </div>
+
+    <div class="helper-text">
+        <p>Photos are stored temporarily in logic memory.</p>
+    </div>
+  </div>
+</ion-content>
