@@ -25,7 +25,8 @@ import {
   callOutline,
   calculatorOutline,
   cloudDoneOutline,
-  cameraOutline
+  cameraOutline,
+  videocamOutline
 } from 'ionicons/icons';
 
 @Component({
