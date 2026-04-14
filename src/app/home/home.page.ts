@@ -24,7 +24,8 @@ import {
   chatbubblesOutline,
   callOutline,
   calculatorOutline,
-  cloudDoneOutline
+  cloudDoneOutline,
+  cameraOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -65,7 +66,8 @@ export class HomePage {
       chatbubblesOutline,
       callOutline,
       calculatorOutline,
-      cloudDoneOutline
+      cloudDoneOutline,
+      cameraOutline
     });
   }
 
@@ -122,5 +124,9 @@ export class HomePage {
 
   goToCalculator() {
     this.router.navigate(['/calculator']);
+  }
+
+  goToCamera() {
+    this.router.navigate(['/camera']);
   }
 }
