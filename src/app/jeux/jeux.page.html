@@ -1,61 +1,67 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar class="custom-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" text="Back" icon="chevron-back-outline"></ion-back-button>
+      <ion-back-button defaultHref="/home" color="light" text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>Logic Module</ion-title>
+    <ion-title>Game Center</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="recommencer()">
+      <ion-button (click)="recommencer()" color="light">
         <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  
-  <div class="pro-game-wrapper ion-padding">
-    
-    <div class="module-header">
-      <div class="module-icon">
-        <ion-icon name="extension-puzzle-outline"></ion-icon>
+<ion-content [fullscreen]="true" class="custom-content">
+  <div class="game-dashboard">
+    <div class="header-section">
+      <div class="header-icon-box">
+        <ion-icon name="game-controller-outline"></ion-icon>
       </div>
-      <div class="module-text">
-        <h1>Number Logic Game</h1>
-        <p>Attempt to identify the randomly generated system integer between 1 and 100.</p>
-      </div>
+      <h1 class="glow-text">Number Guesser</h1>
+      <p class="subtitle">Find the secret integer between 0 and 100</p>
     </div>
 
     <!-- MAIN GAME BOARD -->
-    <div class="logic-board">
-      <div class="status-row">
-        <div class="badge" [ngClass]="{'success': message.includes('Bravo'), 'danger': message.includes('plus'), 'waiting': !message}">
-          {{ message || 'Awaiting input...' }}
+    <div class="game-card">
+      
+      <!-- Stats / Tries left -->
+      <div class="stats-row">
+        <div class="stat-box status" [ngClass]="{'win': gagne, 'lose': jeuTermine && !gagne}">
+          <ion-icon [name]="gagne ? 'trophy-outline' : (jeuTermine ? 'skull-outline' : 'pulse-outline')"></ion-icon>
+          <span class="status-message">{{ message || 'Awaiting input...' }}</span>
+        </div>
+
+        <div class="stat-box">
+          <ion-icon name="heart" [class.danger]="tentatives <= 1"></ion-icon>
+          <span class="stat-value">{{ tentatives }}</span>
+          <span class="stat-label">Tries Left</span>
         </div>
       </div>
 
-      <div class="input-section">
-        <label>System Input</label>
-        <div class="custom-input-box">
+      <div class="input-group">
+        <div class="field-label">Your Guess</div>
+        <div class="field-container">
+          <ion-icon name="keypad-outline" class="field-icon"></ion-icon>
           <ion-input type="number" 
                     [(ngModel)]="nombreSaisi" 
-                    placeholder="Enter integer..."
-                    mode="md">
+                    placeholder="Enter a number..."
+                    [disabled]="jeuTermine"
+                    class="custom-input">
           </ion-input>
-          <ion-button (click)="verifierNombre()" [disabled]="nombreSaisi === null">
-            Verify Logic
-          </ion-button>
         </div>
       </div>
 
+      <button class="verify-btn" (click)="verifierNombre()" [disabled]="nombreSaisi === null || jeuTermine">
+        <span>Verify Guess</span>
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </button>
+
       <!-- REPLAY OPTION displayed if game over -->
-      <div class="replay-overlay" *ngIf="message.includes('Bravo')">
-        <ion-button expand="block" 
-                    class="ion-margin-top"
-                    (click)="initialiserJeu()">
-          Rejouer
-        </ion-button>
-      </div>
+      <button class="replay-btn" *ngIf="jeuTermine" (click)="initialiserJeu()">
+        <span>Play Again</span>
+        <ion-icon name="refresh-circle-outline"></ion-icon>
+      </button>
     </div>
   </div>
 </ion-content>
