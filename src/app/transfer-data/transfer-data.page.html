@@ -1,46 +1,48 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar class="custom-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" text="Back" icon="chevron-back-outline"></ion-back-button>
+      <ion-back-button defaultHref="/home" color="light" text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>Data Management</ion-title>
+    <ion-title>Data Sync</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  
-  <div class="transfer-container">
-    
-    <div class="transfer-card">
-      <div class="card-header-pro">
-        <h2>Sync Module</h2>
-        <p>Input system data for cross-module synchronization.</p>
+<ion-content [fullscreen]="true" class="custom-content">
+  <div class="transfer-dashboard">
+    <div class="header-section">
+      <div class="header-icon-box">
+        <ion-icon name="sync-outline"></ion-icon>
       </div>
-
-      <div class="form-group">
-        <label>Identity String</label>
-        <div class="custom-input">
-          <ion-input type="text" [(ngModel)]="nom" placeholder="Enter name identifier..."></ion-input>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>System Email</label>
-        <div class="custom-input">
-          <ion-input type="email" [(ngModel)]="email" placeholder="Enter contact email..."></ion-input>
-        </div>
-      </div>
-
-      <ion-button expand="block" (click)="valider()" class="submit-btn">
-        Execute Synchronization
-      </ion-button>
-
-      <div class="info-hint">
-        <ion-icon name="information-circle-outline"></ion-icon>
-        <span>Changes will propagate to the summary dashboard immediately.</span>
-      </div>
+      <h1 class="glow-text">Sync Module</h1>
+      <p class="subtitle">Propagate system data across the application</p>
     </div>
 
-  </div>
+    <div class="sync-container">
+      <div class="input-group">
+        <div class="field-label">Identity String</div>
+        <div class="field-container">
+          <ion-icon name="person-outline" class="field-icon"></ion-icon>
+          <ion-input type="text" [(ngModel)]="nom" placeholder="Enter name identifier..." class="custom-input"></ion-input>
+        </div>
+      </div>
 
+      <div class="input-group">
+        <div class="field-label">System Email</div>
+        <div class="field-container">
+          <ion-icon name="mail-outline" class="field-icon"></ion-icon>
+          <ion-input type="email" [(ngModel)]="email" placeholder="Enter contact email..." class="custom-input"></ion-input>
+        </div>
+      </div>
+
+      <button class="sync-btn" (click)="valider()" [disabled]="!nom || !email">
+        <span>Execute Synchronization</span>
+        <ion-icon name="swap-horizontal-outline"></ion-icon>
+      </button>
+
+      <div class="info-alert">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        <p>Changes will propagate to the summary dashboard immediately after execution.</p>
+      </div>
+    </div>
+  </div>
 </ion-content>
