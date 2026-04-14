@@ -10,8 +10,8 @@ import { videocamOutline, stopCircleOutline, playCircleOutline, trashOutline, ra
   standalone: false
 })
 export class VideoPage implements OnInit, OnDestroy {
-  isRecording = false;
-  videoPath: string | undefined;
+  isRecording: boolean = false;
+  videoPath: string | undefined = undefined;
 
   constructor() {
     addIcons({ videocamOutline, stopCircleOutline, playCircleOutline, trashOutline, radioButtonOnOutline, chevronBackOutline });
@@ -23,7 +23,7 @@ export class VideoPage implements OnInit, OnDestroy {
 
   async initializeRecorder() {
     try {
-      await VideoRecorder.initialize({
+      await (VideoRecorder as any).initialize({
         camera: 'back',
         quality: '720p',
         stackPosition: 'back'
@@ -35,9 +35,8 @@ export class VideoPage implements OnInit, OnDestroy {
 
   async startRecording() {
     try {
-      await VideoRecorder.start();
+      await (VideoRecorder as any).start();
       this.isRecording = true;
-      // Pour voir l'aperçu derrière, on rend l'ion-content transparent via CSS
       document.body.classList.add('recorder-mode');
     } catch (e) {
       console.error('Start recording error', e);
@@ -46,9 +45,9 @@ export class VideoPage implements OnInit, OnDestroy {
 
   async stopRecording() {
     try {
-      const result = await VideoRecorder.stop();
+      const result: any = await (VideoRecorder as any).stop();
       this.isRecording = false;
-      this.videoPath = result.videoUrl;
+      this.videoPath = result?.videoUrl;
       document.body.classList.remove('recorder-mode');
     } catch (e) {
       console.error('Stop recording error', e);
@@ -60,7 +59,9 @@ export class VideoPage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    VideoRecorder.destroy();
+    try {
+      (VideoRecorder as any).destroy();
+    } catch (e) {}
     document.body.classList.remove('recorder-mode');
   }
 }
