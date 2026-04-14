@@ -1,0 +1,72 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="light" text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Smart Video</ion-title>
+    <ion-buttons slot="end" *ngIf="videoPath">
+      <ion-button (click)="deleteVideo()" color="danger">
+        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="custom-content" [class.transparent]="isRecording">
+  <div class="video-dashboard" *ngIf="!isRecording">
+    
+    <div class="header-section" *ngIf="!videoPath">
+      <div class="header-icon-box">
+        <ion-icon name="videocam-outline"></ion-icon>
+      </div>
+      <h1 class="glow-text">Record Studio</h1>
+      <p class="subtitle">Capture high-quality video clips</p>
+    </div>
+
+    <!-- PREVIEW AREA -->
+    <div class="preview-container" [class.has-video]="videoPath">
+      <div class="video-frame" *ngIf="videoPath">
+        <video [src]="videoPath" controls autoplay playsinline></video>
+      </div>
+      
+      <div class="placeholder-frame" *ngIf="!videoPath" (click)="startRecording()">
+        <ion-icon name="radioButtonOnOutline" class="rec-icon"></ion-icon>
+        <p>Tap to start recording</p>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="controls-container">
+      <button class="action-btn record-btn" (click)="startRecording()">
+        <ion-icon name="radioButtonOnOutline"></ion-icon>
+        <span>Start New Clip</span>
+      </button>
+
+      <button class="action-btn" *ngIf="videoPath" (click)="deleteVideo()">
+        <ion-icon name="trash-outline"></ion-icon>
+        <span>Discard</span>
+      </button>
+    </div>
+
+    <div class="helper-text">
+        <p>Videos are stored in application cache.</p>
+    </div>
+  </div>
+
+  <!-- RECORDING OVERLAY -->
+  <div class="recording-overlay" *ngIf="isRecording">
+    <div class="rec-header">
+        <div class="rec-badge">
+            <div class="dot"></div>
+            REC
+        </div>
+    </div>
+    
+    <div class="rec-footer">
+        <button class="stop-btn" (click)="stopRecording()">
+            <ion-icon name="stopCircleOutline"></ion-icon>
+            <span>Stop Recording</span>
+        </button>
+    </div>
+  </div>
+</ion-content>

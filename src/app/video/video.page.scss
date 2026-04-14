@@ -1,0 +1,218 @@
+ion-content.custom-content {
+  --background: #0b0f19;
+  --background-image: radial-gradient(circle at 15% 50%, rgba(239, 68, 68, 0.1), transparent 25%),
+                      radial-gradient(circle at 85% 30%, rgba(99, 102, 241, 0.1), transparent 25%);
+
+  &.transparent {
+      --background: transparent;
+      --background-image: none;
+  }
+}
+
+.custom-toolbar {
+  --background: transparent;
+  --color: #ffffff;
+  
+  ion-title {
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+  }
+}
+
+.video-dashboard {
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 30px;
+
+  .header-icon-box {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #ef4444, #6366f1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.4);
+
+    ion-icon {
+      font-size: 32px;
+      color: white;
+    }
+  }
+
+  .glow-text {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 10px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+  }
+
+  .subtitle {
+    color: #94a3b8;
+    font-size: 1.05rem;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.preview-container {
+  aspect-ratio: 16/9;
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+  .video-frame {
+      width: 100%;
+      height: 100%;
+      video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+  }
+
+  .placeholder-frame {
+      text-align: center;
+      cursor: pointer;
+      
+      .rec-icon {
+          font-size: 64px;
+          color: #ef4444;
+          margin-bottom: 15px;
+          animation: pulse 1.5s infinite;
+      }
+
+      p {
+          color: #94a3b8;
+          font-weight: 600;
+      }
+  }
+}
+
+.controls-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+
+    .action-btn {
+        flex: 1;
+        border: none;
+        padding: 18px;
+        border-radius: 16px;
+        font-size: 1rem;
+        font-weight: 700;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        color: white;
+
+        &:active { transform: scale(0.95); }
+
+        &.record-btn {
+            background: linear-gradient(135deg, #ef4444, #b91c1c);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+    }
+}
+
+.recording-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 30px;
+
+    .rec-header {
+        display: flex;
+        justify-content: flex-end;
+        .rec-badge {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 100px;
+            color: white;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            .dot {
+                width: 10px;
+                height: 10px;
+                background: #ef4444;
+                border-radius: 50%;
+                animation: blink 1s infinite;
+            }
+        }
+    }
+
+    .rec-footer {
+        display: flex;
+        justify-content: center;
+        pointer-events: auto;
+        
+        .stop-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px 40px;
+            border-radius: 100px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            
+            ion-icon { font-size: 2rem; color: #ef4444; }
+        }
+    }
+}
+
+.helper-text {
+  p {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}

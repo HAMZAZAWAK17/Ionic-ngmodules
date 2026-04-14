@@ -67,7 +67,8 @@ export class HomePage {
       callOutline,
       calculatorOutline,
       cloudDoneOutline,
-      cameraOutline
+      cameraOutline,
+      videocamOutline
     });
   }
 
@@ -128,5 +129,9 @@ export class HomePage {
 
   goToCamera() {
     this.router.navigate(['/camera']);
+  }
+
+  goToVideo() {
+    this.router.navigate(['/video']);
   }
 }
