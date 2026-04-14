@@ -12,8 +12,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="custom-content" [class.transparent]="isRecording">
-  <div class="video-dashboard" *ngIf="!isRecording">
+<ion-content [fullscreen]="true" class="custom-content">
+  <!-- Hidden Native Capture Input -->
+  <input 
+    type="file" 
+    accept="video/*" 
+    capture="camcorder" 
+    id="video-capture-input" 
+    style="display: none" 
+    (change)="handleVideoInput($event)"
+  >
+
+  <div class="video-dashboard">
     
     <div class="header-section" *ngIf="!videoPath">
       <div class="header-icon-box">
@@ -26,10 +36,10 @@
     <!-- PREVIEW AREA -->
     <div class="preview-container" [class.has-video]="videoPath">
       <div class="video-frame" *ngIf="videoPath">
-        <video [src]="videoPath" controls autoplay playsinline></video>
+        <video [src]="videoPath" controls autoplay playsinline class="video-preview"></video>
       </div>
       
-      <div class="placeholder-frame" *ngIf="!videoPath" (click)="startRecording()">
+      <div class="placeholder-frame" *ngIf="!videoPath" (click)="triggerCamera()">
         <ion-icon name="radioButtonOnOutline" class="rec-icon"></ion-icon>
         <p>Tap to start recording</p>
       </div>
@@ -37,9 +47,9 @@
 
     <!-- ACTIONS -->
     <div class="controls-container">
-      <button class="action-btn record-btn" (click)="startRecording()">
+      <button class="action-btn record-btn" (click)="triggerCamera()">
         <ion-icon name="radioButtonOnOutline"></ion-icon>
-        <span>Start New Clip</span>
+        <span>{{ videoPath ? 'Retake Video' : 'Start New Clip' }}</span>
       </button>
 
       <button class="action-btn" *ngIf="videoPath" (click)="deleteVideo()">
@@ -49,24 +59,7 @@
     </div>
 
     <div class="helper-text">
-        <p>Videos are stored in application cache.</p>
-    </div>
-  </div>
-
-  <!-- RECORDING OVERLAY -->
-  <div class="recording-overlay" *ngIf="isRecording">
-    <div class="rec-header">
-        <div class="rec-badge">
-            <div class="dot"></div>
-            REC
-        </div>
-    </div>
-    
-    <div class="rec-footer">
-        <button class="stop-btn" (click)="stopRecording()">
-            <ion-icon name="stopCircleOutline"></ion-icon>
-            <span>Stop Recording</span>
-        </button>
+        <p>Videos are handled via native system camera.</p>
     </div>
   </div>
 </ion-content>

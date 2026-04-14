@@ -1,223 +1,215 @@
 <ion-header [translucent]="true" class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar class="custom-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" color="primary"></ion-back-button>
+      <ion-back-button defaultHref="/home" color="light" text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>Full UI Showcase</ion-title>
-  </ion-toolbar>
-  <ion-toolbar>
-    <ion-searchbar placeholder="Search components..."></ion-searchbar>
+    <ion-title>Interactive Hub</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary">
+        <ion-icon name="sparkles-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="widgets-container ion-padding">
+<ion-content [fullscreen]="true" class="custom-content">
+  <div class="widgets-dashboard">
     
-    <!-- NAVIGATION & FEEDBACK -->
+    <div class="header-section">
+      <h1 class="glow-text">Smart Widgets</h1>
+      <p class="subtitle">Experience modern UI components</p>
+    </div>
+
+    <!-- SOCIAL CONNECT SECTION (NEW) -->
     <section class="widget-section">
-      <h2 class="section-badge">Navigation & Navigation</h2>
+      <div class="section-header">
+        <ion-icon name="globe-outline"></ion-icon>
+        <span>Social Connect</span>
+      </div>
       
-      <ion-breadcrumbs>
-        <ion-breadcrumb href="/home"><ion-icon name="home-outline" slot="start"></ion-icon>Home</ion-breadcrumb>
-        <ion-breadcrumb href="/widgets">Widgets</ion-breadcrumb>
-        <ion-breadcrumb>Showcase</ion-breadcrumb>
-      </ion-breadcrumbs>
-
-      <div class="segment-wrap ion-margin-top">
-        <ion-segment [(ngModel)]="selectedSegment" scrollable>
-          <ion-segment-button value="all"><ion-label>All</ion-label></ion-segment-button>
-          <ion-segment-button value="news"><ion-label>News</ion-label></ion-segment-button>
-          <ion-segment-button value="events"><ion-label>Events</ion-label></ion-segment-button>
-          <ion-segment-button value="offers"><ion-label>Offers</ion-label></ion-segment-button>
-        </ion-segment>
-      </div>
-    </section>
-
-    <!-- ACCORDION -->
-    <section class="widget-section">
-      <h2 class="section-badge">Accordion</h2>
-      <ion-accordion-group>
-        <ion-accordion value="first">
-          <ion-item slot="header" color="light">
-            <ion-label>Product Details</ion-label>
-          </ion-item>
-          <div class="ion-padding" slot="content">
-            This is the detailed information about the product using an accordion widget.
+      <div class="social-grid">
+        <div class="social-card fb">
+          <ion-icon name="logo-facebook"></ion-icon>
+          <div class="social-info">
+            <span class="count">12.4k</span>
+            <span class="label">Followers</span>
           </div>
-        </ion-accordion>
-        <ion-accordion value="second">
-          <ion-item slot="header" color="light">
-            <ion-label>Shipping Policy</ion-label>
-          </ion-item>
-          <div class="ion-padding" slot="content">
-            We ship nationwide within 3-5 business days.
+        </div>
+        <div class="social-card ig">
+          <ion-icon name="logo-instagram"></ion-icon>
+          <div class="social-info">
+            <span class="count">45.2k</span>
+            <span class="label">Reach</span>
           </div>
-        </ion-accordion>
-      </ion-accordion-group>
-    </section>
-
-    <!-- BUTTONS & CHIPS -->
-    <section class="widget-section">
-      <h2 class="section-badge">Buttons & Chips</h2>
-      <div class="button-gallery">
-        <ion-button expand="full">Full Width Button</ion-button>
-        <div class="flex-row">
-          <ion-button color="primary">Primary</ion-button>
-          <ion-button color="secondary">Secondary</ion-button>
-          <ion-button color="tertiary">Tertiary</ion-button>
         </div>
-        <div class="flex-row">
-          <ion-button color="success" fill="outline">Success</ion-button>
-          <ion-button color="danger" fill="clear">Danger</ion-button>
+        <div class="social-card tw">
+          <ion-icon name="logo-twitter"></ion-icon>
+          <div class="social-info">
+            <span class="count">8.1k</span>
+            <span class="label">Tweets</span>
+          </div>
+        </div>
+        <div class="social-card ln">
+          <ion-icon name="logo-linkedin"></ion-icon>
+          <div class="social-info">
+            <span class="count">500+</span>
+            <span class="label">Connections</span>
+          </div>
+        </div>
+        <div class="social-card yt">
+          <ion-icon name="logo-youtube"></ion-icon>
+          <div class="social-info">
+            <span class="count">1.2M</span>
+            <span class="label">Views</span>
+          </div>
+        </div>
+        <div class="social-card tk">
+          <ion-icon name="logo-tiktok"></ion-icon>
+          <div class="social-info">
+            <span class="count">92k</span>
+            <span class="label">Likes</span>
+          </div>
+        </div>
+        <div class="social-card gh">
+          <ion-icon name="logo-github"></ion-icon>
+          <div class="social-info">
+            <span class="count">34</span>
+            <span class="label">Repos</span>
+          </div>
+        </div>
+        <div class="social-card wa">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+          <div class="social-info">
+            <span class="count">Online</span>
+            <span class="label">Status</span>
+          </div>
         </div>
       </div>
-      <div class="chip-container">
-        <ion-chip><ion-avatar><img src="https://ionicframework.com/docs/img/demos/avatar.svg"></ion-avatar><ion-label>User</ion-label></ion-chip>
-        <ion-chip color="secondary">Favorite<ion-icon name="heart-outline"></ion-icon></ion-chip>
-        <ion-chip outline color="primary">Flash<ion-icon name="airplane-outline"></ion-icon></ion-chip>
+    </section>
+
+    <!-- STATUS & PROGRESS -->
+    <section class="widget-section">
+      <div class="section-header">
+        <ion-icon name="bar-chart-outline"></ion-icon>
+        <span>Performance Analytics</span>
       </div>
-    </section>
-
-    <!-- CARD TYPES -->
-    <section class="widget-section">
-      <h2 class="section-badge">Cards</h2>
-      <ion-card>
-        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
-        <ion-card-header>
-          <ion-card-title>Card Title</ion-card-title>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content>
-          Here's a small text description for the card content.
-        </ion-card-content>
-      </ion-card>
-    </section>
-
-    <!-- FORM CONTROLS -->
-    <section class="widget-section">
-      <h2 class="section-badge">Forms & Selection</h2>
-      <ion-card class="form-card">
-        <ion-item lines="full">
-          <ion-label position="floating">Enter Username</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-        <ion-item lines="full">
-          <ion-label>Toggle Feature</ion-label>
-          <ion-toggle slot="end" [(ngModel)]="toggleStatus"></ion-toggle>
-        </ion-item>
-        <ion-item lines="full">
-          <ion-label>Remember Me</ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="checkboxStatus"></ion-checkbox>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-label>Date Selection</ion-label>
-          <ion-datetime-button datetime="datetime"></ion-datetime-button>
-          <ion-modal [keepContentsMounted]="true">
-            <ng-template>
-              <ion-datetime id="datetime"></ion-datetime>
-            </ng-template>
-          </ion-modal>
-        </ion-item>
-      </ion-card>
-    </section>
-
-    <!-- LOADING & SKELETON -->
-    <section class="widget-section">
-      <h2 class="section-badge">Wait States</h2>
-      <ion-card class="skeleton-card">
-        <div class="ion-padding">
-          <ion-skeleton-text [animated]="true" style="width: 80%; height: 20px"></ion-skeleton-text>
-          <ion-skeleton-text [animated]="true" style="width: 60%; height: 15px"></ion-skeleton-text>
-          <ion-skeleton-text [animated]="true" style="width: 100%; height: 40px; margin-top: 10px"></ion-skeleton-text>
+      
+      <div class="glass-card analytics-card">
+        <div class="progress-item">
+          <div class="item-meta">
+            <span>System Uptime</span>
+            <span>{{ (progressValue * 100).toFixed(0) }}%</span>
+          </div>
+          <ion-progress-bar [value]="progressValue" class="custom-progress"></ion-progress-bar>
         </div>
-        <ion-item lines="none" class="ion-no-padding">
-          <ion-label class="ion-padding-start">Processing...</ion-label>
-          <ion-spinner name="crescent" slot="end"></ion-spinner>
-        </ion-item>
-      </ion-card>
-    </section>
 
-    <!-- RANGE & PROGRESS -->
-    <section class="widget-section">
-      <h2 class="section-badge">Progress & Range</h2>
-      <ion-card class="status-card">
-        <ion-range [(ngModel)]="rangeValue" [pin]="true" [ticks]="true" [snaps]="true" [min]="0" [max]="100">
-          <ion-icon slot="start" name="sunny-outline"></ion-icon>
-          <ion-icon slot="end" name="moon-outline"></ion-icon>
-        </ion-range>
-        <ion-progress-bar [value]="progressValue" color="primary"></ion-progress-bar>
-        <ion-progress-bar type="indeterminate" color="secondary" class="ion-margin-top"></ion-progress-bar>
-      </ion-card>
-    </section>
-
-    <!-- LIST & REORDER -->
-    <section class="widget-section">
-      <h2 class="section-badge">Lists & Reorder</h2>
-      <ion-list class="pro-list">
-        <ion-reorder-group [disabled]="false">
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-            </ion-thumbnail>
-            <ion-label>Item One</ion-label>
-            <ion-reorder slot="end"></ion-reorder>
-          </ion-item>
-          <ion-item>
-            <ion-label>Item Two</ion-label>
-            <ion-reorder slot="end"></ion-reorder>
-          </ion-item>
-        </ion-reorder-group>
-
-        <ion-item-sliding>
-          <ion-item button>
-            <ion-label>Slide Me Left</ion-label>
-          </ion-item>
-          <ion-item-options side="end">
-            <ion-item-option color="danger">
-              <ion-icon slot="top" name="trash-outline"></ion-icon>Delete
-            </ion-item-option>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>
-    </section>
-
-    <!-- MODAL & POPOVER -->
-    <section class="widget-section">
-      <h2 class="section-badge">Overlays</h2>
-      <div class="flex-row">
-        <ion-button expand="block" (click)="setOpen(true)">Open Modal Form</ion-button>
-        <ion-button expand="block" id="click-trigger">Open Popover</ion-button>
+        <div class="range-item">
+          <div class="item-meta">
+            <span>Server Load</span>
+            <span>{{ rangeValue }}ms</span>
+          </div>
+          <ion-range [(ngModel)]="rangeValue" [pin]="true" class="custom-range">
+            <ion-icon slot="start" name="sunny-outline"></ion-icon>
+            <ion-icon slot="end" name="moon-outline"></ion-icon>
+          </ion-range>
+        </div>
       </div>
+    </section>
 
-      <ion-modal [isOpen]="isModalOpen">
-        <ng-template>
-          <ion-header>
-            <ion-toolbar>
-              <ion-title>Modal Header</ion-title>
-              <ion-buttons slot="end">
-                <ion-button (click)="setOpen(false)">Close</ion-button>
-              </ion-buttons>
-            </ion-toolbar>
-          </ion-header>
-          <ion-content class="ion-padding">
-            <h3>Exhaustive Modal Content</h3>
-            <p>You can put anything here!</p>
-          </ion-content>
-        </ng-template>
-      </ion-modal>
+    <!-- FORM & ACTIONS -->
+    <section class="widget-section">
+      <div class="section-header">
+        <ion-icon name="settings-outline"></ion-icon>
+        <span>System Configuration</span>
+      </div>
+      
+      <div class="glass-card form-card">
+        <ion-item lines="none" class="custom-item">
+          <ion-label>Dark Mode Engine</ion-label>
+          <ion-toggle slot="end" [(ngModel)]="toggleStatus" color="primary"></ion-toggle>
+        </ion-item>
+        
+        <ion-item lines="none" class="custom-item">
+          <ion-label>Push Notifications</ion-label>
+          <ion-checkbox slot="start" [(ngModel)]="checkboxStatus" color="primary"></ion-checkbox>
+        </ion-item>
 
-      <ion-popover trigger="click-trigger" triggerAction="click">
-        <ng-template>
-          <ion-content class="ion-padding">Hello from Popover!</ion-content>
-        </ng-template>
-      </ion-popover>
+        <div class="button-row">
+            <button class="glass-btn primary" (click)="setOpen(true)">Open Control Panel</button>
+            <button class="glass-btn secondary" id="pop-trigger">More Options</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIST SHOWCASE -->
+    <section class="widget-section">
+      <div class="section-header">
+        <ion-icon name="list-outline"></ion-icon>
+        <span>Active Processes</span>
+      </div>
+      
+      <div class="glass-card list-card">
+        <ion-list lines="none" class="transparent-list">
+          <ion-item class="list-item">
+            <div class="item-icon blue">
+                <ion-icon name="refresh-outline"></ion-icon>
+            </div>
+            <ion-label>
+              <h2>Database Sync</h2>
+              <p>Active 2m ago</p>
+            </ion-label>
+            <ion-spinner name="crescent" slot="end" color="primary"></ion-spinner>
+          </ion-item>
+          
+          <ion-item class="list-item">
+            <div class="item-icon orange">
+                <ion-icon name="airplane-outline"></ion-icon>
+            </div>
+            <ion-label>
+              <h2>Cloud Deployment</h2>
+              <p>Completed</p>
+            </ion-label>
+            <ion-icon name="checkmark-circle" slot="end" color="success"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </div>
     </section>
 
   </div>
 
+  <!-- OVERLAYS (MODAL & POPOVER) -->
+  <ion-modal [isOpen]="isModalOpen" class="custom-modal">
+    <ng-template>
+      <div class="modal-content">
+        <div class="modal-header">
+            <h2>Command Center</h2>
+            <ion-button fill="clear" (click)="setOpen(false)" color="light">Close</ion-button>
+        </div>
+        <div class="modal-body">
+            <div class="empty-state">
+                <ion-icon name="flask-outline"></ion-icon>
+                <p>No active alerts in system.</p>
+            </div>
+        </div>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-popover trigger="pop-trigger" class="custom-popover">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <ion-list lines="none">
+            <ion-item button>Quick Backup</ion-item>
+            <ion-item button>Restore Points</ion-item>
+            <ion-item button color="danger">Emergency Reset</ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+
   <!-- FAB -->
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button>
+    <ion-fab-button class="main-fab">
       <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
     <ion-fab-list side="top">

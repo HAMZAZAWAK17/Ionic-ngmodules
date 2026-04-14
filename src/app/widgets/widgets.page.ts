@@ -21,7 +21,17 @@ import {
   homeOutline,
   trashOutline,
   refreshOutline,
-  reorderThreeOutline
+  reorderThreeOutline,
+  logoFacebook,
+  logoInstagram,
+  logoTwitter,
+  logoLinkedin,
+  logoYoutube,
+  logoTiktok,
+  logoGithub,
+  logoWhatsapp,
+  sparklesOutline,
+  globeOutline
 } from 'ionicons/icons';
 import { ModalController, PopoverController } from '@ionic/angular';
 
@@ -64,7 +74,17 @@ export class WidgetsPage implements OnInit {
       homeOutline,
       trashOutline,
       refreshOutline,
-      reorderThreeOutline
+      reorderThreeOutline,
+      logoFacebook,
+      logoInstagram,
+      logoTwitter,
+      logoLinkedin,
+      logoYoutube,
+      logoTiktok,
+      logoGithub,
+      logoWhatsapp,
+      sparklesOutline,
+      globeOutline
     });
   }
 
