@@ -1,103 +1,144 @@
-ion-content {
-  --background: #ffffff;
+ion-content.custom-content {
+  --background: #0b0f19;
+  --background-image: radial-gradient(circle at 15% 50%, rgba(249, 115, 22, 0.1), transparent 25%),
+                      radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.1), transparent 25%);
 }
 
-.clipboard-container {
-  max-width: 500px;
-  margin: 0 auto;
+.custom-toolbar {
+  --background: transparent;
+  --color: #ffffff;
   
-  .header-section {
-    text-align: center;
-    margin-bottom: 30px;
-    padding-top: 40px;
-    
-    .main-icon {
-      font-size: 72px;
-      margin-bottom: 16px;
-      padding: 18px;
-      background: rgba(var(--ion-color-primary-rgb), 0.1);
-      border-radius: 24px;
-    }
-    
-    h1 {
-      margin: 0;
-      font-weight: 900;
-      font-size: 2.2rem;
-      color: #0f172a;
-      letter-spacing: -1px;
-    }
-    
-    p {
-      margin: 10px 0 0;
-      color: #64748b;
-      font-weight: 600;
-      font-size: 1.05rem;
-    }
+  ion-title {
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
   }
+}
 
-  .input-card {
-    border-radius: 28px;
-    margin: 0 0 25px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.06);
-    border: 1px solid #f1f5f9;
-    background: white;
-    padding: 10px;
+.clipboard-dashboard {
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
 
-    .text-area-item {
-      --padding-start: 12px;
-      --padding-end: 12px;
-      --background: #f8fafc;
-      border-radius: 18px;
-      border: 1px solid #e2e8f0;
-      
-      .custom-textarea {
-        --padding-top: 16px;
-        --padding-bottom: 16px;
-        font-family: 'Inter', sans-serif;
-        font-size: 1.1rem;
-        font-weight: 500;
-        line-height: 1.6;
-        color: #0f172a;
-        min-height: 200px;
-      }
-    }
-  }
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
 
-  .action-buttons {
+  .header-icon-box {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #f97316, #d946ef);
+    border-radius: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 0 10px;
-    
-    ion-button {
-      --border-radius: 18px;
-      font-weight: 800;
-      height: 56px;
-      font-size: 1rem;
-      --box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin: 0;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
+
+    ion-icon {
+      font-size: 32px;
+      color: white;
     }
   }
 
-  .toast-area {
-    margin-top: 30px;
-    text-align: center;
-    position: fixed;
-    bottom: 40px;
-    left: 0;
-    right: 0;
+  .glow-text {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 10px;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+  }
+
+  .subtitle {
+    color: #94a3b8;
+    font-size: 1.05rem;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.operation-card {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+  .card-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: #e2e8f0;
+    font-weight: 700;
+    font-size: 1rem;
     
-    ion-chip {
-      height: 44px;
-      padding: 0 20px;
-      background: #0f172a;
-      color: white;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-      
-      ion-label {
-        font-weight: 700;
-        letter-spacing: 0.5px;
-      }
+    ion-icon {
+      font-size: 22px;
+      color: #f97316;
+    }
+  }
+
+  .input-wrap {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 12px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+
+    &:focus-within {
+      border-color: #f97316;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .custom-textarea {
+      --padding-start: 0;
+      --padding-end: 0;
+      --color: #ffffff;
+      --placeholder-color: #64748b;
+      font-size: 1.05rem;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+
+  .action-btn {
+    width: 100%;
+    border: none;
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: white;
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &.copy-theme {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+    }
+
+    &.paste-theme {
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
     }
   }
 }

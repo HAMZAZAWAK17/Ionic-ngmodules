@@ -1,7 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Clipboard } from '@capacitor/clipboard';
 import { addIcons } from 'ionicons';
-import { copyOutline, clipboardOutline, trashOutline } from 'ionicons/icons';
+import { 
+  copyOutline, 
+  clipboardOutline, 
+  trashOutline, 
+  duplicateOutline, 
+  readerOutline,
+  chevronBackOutline,
+  sparklesOutline
+} from 'ionicons/icons';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-clipboard',
@@ -10,24 +19,32 @@ import { copyOutline, clipboardOutline, trashOutline } from 'ionicons/icons';
   standalone: false
 })
 export class ClipboardPage implements OnInit {
-  clipboardText: string = '';
-  message: string = '';
+  textToCopy: string = '';
+  textFromClipboard: string = '';
 
-  constructor() {
-    addIcons({ copyOutline, clipboardOutline, trashOutline });
+  constructor(private toastController: ToastController) {
+    addIcons({ 
+      copyOutline, 
+      clipboardOutline, 
+      trashOutline, 
+      duplicateOutline, 
+      readerOutline,
+      chevronBackOutline,
+      sparklesOutline
+    });
   }
 
   ngOnInit() { }
 
   async copyToClipboard() {
-    if (this.clipboardText) {
+    if (this.textToCopy) {
       try {
         await Clipboard.write({
-          string: this.clipboardText
+          string: this.textToCopy
         });
-        this.showMessage('✅ Text copied to system clipboard!');
+        this.presentToast('✅ Copied to clipboard!', 'success');
       } catch (err) {
-        this.showMessage('❌ Failed to copy. Check permissions.');
+        this.presentToast('❌ Copy failed.', 'danger');
         console.error('Clipboard copy error:', err);
       }
     }
@@ -37,24 +54,37 @@ export class ClipboardPage implements OnInit {
     try {
       const { type, value } = await Clipboard.read();
       if (value) {
-        this.clipboardText = value;
-        this.showMessage('📋 Text pasted successfully!');
+        this.textFromClipboard = value;
+        this.presentToast('📋 Pasted successfully!', 'primary');
       } else {
-        this.showMessage('⚠️ Clipboard is empty.');
+        this.presentToast('⚠️ Clipboard is empty.', 'warning');
       }
     } catch (err) {
-      this.showMessage('🚫 Error: Permission denied to read clipboard.');
+      this.presentToast('🚫 Permission denied.', 'danger');
       console.error('Clipboard paste error:', err);
     }
   }
 
-  clearText() {
-    this.clipboardText = '';
-    this.showMessage('Text cleared.');
+  clearAll() {
+    this.textToCopy = '';
+    this.textFromClipboard = '';
+    this.presentToast('Fields cleared.', 'medium');
   }
 
-  private showMessage(msg: string) {
-    this.message = msg;
-    setTimeout(() => this.message = '', 3000);
+  private async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      color,
+      position: 'bottom',
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Dismiss',
+          role: 'cancel'
+        }
+      ]
+    });
+    await toast.present();
   }
 }
