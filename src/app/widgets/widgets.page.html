@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" color="light" text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>Interactive Hub</ion-title>
+    <ion-title>Ultimate Widget Hub</ion-title>
     <ion-buttons slot="end">
       <ion-button color="primary">
         <ion-icon name="sparkles-outline"></ion-icon>
@@ -16,168 +16,215 @@
   <div class="widgets-dashboard">
     
     <div class="header-section">
-      <h1 class="glow-text">Smart Widgets</h1>
-      <p class="subtitle">Experience modern UI components</p>
+      <h1 class="glow-text">Smart Ecosystem</h1>
+      <p class="subtitle">Unified control & interactive metrics</p>
     </div>
 
-    <!-- SOCIAL CONNECT SECTION (NEW) -->
+    <!-- 0. QUICK STATS (NEW CARD) -->
+    <div class="glass-card summary-card ion-margin-bottom">
+        <div class="stat-box">
+            <ion-icon name="timer-outline" color="primary"></ion-icon>
+            <div class="stat-content">
+                <span class="val">42h</span>
+                <span class="lab">Uptime</span>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="stat-box">
+            <ion-icon name="cube-outline" color="secondary"></ion-icon>
+            <div class="stat-content">
+                <span class="val">18</span>
+                <span class="lab">Assets</span>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="stat-box">
+            <ion-icon name="pulse-outline" color="danger"></ion-icon>
+            <div class="stat-content">
+                <span class="val">Low</span>
+                <span class="lab">Latency</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. FINANCE & CRYPTO (NEW) -->
+    <section class="widget-section">
+      <div class="section-header">
+        <ion-icon name="cash-outline"></ion-icon>
+        <span>Market Watch</span>
+      </div>
+      
+      <div class="finance-grid">
+        <div class="glass-card finance-card">
+            <div class="coin-header">
+                <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=025" width="24" height="24" alt="BTC">
+                <span>Bitcoin (BTC)</span>
+                <ion-badge color="success">+2.4%</ion-badge>
+            </div>
+            <div class="price">$64,231.50</div>
+            <ion-progress-bar value="0.7" color="success" class="mini-progress"></ion-progress-bar>
+        </div>
+        <div class="glass-card finance-card">
+            <div class="coin-header">
+                <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png?v=025" width="24" height="24" alt="ETH">
+                <span>Ethereum (ETH)</span>
+                <ion-badge color="danger">-0.8%</ion-badge>
+            </div>
+            <div class="price">$3,450.12</div>
+            <ion-progress-bar value="0.4" color="danger" class="mini-progress"></ion-progress-bar>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SOCIAL CONNECT -->
     <section class="widget-section">
       <div class="section-header">
         <ion-icon name="globe-outline"></ion-icon>
-        <span>Social Connect</span>
+        <span>Social Presence</span>
       </div>
       
       <div class="social-grid">
         <div class="social-card fb">
           <ion-icon name="logo-facebook"></ion-icon>
-          <div class="social-info">
-            <span class="count">12.4k</span>
-            <span class="label">Followers</span>
-          </div>
+          <div class="social-info"><span class="count">12.4k</span><span class="label">Followers</span></div>
         </div>
         <div class="social-card ig">
           <ion-icon name="logo-instagram"></ion-icon>
-          <div class="social-info">
-            <span class="count">45.2k</span>
-            <span class="label">Reach</span>
-          </div>
+          <div class="social-info"><span class="count">45.2k</span><span class="label">Reach</span></div>
         </div>
         <div class="social-card tw">
           <ion-icon name="logo-twitter"></ion-icon>
-          <div class="social-info">
-            <span class="count">8.1k</span>
-            <span class="label">Tweets</span>
-          </div>
+          <div class="social-info"><span class="count">8.1k</span><span class="label">Tweets</span></div>
         </div>
         <div class="social-card ln">
           <ion-icon name="logo-linkedin"></ion-icon>
-          <div class="social-info">
-            <span class="count">500+</span>
-            <span class="label">Connections</span>
-          </div>
-        </div>
-        <div class="social-card yt">
-          <ion-icon name="logo-youtube"></ion-icon>
-          <div class="social-info">
-            <span class="count">1.2M</span>
-            <span class="label">Views</span>
-          </div>
-        </div>
-        <div class="social-card tk">
-          <ion-icon name="logo-tiktok"></ion-icon>
-          <div class="social-info">
-            <span class="count">92k</span>
-            <span class="label">Likes</span>
-          </div>
-        </div>
-        <div class="social-card gh">
-          <ion-icon name="logo-github"></ion-icon>
-          <div class="social-info">
-            <span class="count">34</span>
-            <span class="label">Repos</span>
-          </div>
-        </div>
-        <div class="social-card wa">
-          <ion-icon name="logo-whatsapp"></ion-icon>
-          <div class="social-info">
-            <span class="count">Online</span>
-            <span class="label">Status</span>
-          </div>
+          <div class="social-info"><span class="count">500+</span><span class="label">Circle</span></div>
         </div>
       </div>
     </section>
 
-    <!-- STATUS & PROGRESS -->
+    <!-- 3. FITNESS & HEALTH (NEW) -->
     <section class="widget-section">
-      <div class="section-header">
-        <ion-icon name="bar-chart-outline"></ion-icon>
-        <span>Performance Analytics</span>
-      </div>
-      
-      <div class="glass-card analytics-card">
-        <div class="progress-item">
-          <div class="item-meta">
-            <span>System Uptime</span>
-            <span>{{ (progressValue * 100).toFixed(0) }}%</span>
-          </div>
-          <ion-progress-bar [value]="progressValue" class="custom-progress"></ion-progress-bar>
+        <div class="section-header">
+          <ion-icon name="footsteps-outline"></ion-icon>
+          <span>Fitness & Wellness</span>
         </div>
+        <div class="glass-card fitness-card">
+            <div class="fit-row">
+                <div class="fit-col">
+                    <ion-icon name="footsteps-outline" class="fit-icon steps"></ion-icon>
+                    <div class="fit-data">
+                        <span class="huge">8,432</span>
+                        <span class="small">Daily Steps</span>
+                    </div>
+                </div>
+                <div class="fit-col">
+                    <ion-icon name="pulse-outline" class="fit-icon heart"></ion-icon>
+                    <div class="fit-data">
+                        <span class="huge">72</span>
+                        <span class="small">Avg BPM</span>
+                    </div>
+                </div>
+            </div>
+            <div class="target-bar ion-margin-top">
+                <span class="target-label">Daily Goal: 84%</span>
+                <ion-progress-bar value="0.84" color="tertiary"></ion-progress-bar>
+            </div>
+        </div>
+    </section>
 
-        <div class="range-item">
-          <div class="item-meta">
-            <span>Server Load</span>
-            <span>{{ rangeValue }}ms</span>
-          </div>
-          <ion-range [(ngModel)]="rangeValue" [pin]="true" class="custom-range">
-            <ion-icon slot="start" name="sunny-outline"></ion-icon>
-            <ion-icon slot="end" name="moon-outline"></ion-icon>
-          </ion-range>
+    <!-- 4. MEDIA PLAYER (NEW) -->
+    <section class="widget-section">
+        <div class="section-header">
+          <ion-icon name="play-circle-outline"></ion-icon>
+          <span>Now Playing</span>
         </div>
-      </div>
+        <div class="glass-card media-card">
+            <div class="album-art-wrap">
+                <div class="album-art">
+                    <ion-icon name="play-circle-outline"></ion-icon>
+                </div>
+                <div class="track-info">
+                    <h3>Future Bass Waves</h3>
+                    <p>Synth Protocol - Neon City</p>
+                </div>
+            </div>
+            <div class="media-controls">
+                <ion-button fill="clear" color="light"><ion-icon name="play-skip-back-outline"></ion-icon></ion-button>
+                <ion-button fill="clear" class="play-btn"><ion-icon name="pause-outline"></ion-icon></ion-button>
+                <ion-button fill="clear" color="light"><ion-icon name="play-skip-forward-outline"></ion-icon></ion-button>
+            </div>
+            <div class="playback-bar">
+                <ion-progress-bar value="0.45" color="primary"></ion-progress-bar>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. TASK MANAGER (NEW) -->
+    <section class="widget-section">
+        <div class="section-header">
+          <ion-icon name="checkmark-done-outline"></ion-icon>
+          <span>Priority Tasks</span>
+        </div>
+        <div class="glass-card task-card">
+            <div class="task-item">
+                <ion-icon name="checkmark-done-outline" color="success"></ion-icon>
+                <span class="done">Update API Endpoints</span>
+            </div>
+            <div class="task-item">
+                <ion-icon name="square-outline"></ion-icon>
+                <span>Refactor Glassmorphism SCSS</span>
+            </div>
+            <div class="task-item">
+                <ion-icon name="square-outline"></ion-icon>
+                <span>Client Presentation (14:00)</span>
+            </div>
+            <button class="add-task-btn">+ Add Task</button>
+        </div>
+    </section>
+
+    <!-- 6. WEATHER MINIMAL (NEW) -->
+    <section class="widget-section">
+        <div class="section-header">
+          <ion-icon name="cloud-outline"></ion-icon>
+          <span>Weather Status</span>
+        </div>
+        <div class="glass-card weather-card-min">
+            <div class="weather-main">
+                <div class="temp-group">
+                    <span class="temp">22°C</span>
+                    <span class="cond">Clear Sky</span>
+                </div>
+                <ion-icon name="sunny-outline" class="w-icon"></ion-icon>
+            </div>
+            <div class="weather-details ion-margin-top">
+                <div class="w-item"><ion-icon name="thermometer-outline"></ion-icon> Feel 24°</div>
+                <div class="w-item"><ion-icon name="trending-up-outline"></ion-icon> Hum 45%</div>
+            </div>
+        </div>
     </section>
 
     <!-- FORM & ACTIONS -->
     <section class="widget-section">
       <div class="section-header">
         <ion-icon name="settings-outline"></ion-icon>
-        <span>System Configuration</span>
+        <span>System Diagnostics</span>
       </div>
       
       <div class="glass-card form-card">
         <ion-item lines="none" class="custom-item">
-          <ion-label>Dark Mode Engine</ion-label>
+          <ion-label>Deep Learning Engine</ion-label>
           <ion-toggle slot="end" [(ngModel)]="toggleStatus" color="primary"></ion-toggle>
         </ion-item>
-        
-        <ion-item lines="none" class="custom-item">
-          <ion-label>Push Notifications</ion-label>
-          <ion-checkbox slot="start" [(ngModel)]="checkboxStatus" color="primary"></ion-checkbox>
-        </ion-item>
-
         <div class="button-row">
-            <button class="glass-btn primary" (click)="setOpen(true)">Open Control Panel</button>
-            <button class="glass-btn secondary" id="pop-trigger">More Options</button>
+            <button class="glass-btn primary" (click)="setOpen(true)">Launch Center</button>
+            <button class="glass-btn secondary" id="pop-trigger">Log Export</button>
         </div>
-      </div>
-    </section>
-
-    <!-- LIST SHOWCASE -->
-    <section class="widget-section">
-      <div class="section-header">
-        <ion-icon name="list-outline"></ion-icon>
-        <span>Active Processes</span>
-      </div>
-      
-      <div class="glass-card list-card">
-        <ion-list lines="none" class="transparent-list">
-          <ion-item class="list-item">
-            <div class="item-icon blue">
-                <ion-icon name="refresh-outline"></ion-icon>
-            </div>
-            <ion-label>
-              <h2>Database Sync</h2>
-              <p>Active 2m ago</p>
-            </ion-label>
-            <ion-spinner name="crescent" slot="end" color="primary"></ion-spinner>
-          </ion-item>
-          
-          <ion-item class="list-item">
-            <div class="item-icon orange">
-                <ion-icon name="airplane-outline"></ion-icon>
-            </div>
-            <ion-label>
-              <h2>Cloud Deployment</h2>
-              <p>Completed</p>
-            </ion-label>
-            <ion-icon name="checkmark-circle" slot="end" color="success"></ion-icon>
-          </ion-item>
-        </ion-list>
       </div>
     </section>
 
   </div>
 
-  <!-- OVERLAYS (MODAL & POPOVER) -->
   <ion-modal [isOpen]="isModalOpen" class="custom-modal">
     <ng-template>
       <div class="modal-content">
@@ -188,7 +235,7 @@
         <div class="modal-body">
             <div class="empty-state">
                 <ion-icon name="flask-outline"></ion-icon>
-                <p>No active alerts in system.</p>
+                <p>System operational. No active issues.</p>
             </div>
         </div>
       </div>
@@ -199,22 +246,16 @@
     <ng-template>
       <ion-content class="ion-padding">
         <ion-list lines="none">
-            <ion-item button>Quick Backup</ion-item>
-            <ion-item button>Restore Points</ion-item>
-            <ion-item button color="danger">Emergency Reset</ion-item>
+            <ion-item button>Full Backup</ion-item>
+            <ion-item button>Reset Stats</ion-item>
         </ion-list>
       </ion-content>
     </ng-template>
   </ion-popover>
 
-  <!-- FAB -->
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button class="main-fab">
       <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
-    <ion-fab-list side="top">
-      <ion-fab-button color="primary"><ion-icon name="share-outline"></ion-icon></ion-fab-button>
-      <ion-fab-button color="secondary"><ion-icon name="settings-outline"></ion-icon></ion-fab-button>
-    </ion-fab-list>
   </ion-fab>
 </ion-content>
