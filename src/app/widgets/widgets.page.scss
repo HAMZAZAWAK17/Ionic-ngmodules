@@ -7,311 +7,171 @@ ion-content.custom-content {
 .custom-toolbar {
   --background: transparent;
   --color: #ffffff;
-  
-  ion-title {
-    font-weight: 800;
-    letter-spacing: 1px;
-    font-size: 1.1rem;
-    color: #e2e8f0;
-  }
+  ion-title { font-weight: 800; letter-spacing: 1px; font-size: 1.1rem; color: #e2e8f0; }
 }
 
-.widgets-dashboard {
-  padding: 20px;
-  max-width: 650px;
-  margin: 0 auto;
-}
+.widgets-dashboard { padding: 20px; max-width: 650px; margin: 0 auto; }
 
 .header-section {
-  text-align: center;
-  margin-bottom: 30px;
-
+  text-align: center; margin-bottom: 25px;
   .glow-text {
-    font-size: 2.3rem;
-    font-weight: 900;
-    color: #ffffff;
-    margin: 0;
-    letter-spacing: -1px;
+    font-size: 2.3rem; font-weight: 900; color: #ffffff; margin: 0; letter-spacing: -1px;
     background: linear-gradient(135deg, #60a5fa, #c084fc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .subtitle {
-    color: #94a3b8;
-    font-size: 1rem;
-    margin: 8px 0 0;
-    font-weight: 500;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
 }
+
+.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 
 .widget-section {
-  margin-bottom: 35px;
-
+  margin-bottom: 30px;
   .section-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-    padding-left: 5px;
-
-    ion-icon {
-      font-size: 22px;
-      color: #60a5fa;
-    }
-
-    span {
-      color: #f1f5f9;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-size: 0.85rem;
-    }
+    display: flex; align-items: center; gap: 10px; margin-bottom: 15px; padding-left: 5px;
+    ion-icon { font-size: 18px; color: #60a5fa; }
+    span { color: #94a3b8; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; font-size: 0.75rem; }
   }
 }
 
-/* GLASS CARDS BASE */
+/* GLASS CARDS */
 .glass-card {
   background: rgba(30, 41, 59, 0.45);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: 22px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-
-  &:active { transform: scale(0.98); }
+  border-radius: 20px; padding: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 /* SUMMARY CARD */
 .summary-card {
-    display: flex;
-    justify-content: space-around;
-    padding: 15px;
-    margin-bottom: 30px;
-
+    display: flex; justify-content: space-around; padding: 12px;
     .stat-box {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        
-        ion-icon { font-size: 24px; }
+        display: flex; align-items: center; gap: 10px;
+        ion-icon { font-size: 22px; }
         .stat-content {
-            display: flex;
-            flex-direction: column;
-            .val { color: white; font-weight: 800; font-size: 1rem; }
-            .lab { color: #64748b; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+            display: flex; flex-direction: column;
+            .val { color: white; font-weight: 800; font-size: 0.95rem; }
+            .lab { color: #64748b; font-size: 0.65rem; font-weight: 700; }
         }
     }
+    .divider { width: 1px; background: rgba(255, 255, 255, 0.1); height: 25px; align-self: center; }
+}
 
-    .divider {
-        width: 1px;
-        background: rgba(255, 255, 255, 0.1);
-        height: 30px;
-        align-self: center;
+/* SMART HOME */
+.home-card {
+    .toggle-row {
+        display: flex; align-items: center; gap: 12px; color: #cbd5e1; font-weight: 600; font-size: 0.85rem;
+        ion-icon { font-size: 20px; &.on { color: #fbbf24; } &.off { color: #64748b; } }
+        ion-toggle { --handle-box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
     }
 }
 
-/* FINANCE */
-.finance-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-
-    .finance-card {
-        padding: 16px;
-        .coin-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-            span { color: #cbd5e1; font-weight: 700; font-size: 0.85rem; }
-            ion-badge { font-size: 0.7rem; border-radius: 6px; }
+/* CALENDAR */
+.calendar-card {
+    .event-item {
+        display: flex; align-items: center; gap: 15px;
+        .date-box {
+            background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-radius: 12px;
+            padding: 8px; width: 45px; text-align: center; font-weight: 950; font-size: 1.1rem;
+            small { display: block; font-size: 0.6rem; text-transform: uppercase; color: #94a3b8; }
         }
-        .price { color: white; font-weight: 800; font-size: 1.25rem; margin-bottom: 10px; }
-        .mini-progress { height: 4px; border-radius: 2px; }
+        .event-info {
+            flex: 1;
+            h4 { color: white; margin: 0; font-size: 0.95rem; font-weight: 700; }
+            p { color: #64748b; margin: 2px 0 0; font-size: 0.8rem; }
+        }
+        ion-badge { font-size: 0.65rem; border-radius: 6px; }
     }
 }
 
-/* SOCIAL */
-.social-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-
-  .social-card {
-    background: rgba(30, 41, 59, 0.4);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-
-    ion-icon { font-size: 26px; }
-    .social-info {
-        display: flex;
-        flex-direction: column;
-        .count { color: #ffffff; font-weight: 800; font-size: 1rem; }
-        .label { color: #94a3b8; font-size: 0.7rem; font-weight: 600; }
-    }
-
-    &.fb ion-icon { color: #1877F2; }
-    &.ig ion-icon { color: #E4405F; }
-    &.tw ion-icon { color: #1DA1F2; }
-    &.ln ion-icon { color: #0A66C2; }
-  }
-}
-
-/* FITNESS */
-.fitness-card {
-    .fit-row {
-        display: flex;
-        justify-content: space-around;
-        .fit-col {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            .fit-icon { 
-                font-size: 32px; 
-                padding: 10px;
-                border-radius: 120px;
-                &.steps { color: #60a5fa; background: rgba(59, 130, 246, 0.1); }
-                &.heart { color: #ef4444; background: rgba(239, 68, 68, 0.1); }
-            }
-            .fit-data {
-                display: flex;
-                flex-direction: column;
-                .huge { color: white; font-weight: 800; font-size: 1.4rem; }
-                .small { color: #94a3b8; font-size: 0.75rem; font-weight: 600; }
-            }
+/* STORAGE */
+.storage-card {
+    .storage-info { display: flex; justify-content: space-between; color: #e2e8f0; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; }
+    .storage-progress { height: 8px; border-radius: 4px; --progress-background: #3b82f6; }
+    .storage-types {
+        display: flex; gap: 15px;
+        .type {
+            display: flex; align-items: center; gap: 6px; color: #64748b; font-size: 0.75rem; font-weight: 600;
+            .dot { width: 6px; height: 6px; border-radius: 50%; &.blue { background: #3b82f6; } &.purple { background: #8b5cf6; } &.gray { background: #475569; } }
         }
     }
-    .target-bar {
-        .target-label { color: #cbd5e1; font-size: 0.8rem; font-weight: 700; margin-bottom: 8px; display: block; }
-        ion-progress-bar { height: 10px; border-radius: 5px; --progress-background: #8b5cf6; }
+}
+
+/* TEAM */
+.avatar-grid {
+    display: flex; gap: 12px; overflow-x: auto; padding-bottom: 5px;
+    .avatar-item {
+        position: relative; width: 48px; height: 48px;
+        img { border-radius: 50%; border: 2px solid #1e293b; }
+        .status {
+            position: absolute; bottom: 0; right: 0; width: 12px; height: 12px; border-radius: 50%; border: 2px solid #0b1120;
+            &.online { background: #22c55e; } &.idle { background: #f59e0b; } &.offline { background: #64748b; }
+        }
+    }
+    .add-btn {
+        width: 48px; height: 48px; border-radius: 50%; border: 2px dashed rgba(255, 255, 255, 0.15);
+        display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 20px;
     }
 }
 
-/* MEDIA PLAYER */
+/* GALLERY */
+.gallery-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    .gal-img {
+        aspect-ratio: 1; border-radius: 12px; background: #1e293b;
+        background-size: cover; background-position: center;
+        &.img1 { background-image: url('https://picsum.photos/200?random=1'); }
+        &.img2 { background-image: url('https://picsum.photos/200?random=2'); }
+        &.img3 { background-image: url('https://picsum.photos/200?random=3'); }
+        &.more {
+            display: flex; align-items: center; justify-content: center; color: white;
+            font-weight: 800; font-size: 0.8rem; background: rgba(59, 130, 246, 0.3); border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    }
+}
+
+/* TERMINAL */
+.terminal-card {
+    background: #000000; padding: 12px; font-family: monospace; border: 1px solid #334155;
+    .term-header {
+        display: flex; justify-content: space-between; border-bottom: 1px solid #1e293b; padding-bottom: 8px; margin-bottom: 10px;
+        .dots { display: flex; gap: 5px; .d { width: 8px; height: 8px; border-radius: 50%; &.red { background: #ff5f56; } &.yellow { background: #ffbd2e; } &.green { background: #27c93f; } } }
+        span { color: #475569; font-size: 0.65rem; }
+    }
+    .term-body {
+        code { display: block; color: #22c55e; font-size: 0.75rem; line-height: 1.5; margin-bottom: 4px; &:first-child { color: white; } }
+    }
+}
+
+/* MEDIA */
 .media-card {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     border: 1px solid rgba(59, 130, 246, 0.2);
-
     .album-art-wrap {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        .album-art {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            ion-icon { font-size: 24px; color: white; }
-        }
-        .track-info {
-            h3 { color: white; margin: 0; font-size: 1rem; font-weight: 800; }
-            p { color: #94a3b8; margin: 2px 0 0; font-size: 0.8rem; font-weight: 600; }
-        }
+        display: flex; align-items: center; gap: 12px;
+        .album-art { width: 44px; height: 44px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 10px; display: flex; align-items: center; justify-content: center; ion-icon { font-size: 22px; color: white; } }
+        .track-info { h3 { color: white; margin: 0; font-size: 0.9rem; font-weight: 800; } p { color: #64748b; margin: 0; font-size: 0.75rem; } }
     }
+    .media-controls { display: flex; justify-content: space-around; margin-top: 15px; ion-icon { font-size: 22px; } .play-btn { color: #60a5fa; } }
+}
 
-    .media-controls {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        ion-icon { font-size: 24px; }
-        .play-btn {
-            --background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            height: 50px; width: 50px;
-            ion-icon { font-size: 28px; color: #60a5fa; }
-        }
-    }
-
-    .playback-bar { ion-progress-bar { height: 6px; border-radius: 3px; } }
+/* FINANCE FULL */
+.finance-card-full {
+    .coin { color: #94a3b8; font-weight: 800; font-size: 0.75rem; margin-bottom: 5px; .up { color: #22c55e; margin-left: 5px; } }
+    .val { color: white; font-weight: 900; font-size: 1.5rem; margin-bottom: 8px; }
 }
 
 /* TASKS */
 .task-card {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-
-    .task-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        color: #e2e8f0;
-        font-weight: 600;
-        font-size: 0.95rem;
-        
-        ion-icon { font-size: 20px; }
-        .done { text-decoration: line-through; color: #64748b; }
-    }
-
-    .add-task-btn {
-        background: transparent;
-        border: 1px dashed rgba(255, 255, 255, 0.2);
-        color: #60a5fa;
-        padding: 10px;
-        border-radius: 10px;
-        font-weight: 700;
-        font-size: 0.85rem;
-        cursor: pointer;
-    }
+    .task-item { display: flex; align-items: center; gap: 10px; color: #cbd5e1; font-weight: 600; font-size: 0.85rem; margin-bottom: 10px; ion-icon { font-size: 18px; } .done { text-decoration: line-through; color: #475569; } }
+    .add-task-btn { width: 100%; padding: 8px; background: transparent; border: 1px dashed rgba(255, 255, 255, 0.1); color: #60a5fa; border-radius: 8px; font-weight: 700; font-size: 0.75rem; }
 }
 
-/* WEATHER MIN */
-.weather-card-min {
-    .weather-main {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        .temp-group {
-            .temp { color: white; font-weight: 900; font-size: 2.2rem; display: block; }
-            .cond { color: #60a5fa; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-        }
-        .w-icon { font-size: 48px; color: #fbbf24; filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.4)); }
-    }
-    .weather-details {
-        display: flex;
-        gap: 20px;
-        .w-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #94a3b8;
-            font-size: 0.85rem;
-            font-weight: 600;
-            ion-icon { color: #60a5fa; }
-        }
-    }
-}
+.custom-item { --background: transparent; --color: #ffffff; --padding-start: 0; --padding-end: 0; ion-label { font-weight: 700; color: #e2e8f0; } }
+.button-row { display: flex; gap: 10px; margin-top: 15px; }
+.glass-btn { flex: 1; padding: 12px; border-radius: 10px; border: none; font-weight: 800; font-size: 0.8rem; cursor: pointer; &.primary { background: #3b82f6; color: white; } &.secondary { background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.1); } }
 
-/* FORM/SYSTEM */
-.custom-item {
-    --background: transparent;
-    --color: #ffffff;
-    --padding-start: 0;
-    --padding-end: 0;
-    ion-label { font-weight: 700; color: #e2e8f0; }
-}
+.main-fab { --background: linear-gradient(135deg, #3b82f6, #8b5cf6); --box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4); }
 
-.button-row { display: flex; gap: 12px; margin-top: 15px; }
-.glass-btn {
-    flex: 1; padding: 14px; border-radius: 12px; border: none; font-weight: 800; font-size: 0.85rem; cursor: pointer;
-    &.primary { background: #3b82f6; color: white; }
-    &.secondary { background: rgba(255, 255, 255, 0.08); color: #e2e8f0; border: 1px solid rgba(255, 255, 255, 0.1); }
-}
-
-.main-fab {
-    --background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    --box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+.custom-modal {
+    --background: #0f172a; --border-radius: 25px 25px 0 0;
+    .modal-content { height: 100%; padding: 20px; background: #0f172a; .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; h2 { color: white; font-weight: 800; margin: 0; } } .empty-state { text-align: center; padding: 40px 0; ion-icon { font-size: 50px; color: #1e293b; margin-bottom: 15px; } p { color: #64748b; font-weight: 600; } } }
 }
