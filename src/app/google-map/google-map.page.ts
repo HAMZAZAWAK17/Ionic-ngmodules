@@ -11,6 +11,7 @@ import { searchOutline, pinOutline } from 'ionicons/icons';
 })
 export class GoogleMapPage implements OnInit {
   locationName: string = 'Casablanca';
+  mapType: string = 'm';
   mapUrl: SafeResourceUrl = '';
 
   constructor(private sanitizer: DomSanitizer) {
@@ -23,7 +24,7 @@ export class GoogleMapPage implements OnInit {
 
   updateMap() {
     if (!this.locationName) return;
-    const url = `https://maps.google.com/maps?q=${encodeURIComponent(this.locationName)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+    const url = `https://maps.google.com/maps?q=${encodeURIComponent(this.locationName)}&t=${this.mapType}&z=13&ie=UTF8&iwloc=&output=embed`;
     this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

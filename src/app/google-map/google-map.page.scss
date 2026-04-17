@@ -34,6 +34,30 @@ ion-content {
     }
   }
 
+  .theme-section {
+    background: white;
+    padding: 8px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid #edf2f7;
+
+    ion-segment {
+      --background: #f1f5f9;
+      border-radius: 14px;
+      padding: 4px;
+
+      ion-segment-button {
+        --color: #64748b;
+        --color-checked: var(--ion-color-primary);
+        --indicator-color: white;
+        --indicator-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        font-weight: 600;
+        min-height: 40px;
+        border-radius: 10px;
+      }
+    }
+  }
+
   .map-card {
     flex: 1;
     margin: 0;

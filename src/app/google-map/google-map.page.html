@@ -24,6 +24,23 @@
       </ion-button>
     </div>
 
+    <div class="theme-section">
+      <ion-segment [(ngModel)]="mapType" (ionChange)="updateMap()" mode="ios">
+        <ion-segment-button value="m">
+          <ion-label>Plan</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="k">
+          <ion-label>Satellite</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="h">
+          <ion-label>Hybride</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="p">
+          <ion-label>Relief</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
     <ion-card class="map-card">
       <div class="iframe-wrapper">
         <iframe 

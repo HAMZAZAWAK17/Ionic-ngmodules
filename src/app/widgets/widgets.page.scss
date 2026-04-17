@@ -32,6 +32,47 @@ ion-content.custom-content {
   }
 }
 
+/* SOCIAL GRID */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 25px;
+
+  .social-card {
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    
+    &:active { transform: scale(0.92); }
+
+    ion-icon { font-size: 22px; }
+    .social-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .count { color: #ffffff; font-weight: 800; font-size: 0.85rem; }
+        .label { color: #94a3b8; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; }
+    }
+
+    &.fb ion-icon { color: #1877F2; }
+    &.ig ion-icon { color: #E4405F; }
+    &.tw ion-icon { color: #1DA1F2; }
+    &.ln ion-icon { color: #0A66C2; }
+    &.yt ion-icon { color: #FF0000; }
+    &.tk ion-icon { color: #ffffff; }
+    &.gh ion-icon { color: #ffffff; }
+    &.wa ion-icon { color: #25D366; }
+  }
+}
+
 /* GLASS CARDS */
 .glass-card {
   background: rgba(30, 41, 59, 0.45);
