@@ -1,0 +1,169 @@
+// Make background transparent when scanning
+:host {
+  &.scanning {
+    --background: transparent;
+  }
+}
+
+.scanner-ui {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+
+  .overlay {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+
+    .scan-area {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      overflow: hidden;
+
+      .corner {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        border: 4px solid var(--ion-color-primary);
+      }
+
+      .top-left { top: -2px; left: -2px; border-right: 0; border-bottom: 0; border-top-left-radius: 18px; }
+      .top-right { top: -2px; right: -2px; border-left: 0; border-bottom: 0; border-top-right-radius: 18px; }
+      .bottom-left { bottom: -2px; left: -2px; border-right: 0; border-top: 0; border-bottom-left-radius: 18px; }
+      .bottom-right { bottom: -2px; right: -2px; border-left: 0; border-top: 0; border-bottom-right-radius: 18px; }
+
+      .scan-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--ion-color-primary);
+        box-shadow: 0 0 15px var(--ion-color-primary);
+        animation: scan 2s infinite linear;
+      }
+    }
+
+    .scan-hint {
+      margin-top: 2rem;
+      color: white;
+      font-weight: 500;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+  }
+
+  .scanner-controls {
+    height: 100px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: env(safe-area-inset-bottom);
+
+    ion-button {
+      --padding-start: 1rem;
+      --padding-end: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(248px); }
+  100% { transform: translateY(0); }
+}
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+}
+
+.welcome-card, .result-card {
+  background: var(--ion-color-light);
+  padding: 2.5rem;
+  border-radius: 24px;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+  .icon-box {
+    width: 80px;
+    height: 80px;
+    background: var(--ion-color-primary-contrast);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    
+    ion-icon {
+      font-size: 3rem;
+      color: var(--ion-color-primary);
+    }
+  }
+
+  h2 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: var(--ion-color-step-600);
+    margin-bottom: 2rem;
+  }
+}
+
+.result-card {
+  .success-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    
+    ion-icon {
+      font-size: 3rem;
+      color: var(--ion-color-success);
+    }
+    h3 { margin: 0; font-weight: 700; }
+  }
+
+  .data-box {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px dashed var(--ion-color-medium);
+    margin-bottom: 2rem;
+    word-break: break-all;
+    
+    p { margin: 0; color: var(--ion-color-dark); font-family: monospace; }
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+.main-btn {
+  height: 56px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}

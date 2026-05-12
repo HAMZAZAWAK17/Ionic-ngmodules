@@ -1,13 +1,64 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" *ngIf="!isScanning">
   <ion-toolbar>
-    <ion-title>qr-scanner</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Scanner QR</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">qr-scanner</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" [class.scanning]="isScanning">
+  <div class="scanner-ui" *ngIf="isScanning">
+    <div class="overlay">
+      <div class="scan-area">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+        <div class="scan-line"></div>
+      </div>
+      <p class="scan-hint">Placez le code QR dans le cadre</p>
+    </div>
+
+    <div class="scanner-controls">
+      <ion-button (click)="toggleTorch()" fill="clear" color="light">
+        <ion-icon slot="icon-only" [name]="isTorchOn ? 'flash' : 'flash-off'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="stopScan()" fill="clear" color="light">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="result-container ion-padding" *ngIf="!isScanning">
+    <div class="welcome-card" *ngIf="!scannedResult">
+      <div class="icon-box">
+        <ion-icon name="qr-code-outline"></ion-icon>
+      </div>
+      <h2>Prêt à scanner ?</h2>
+      <p>Appuyez sur le bouton ci-dessous pour commencer à scanner un code QR.</p>
+      <ion-button (click)="startScan()" expand="block" shape="round" class="main-btn">
+        Démarrer le Scan
+      </ion-button>
+    </div>
+
+    <div class="result-card" *ngIf="scannedResult">
+      <div class="success-header">
+        <ion-icon name="qr-code-outline"></ion-icon>
+        <h3>Code détecté !</h3>
+      </div>
+      <div class="data-box">
+        <p>{{ scannedResult }}</p>
+      </div>
+      <div class="actions">
+        <ion-button (click)="startScan()" expand="block" shape="round">
+          <ion-icon slot="start" name="refresh-outline"></ion-icon>
+          Scanner à nouveau
+        </ion-button>
+        <ion-button (click)="reset()" expand="block" fill="clear" color="medium">
+          Effacer
+        </ion-button>
+      </div>
+    </div>
+  </div>
 </ion-content>
