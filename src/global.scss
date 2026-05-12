@@ -37,12 +37,17 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 
 /* Recorder Mode for @capacitor-community/video-recorder */
-body.recorder-mode {
+body.recorder-mode,
+body.barcode-scanner-active {
     --background: transparent !important;
     background: transparent !important;
     
     ion-content {
         --background: transparent !important;
+        background: transparent !important;
+    }
+
+    ion-app {
         background: transparent !important;
     }
 }
