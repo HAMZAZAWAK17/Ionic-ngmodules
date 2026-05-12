@@ -11,6 +11,7 @@ apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
     implementation project(':capacitor-community-sqlite')
     implementation project(':capacitor-community-video-recorder')
+    implementation project(':capacitor-mlkit-barcode-scanning')
     implementation project(':capacitor-app')
     implementation project(':capacitor-camera')
     implementation project(':capacitor-clipboard')
@@ -18,6 +19,7 @@ dependencies {
     implementation project(':capacitor-keyboard')
     implementation project(':capacitor-status-bar')
     implementation project(':capawesome-capacitor-torch')
+    implementation project(':capacitor-voice-recorder')
 
 }
 

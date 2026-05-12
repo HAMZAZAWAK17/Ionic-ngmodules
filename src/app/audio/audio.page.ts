@@ -9,15 +9,15 @@ import {
   pause, 
   refresh 
 } from 'ionicons/icons';
+import { VoiceRecorder, GenericResponse } from 'capacitor-voice-recorder';
 
 @Component({
   selector: 'app-audio',
   templateUrl: './audio.page.html',
   styleUrls: ['./audio.page.scss'],
+  standalone: false,
 })
 export class AudioPage implements OnInit, OnDestroy {
-  mediaRecorder: MediaRecorder | null = null;
-  audioChunks: Blob[] = [];
   audioUrl: string | null = null;
   audio: HTMLAudioElement | null = null;
   
@@ -38,7 +38,9 @@ export class AudioPage implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    // Demander les permissions au chargement
+    await VoiceRecorder.requestAudioRecordingPermission();
   }
 
   ngOnDestroy() {
@@ -51,37 +53,49 @@ export class AudioPage implements OnInit, OnDestroy {
 
   async startRecording() {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      this.mediaRecorder = new MediaRecorder(stream);
-      this.audioChunks = [];
+      const canRecord = await VoiceRecorder.canDeviceVoiceRecord();
+      if (!canRecord.value) {
+        alert("Cet appareil ne supporte pas l'enregistrement audio.");
+        return;
+      }
 
-      this.mediaRecorder.ondataavailable = (event) => {
-        this.audioChunks.push(event.data);
-      };
+      const permission = await VoiceRecorder.hasAudioRecordingPermission();
+      if (!permission.value) {
+        const request = await VoiceRecorder.requestAudioRecordingPermission();
+        if (!request.value) {
+          alert("Permission microphone refusée.");
+          return;
+        }
+      }
 
-      this.mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
-        this.audioUrl = URL.createObjectURL(audioBlob);
+      await VoiceRecorder.startRecording();
+      this.isRecording = true;
+      this.startTimer();
+      this.audioUrl = null;
+    } catch (err) {
+      console.error('Could not start recording', err);
+      alert("Erreur lors de l'accès au micro : " + JSON.stringify(err));
+    }
+  }
+
+  async stopRecording() {
+    try {
+      const result = await VoiceRecorder.stopRecording();
+      this.isRecording = false;
+      this.stopTimer();
+
+      if (result.value && result.value.recordDataBase64) {
+        const base64Sound = result.value.recordDataBase64;
+        const mimeType = result.value.mimeType;
+        this.audioUrl = `data:${mimeType};base64,${base64Sound}`;
         this.audio = new Audio(this.audioUrl);
         
         this.audio.onended = () => {
           this.isPlaying = false;
         };
-      };
-
-      this.mediaRecorder.start();
-      this.isRecording = true;
-      this.startTimer();
+      }
     } catch (err) {
-      console.error('Could not start recording', err);
-    }
-  }
-
-  stopRecording() {
-    if (this.mediaRecorder && this.isRecording) {
-      this.mediaRecorder.stop();
-      this.isRecording = false;
-      this.stopTimer();
+      console.error('Could not stop recording', err);
     }
   }
 

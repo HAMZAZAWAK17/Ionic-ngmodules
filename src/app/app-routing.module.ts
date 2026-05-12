@@ -83,6 +83,10 @@ const routes: Routes = [
     path: 'audio',
     loadChildren: () => import('./audio/audio.module').then( m => m.AudioPageModule)
   },
+  {
+    path: 'qr-scanner',
+    loadChildren: () => import('./qr-scanner/qr-scanner.module').then( m => m.QrScannerPageModule)
+  },
 ];
 
 @NgModule({
