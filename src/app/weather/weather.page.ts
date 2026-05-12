@@ -25,8 +25,12 @@ import {
   navigateCircleOutline,
   sunnyOutline as sunriseIcon,
   moonOutline as sunsetIcon,
-  thermometerOutline as tempMinMax
+  thermometerOutline as tempMinMax,
+  timeOutline,
+  trashOutline,
+  closeCircleOutline
 } from 'ionicons/icons';
+import { WeatherService } from './weather.service';
 
 @Component({
   selector: 'app-weather',
@@ -40,11 +44,16 @@ export class WeatherPage {
   isLoading: boolean = false;
   errorMessage: string = '';
   flagUrl: string = '';
+  history: any[] = [];
+  showHistory: boolean = false;
 
   private apiKey = '5f3f333caf1e7b78573486f0db732228';
   private apiUrl = 'https://api.openweathermap.org/data/2.5/weather';
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private weatherService: WeatherService
+  ) {
     addIcons({
       sunnyOutline,
       cloudOutline,
@@ -69,7 +78,10 @@ export class WeatherPage {
       navigateCircleOutline,
       'sunrise-icon': sunriseIcon,
       'sunset-icon': sunsetIcon,
-      'temp-min-max': tempMinMax
+      'temp-min-max': tempMinMax,
+      timeOutline,
+      trashOutline,
+      closeCircleOutline
     });
   }
 
@@ -100,6 +112,9 @@ export class WeatherPage {
         
         this.flagUrl = `https://flagcdn.com/w80/${countryCode.toLowerCase()}.png`;
         this.isLoading = false;
+
+        // Automatically save to SQLite history
+        this.weatherService.saveWeather(data);
       },
       error: (err) => {
         this.isLoading = false;
@@ -143,5 +158,17 @@ export class WeatherPage {
   formatTime(unix: number, timezone: number): string {
     const date = new Date((unix + timezone) * 1000);
     return date.toUTCString().slice(17, 22);
+  }
+
+  async toggleHistory() {
+    this.showHistory = !this.showHistory;
+    if (this.showHistory) {
+      this.history = await this.weatherService.getHistory();
+    }
+  }
+
+  async deleteHistory() {
+    await this.weatherService.clearHistory();
+    this.history = [];
   }
 }

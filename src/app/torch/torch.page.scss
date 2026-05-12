@@ -1,0 +1,139 @@
+.midnight-bg {
+  --background: #080e1a;
+}
+
+.custom-header {
+  --background: #0f172a;
+  --color: white;
+  
+  ion-title {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+}
+
+.torch-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Glass Bulb Container */
+.bulb-glass-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 60px;
+  position: relative;
+  transition: all 0.5s ease;
+
+  &.is-glowing {
+    background: rgba(6, 182, 212, 0.08);
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 50px rgba(6, 182, 212, 0.3);
+    animation: pulseGlow 2.5s infinite ease-in-out;
+  }
+
+  .bulb-icon {
+    font-size: 100px;
+    color: rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.cyan-active {
+      color: #06b6d4;
+      filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.8));
+    }
+  }
+}
+
+/* Controls Grid */
+.controls-grid {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.expert-btn {
+  --background: #0f172a;
+  --border-color: #06b6d4;
+  --border-style: solid;
+  --border-width: 2px;
+  --border-radius: 16px;
+  --color: white;
+  height: 58px;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 2px;
+  font-family: 'Inter', sans-serif; // Assuming Expert typography
+  
+  &::part(native) {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s;
+  }
+
+  &:active::part(native) {
+    transform: scale(0.98);
+  }
+
+  &[disabled] {
+    opacity: 0.25;
+    --border-color: rgba(148, 163, 184, 0.2);
+  }
+}
+
+/* Discreet Toggle Action */
+.toggle-wrap {
+  margin-top: 50px;
+  
+  .toggle-btn {
+    --color: rgba(255, 255, 255, 0.25);
+    transition: all 0.3s ease;
+
+    &:hover {
+      --color: #06b6d4;
+    }
+    
+    ion-icon {
+      font-size: 28px;
+    }
+  }
+}
+
+.status-footer {
+  margin-top: 30px;
+  p {
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: rgba(148, 163, 184, 0.4);
+    letter-spacing: 3px;
+  }
+}
+
+@keyframes pulseGlow {
+  0% { 
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.25);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 80px rgba(6, 182, 212, 0.5);
+    transform: scale(1.02);
+  }
+  100% { 
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.25);
+    transform: scale(1);
+  }
+}

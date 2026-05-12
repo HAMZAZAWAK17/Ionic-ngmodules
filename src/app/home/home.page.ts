@@ -26,7 +26,9 @@ import {
   calculatorOutline,
   cloudDoneOutline,
   cameraOutline,
-  videocamOutline
+  videocamOutline,
+  bulbOutline,
+  micOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -69,7 +71,9 @@ export class HomePage {
       calculatorOutline,
       cloudDoneOutline,
       cameraOutline,
-      videocamOutline
+      videocamOutline,
+      bulbOutline,
+      micOutline
     });
   }
 
@@ -134,5 +138,13 @@ export class HomePage {
 
   goToVideo() {
     this.router.navigate(['/video']);
+  }
+
+  goToTorch() {
+    this.router.navigate(['/torch']);
+  }
+
+  goToAudio() {
+    this.router.navigate(['/audio']);
   }
 }

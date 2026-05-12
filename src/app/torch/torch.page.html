@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-header">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>TORCH CONTROL</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="midnight-bg">
+  <div class="torch-container">
+    
+    <!-- Visualization Section -->
+    <div class="bulb-glass-circle" [class.is-glowing]="isTorchOn">
+      <ion-icon name="bulb" class="bulb-icon" [class.cyan-active]="isTorchOn"></ion-icon>
+    </div>
+
+    <!-- Main Controls -->
+    <div class="controls-grid">
+      <ion-button (click)="turnOn()" [disabled]="isTorchOn" class="expert-btn">
+        ALLUMER
+      </ion-button>
+      
+      <ion-button (click)="turnOff()" [disabled]="!isTorchOn" class="expert-btn">
+        ÉTEINDRE
+      </ion-button>
+    </div>
+
+    <!-- Discreet Toggle Action -->
+    <div class="toggle-wrap">
+      <ion-button fill="clear" (click)="toggle()" class="toggle-btn">
+        <ion-icon [name]="isTorchOn ? 'flash-off-outline' : 'flash-outline'" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div class="status-footer">
+      <p>STATUS: {{ isTorchOn ? 'ACTIVE' : 'READY' }}</p>
+    </div>
+
+  </div>
+</ion-content>

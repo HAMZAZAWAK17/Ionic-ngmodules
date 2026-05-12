@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Enregistreur Audio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="recorder-container">
+    <div class="visualizer-circle" [class.recording]="isRecording">
+      <div class="inner-circle">
+        <ion-icon name="mic-outline" *ngIf="!isRecording && !audioUrl"></ion-icon>
+        <span class="timer" *ngIf="isRecording">{{ formatTime(recordingDuration) }}</span>
+        <ion-icon name="musical-notes-outline" *ngIf="audioUrl && !isRecording"></ion-icon>
+      </div>
+      <div class="wave" *ngIf="isRecording"></div>
+      <div class="wave delay-1" *ngIf="isRecording"></div>
+      <div class="wave delay-2" *ngIf="isRecording"></div>
+    </div>
+
+    <div class="controls">
+      <!-- Recording Controls -->
+      <div class="record-controls" *ngIf="!audioUrl || isRecording">
+        <ion-button *ngIf="!isRecording" (click)="startRecording()" shape="round" color="danger" class="main-btn">
+          <ion-icon slot="start" name="radio-button-on"></ion-icon>
+          Enregistrer
+        </ion-button>
+        <ion-button *ngIf="isRecording" (click)="stopRecording()" shape="round" color="dark" class="main-btn">
+          <ion-icon slot="start" name="stop"></ion-icon>
+          Arrêter
+        </ion-button>
+      </div>
+
+      <!-- Playback Controls -->
+      <div class="playback-controls" *ngIf="audioUrl && !isRecording">
+        <p class="status-text">Enregistrement terminé</p>
+        <div class="btn-group">
+          <ion-button (click)="isPlaying ? pauseAudio() : playAudio()" color="primary" fill="outline" shape="round">
+            <ion-icon slot="icon-only" [name]="isPlaying ? 'pause' : 'play'"></ion-icon>
+          </ion-button>
+          
+          <ion-button (click)="startRecording()" color="medium" fill="clear" shape="round">
+            <ion-icon slot="start" name="refresh"></ion-icon>
+            Recommencer
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

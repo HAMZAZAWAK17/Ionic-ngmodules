@@ -38,6 +38,9 @@
         <ion-segment-button value="p">
           <ion-label>Relief</ion-label>
         </ion-segment-button>
+        <ion-segment-button value="dark">
+          <ion-label>Dark</ion-label>
+        </ion-segment-button>
       </ion-segment>
     </div>
 
@@ -45,6 +48,7 @@
       <div class="iframe-wrapper">
         <iframe 
           [src]="mapUrl" 
+          [ngClass]="{'dark-map': mapType === 'dark'}"
           width="100%" 
           height="450" 
           frameborder="0" 

@@ -75,6 +75,14 @@ const routes: Routes = [
     path: 'video',
     loadChildren: () => import('./video/video.module').then( m => m.VideoPageModule)
   },
+  {
+    path: 'torch',
+    loadComponent: () => import('./torch/torch.page').then( m => m.TorchPage)
+  },
+  {
+    path: 'audio',
+    loadChildren: () => import('./audio/audio.module').then( m => m.AudioPageModule)
+  },
 ];
 
 @NgModule({
