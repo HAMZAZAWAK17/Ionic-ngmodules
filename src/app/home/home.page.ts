@@ -28,7 +28,8 @@ import {
   cameraOutline,
   videocamOutline,
   bulbOutline,
-  micOutline
+  micOutline,
+  scanOutline
 } from 'ionicons/icons';
 
 @Component({
@@ -73,7 +74,8 @@ export class HomePage {
       cameraOutline,
       videocamOutline,
       bulbOutline,
-      micOutline
+      micOutline,
+      scanOutline
     });
   }
 
@@ -146,5 +148,9 @@ export class HomePage {
 
   goToAudio() {
     this.router.navigate(['/audio']);
+  }
+
+  goToQrScanner() {
+    this.router.navigate(['/qr-scanner']);
   }
 }
