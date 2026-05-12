@@ -1,4 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { addIcons } from 'ionicons';
+import { 
+  micOutline, 
+  musicalNotesOutline, 
+  radioButtonOn, 
+  stop, 
+  play, 
+  pause, 
+  refresh 
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-audio',
@@ -16,7 +26,17 @@ export class AudioPage implements OnInit, OnDestroy {
   recordingDuration = 0;
   timerInterval: any;
 
-  constructor() { }
+  constructor() { 
+    addIcons({ 
+      micOutline, 
+      musicalNotesOutline, 
+      radioButtonOn, 
+      stop, 
+      play, 
+      pause, 
+      refresh 
+    });
+  }
 
   ngOnInit() {
   }
